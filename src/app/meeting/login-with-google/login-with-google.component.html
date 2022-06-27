@@ -1,0 +1,12 @@
+<asl-google-signin-button >
+  <button (click)="signInWithGoogle()"> sign in with google</button>
+
+</asl-google-signin-button>
+<button (click)=" getAccessToken()"> get events</button>
+<div *ngIf="user">
+  <img src="{{ user.photoUrl }}" alt="logo">
+  <div>
+    <h4>{{ user.name }}</h4>
+    <p>{{ user.email }}</p>
+  </div>
+</div>
