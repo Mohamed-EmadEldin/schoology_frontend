@@ -1,12 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "primeicons/primeicons.css";
 @import "primeng/resources/themes/lara-dark-teal/theme.css";
 @import "primeng/resources/primeng.min.css";
 @import "primeflex/primeflex.css";
 @import "prismjs/themes/prism-coy.min.css";
 @import "bootstrap/dist/css/bootstrap.min.css";
+body {
+    background-color: #17212FFF;
+    color: #e8e6e3;
+}
+
+html,
+body {
+    height: 100%;
+}
 
 body {
-  background-color: #17212FFF;
-  color: #e8e6e3;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
