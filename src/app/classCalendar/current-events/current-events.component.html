@@ -1,0 +1,14 @@
+<p-card class="cv" [header]="event.name" [subheader]="event.class.name" [style]="{width: '360px'}"
+        styleClass="p-card-shadow">
+  <ng-template pTemplate="header">
+
+  </ng-template>
+  <div class="d-flex justify-content-around">
+    <p> <i class="pi pi-calendar-minus"></i> {{event.time.start}}</p>
+    <p> <i class="pi pi-calendar-plus"></i> {{event.time.end}}</p>
+  </div>
+  <ng-template pTemplate="footer">
+    <a [href]="event.link">go to the meeting</a>
+    <p>created by: {{event.teacher.name}}</p>
+  </ng-template>
+</p-card>
