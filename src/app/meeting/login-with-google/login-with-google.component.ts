@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 
 // @ts-ignore
 import { SocialAuthService,GoogleLoginProvider,SocialUser } from "@abacritt/angularx-social-login";
 import {HttpClient} from "@angular/common/http";
+import {MeetingAuthService} from "../../services/meeting-auth.service";
 // @ts-ignore
 
 @Component({
@@ -12,7 +13,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class LoginWithGoogleComponent implements OnInit {
 
-  user: SocialUser | undefined;
+  user: gapi.auth2.GoogleUser | null | undefined;
   loggedIn: boolean | undefined;
   private accessToken:string = '';
 
@@ -25,12 +26,13 @@ export class LoginWithGoogleComponent implements OnInit {
   //  ]
 
 
-  constructor(private authService: SocialAuthService,private httpClient:HttpClient ) { }
+  constructor(private authService: MeetingAuthService,private httpClient:HttpClient,private ref:ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.authService.authState.subscribe((user: SocialUser) => {
+    this.authService.observable().subscribe((user: gapi.auth2.GoogleUser|null) => {
       this.user = user;
-      this.loggedIn = (user != null);
+
+      // this.loggedIn = (user != null);
       console.log(user)
 
     });
@@ -40,19 +42,20 @@ export class LoginWithGoogleComponent implements OnInit {
 
   }
 
-  getAccessToken(): void {
-    this.authService.getAccessToken(GoogleLoginProvider.PROVIDER_ID).then(accessToken => {
-      this.accessToken = accessToken
-      this.getGoogleCalendarData()
-    console.log(accessToken)});
-  }
+  // getAccessToken(): void {
+  //
+  //   this.authService.getAccessToken(GoogleLoginProvider.PROVIDER_ID).then(accessToken => {
+  //     this.accessToken = accessToken
+  //     this.getGoogleCalendarData()
+  //   console.log(accessToken)});
+  // }
   signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.authService.signIn();
     console.log("sas")
   }
-  refreshToken(): void {
-    this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID).then()
-  }
+  // refreshToken(): void {
+  //   this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID).then()
+  // }
 
   getGoogleCalendarData(): void {
     if (!this.accessToken) return;

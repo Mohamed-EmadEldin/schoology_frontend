@@ -11,10 +11,6 @@ import {
 import { LoginWithGoogleComponent } from './login-with-google/login-with-google.component';
 
 // @ts-ignore
-const   googleLoginOptions:GoogleInitOptions= {
-  oneTapEnabled: false,
-  scopes: ["openid", "profile", "email" ,"https://www.googleapis.com/auth/calendar"]
-};
 
 // @ts-ignore
 @NgModule({
@@ -23,37 +19,8 @@ const   googleLoginOptions:GoogleInitOptions= {
   ],
   imports: [
     CommonModule,
-    SocialLoginModule
   ],
-  providers:[
-    {
-      provide: 'SocialAuthServiceConfig',
-
-      useValue: {
-        autoLogin: false,
-        // config:[
-        //   {
-        //     id: GoogleLoginProvider.PROVIDER_ID,
-        //     provider: new GoogleLoginProvider("Google-OAuth-Client-Id", googleLoginOptions)
-        //   },],
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              "43384519615-haoarcj3935ckm6s0t0cfh77ed2gd72k.apps.googleusercontent.com",{
-                oneTapEnabled: false,
-                scopes: ["openid", "profile", "email" ,"https://www.googleapis.com/auth/calendar"]
-              }
-            )
-          },
-        ],
-        onError: (err) => {
-          console.error(err);
-        }
-      } as SocialAuthServiceConfig,
-    }
-
-  ],
+  providers:[],
   exports:[
     LoginWithGoogleComponent
   ],
