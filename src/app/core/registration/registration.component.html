@@ -1,19 +1,19 @@
 <body>
     <div id="container">
         <header>Register new account</header>
-        <form method="post">
+        <form [formGroup]="registerForm" (ngSubmit)="register()" method="post">
             <fieldset>
                 <br/>
-                <input type="text" name="username" id="username" placeholder="Username" required autofocus>
+                <input type="text" formcontrolname="username" id="username" placeholder="Username" required autofocus>
                 <br/><br/>
-                <input type="text" name="phone number" id="phone" placeholder="phone number" required>
+                <input type="text" formcontrolname="phone number" id="phone" placeholder="phone number" required>
                 <br/><br/>
-                <input type="password" name="password" id="password" placeholder="Password" required>
+                <input type="password" formcontrolname="password" id="password" placeholder="Password" required>
                 <br/><br/>
-                <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
+                <input type="password" formcontrolname="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
                 <br/> <br/> <br/>
                 <label for="submit"></label>
-                <input type="submit" name="submit" id="submit" value="REGISTER">
+                <p-button type="Submit " id="submit " label="Submit "></p-button>
             </fieldset>
         </form>
     </div>
