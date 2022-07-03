@@ -14,10 +14,10 @@ export class AppComponent implements OnInit{
   constructor(private router:Router){}
 
   ngOnInit(){
-    this.router.events.subscribe((event: any) => {
-      if(event instanceof NavigationEnd)
-        event.url === '/' || event.url === '/teacher-account' ? this.canShowNav = false : this.canShowNav = true;
-    })
+    // this.router.events.subscribe((event: any) => {
+    //   if(event instanceof NavigationEnd)
+    //     event.url === '/' || event.url === '/teacher-account' ? this.canShowNav = false : this.canShowNav = true;
+    // })
   }
 
   title = 'scoolix-frontend';

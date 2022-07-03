@@ -9,11 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminAccountComponent } from './Admin/admin-account/admin-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AdminAccountComponent
   ],
     imports: [
         BrowserModule,
@@ -22,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         AppRoutingModule,
         BodyModule,
         MatInputModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+
     ],
   providers: [],
   bootstrap: [AppComponent]
