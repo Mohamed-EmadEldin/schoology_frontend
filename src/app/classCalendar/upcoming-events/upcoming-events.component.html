@@ -1,14 +1,14 @@
-<p-card class="uv" [header]="event.name" [subheader]="event.class.name" [style]="{width: '360px'}"
+<p-card class="uv" [header]="event.name" subheader="event.class.name" [style]="{width: '360px'}"
         styleClass="p-card-shadow">
   <ng-template pTemplate="header">
 
   </ng-template>
   <div class="d-flex justify-content-around">
-    <p> <i class="pi pi-calendar-minus"></i> {{event.time.start}}</p>
-    <p> <i class="pi pi-calendar-plus"></i> {{event.time.end}}</p>
+    <p> <i class="pi pi-calendar-minus"></i> {{start}}</p>
+    <p> <i class="pi pi-calendar-plus"></i> {{end}}</p>
   </div>
   <ng-template pTemplate="footer">
     <a [href]="event.link">go to the meeting</a>
-    <p>created by: {{event.teacher.name}}</p>
+    <p>created by: {{event.teacherId}}</p>
   </ng-template>
 </p-card>

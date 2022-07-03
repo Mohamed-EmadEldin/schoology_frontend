@@ -8,45 +8,64 @@ import axios from "axios";
 })
 export class CalendarService {
 
-  private url = "http://127.0.0.1:3000/meeeting/my-meetings/1"
+  private url = "http://127.0.0.1:3000/meeting/my-meetings/1"
 
-  selectedDate: string;
+  public periods = {
+    1: {
+      start: "08:00",
+      end: "10:00"
+    },
+    2: {
+      start: "10:30",
+      end: "12:30"
+    },
+    3: {
+      start: "13:00",
+      end: "15:00"
+    },
+    4: {
+      start: "15:30",
+      end: "17:30"
+    },
+  }
+
+  role: string = "teacher"
+  selectedDate = formatDate(new Date(), 'shortDate', 'en')
   currentEvents: any;
+  todayEvents: any;
 
-  constructor(public http: HttpClient) {
-    this.selectedDate = formatDate(new Date(), 'shortDate', 'en')
-  }
+  constructor(public http: HttpClient) { }
 
-  public callApi() {
-    let body = {
-      role: "teacher",
-      date: this.selectedDate
-    }
-
-    axios.get(this.url, {
-      params: {
-        ...body
-      }
-    }).then(data => {
-      console.log(data)
-      this.currentEvents = data
-    })
-  }
-
-  public callApiH() {
-    let body = {
-      "role": "teacher",
+  public apiGetDateEvents() {
+    let params = {
+      "role": this.role,
       "date": this.selectedDate
     }
 
     this.http.get(this.url, {
-      headers: {},
-      params: {...body}
+      params: {...params}
     }).subscribe(data => this.currentEvents = data);
   }
 
-  public getEvents() {
+  public apiGetTodayEvents() {
+    let date = new Date()
+    let today : string = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+    let params = {
+      "role": this.role,
+      "date": today
+    }
+
+    this.http.get(this.url, {
+      params: {...params}
+    }).subscribe(data => this.todayEvents = data);
+  }
+
+  public getDateEvents() {
     return this.currentEvents;
+  }
+
+  public getTodayEvents() {
+    return this.todayEvents;
   }
 
   getSelectedDate() {

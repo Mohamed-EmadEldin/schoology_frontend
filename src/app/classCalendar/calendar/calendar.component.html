@@ -1,11 +1,15 @@
-<!-- TODO: add lesson/meeting button -->
-<button pButton pRipple type="button" icon="pi pi-plus" label="Primary" class="p-button-sm p-button-rounded"></button>
-<div class="d-flex flex-wrap">
-  <app-current-events *ngFor="let event of eventsArray" [event]="event"></app-current-events>
-</div>
-<div class="d-flex row">
-  <div class="d-flex flex-column flex-wrap col-6 row">
-    <app-upcoming-events *ngFor="let event of eventsArray" [event]="event" class="cv col-6"></app-upcoming-events>
+<div class="container mt-2 border-2 border-">
+  <div class="d-flex justify-content-end">
+    <button pButton pRipple type="button" icon="pi pi-plus" label="Primary"
+            class="align-self-end p-button-sm p-button-rounded align-self-end"></button>
   </div>
-  <app-month class="col-6"></app-month>
+  <div class="d-flex flex-wrap mt-3 mb-2 gap-1">
+    <app-current-events class="cv " *ngFor="let event of todayEventsArray" [event]="event"></app-current-events>
+  </div>
+  <div class="d-flex row">
+    <div class="d-flex flex-column flex-wrap col-6 row">
+      <app-upcoming-events *ngFor="let event of dateEventsArray" [event]="event" class="uv col-6"></app-upcoming-events>
+    </div>
+    <app-month class="col-6"></app-month>
+  </div>
 </div>

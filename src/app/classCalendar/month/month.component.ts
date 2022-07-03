@@ -13,13 +13,8 @@ export class MonthComponent implements OnInit {
   constructor(public calendarService: CalendarService) { }
 
   onSelectedDate() {
-    this.calendarService.setSelectedDate({
-      year: this.selectedDate.getFullYear(),
-      month: this.selectedDate.getMonth() + 1,
-      monthDay: this.selectedDate.getDate(),
-      weekDay: this.selectedDate.getDay()
-      //year-month-day
-    })
+    let dayFormat: string = `${this.selectedDate.getFullYear()}-${this.selectedDate.getMonth()+1}-${this.selectedDate.getDate()}`
+    this.calendarService.setSelectedDate(dayFormat)
   }
 
   ngOnInit(): void {
