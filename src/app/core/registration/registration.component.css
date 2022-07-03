@@ -2,6 +2,8 @@ body {
     background: url("https://images.unsplash.com/photo-1485802007047-7774de7208e5?dpr=1&auto=compress,format&fit=crop&w=1800&h") no-repeat center center fixed;
     background-size: cover;
     font-family: 'Droid Serif', serif;
+    height: 100%;
+    width: 100%;
 }
 
 #container {
@@ -52,7 +54,7 @@ input {
 }
 
 input[type="text"]:focus,
-input[type="email"]:focus,
+input[type="text"]:focus,
 input[type="password"]:focus {
     outline: 0;
     background: rgba(235, 30, 54, 0.3);
