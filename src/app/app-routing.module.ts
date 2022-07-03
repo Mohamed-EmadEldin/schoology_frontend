@@ -1,9 +1,11 @@
+import { RegistrationComponent } from './core/registration/registration.component';
 import { LoginComponent } from './core/login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Routes, RouterModule} from "@angular/router";
 import {HomeComponent} from "./body/home/home.component";
 import {NotFoundComponent} from "./core/not-found/not-found.component";
+
 
 const routes:Routes = [
   {path: "", component:HomeComponent},
@@ -23,6 +25,10 @@ const routes:Routes = [
   {
     path: "admin-account",
     component: LoginComponent
+  },
+  {
+    path: "registration",
+    component: RegistrationComponent
   },
   {path: '**', component:NotFoundComponent},
 ]

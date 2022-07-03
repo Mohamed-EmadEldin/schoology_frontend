@@ -15,6 +15,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {RippleModule} from 'primeng/ripple';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 @NgModule({
@@ -22,10 +23,12 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     SidebarComponent,
     LoginComponent,
+    RegistrationComponent,
   ],
   exports: [
     NavComponent,
-    SidebarComponent
+    SidebarComponent,
+    RegistrationComponent,
   ],
   imports: [
     CommonModule,
