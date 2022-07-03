@@ -28,9 +28,10 @@
     "primejs": "^0.1.1",
     "primeng": "^13.4.1",
     "prismjs": "^1.28.0",
+    "@types/gapi": "^0.0.42",
+    "@types/gapi.auth2": "^0.0.56",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "web-animations-js": "^2.3.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
