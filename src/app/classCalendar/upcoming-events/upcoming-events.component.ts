@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CalendarService} from "../../services/calendar.service";
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {formatDate} from "@angular/common";
+import {Table} from "primeng/table";
 
 @Component({
   selector: 'app-upcoming-events',
@@ -8,18 +9,25 @@ import {CalendarService} from "../../services/calendar.service";
 })
 export class UpcomingEventsComponent implements OnInit {
 
-  @Input() event: any;
-  start :string = ""
-  end :string = ""
+  @Input() events: any;
+  filterDate: string = "";
 
-  constructor(public calendarService: CalendarService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    let period: number = this.event.period
-    // @ts-ignore
-    this.start = this.calendarService.periods[period].start
-    // @ts-ignore
-    this.end = this.calendarService.periods[period].end
+  @ViewChild('dt') dt: Table | undefined ;
+  applyFilterNameGlobal($event: any, stringVal: any) {
+    this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
+
+  applyFilterDateGlobal(stringVal: string){
+    let date =  formatDate(this.filterDate, 'yyyy-MM-dd', 'en')
+    this.dt!.filterGlobal(date, stringVal)
+  }
+
+  clearDateFilter(){
+    this.dt!.clear()
+  }
+
+  ngOnInit(): void { }
 
 }

@@ -8,26 +8,9 @@ import axios from "axios";
 })
 export class CalendarService {
 
-  private url = "http://127.0.0.1:3000/meeting/my-meetings/1"
+  private _today_url = "http://127.0.0.1:3000/meeting/my-meetings/1"
+  private _all_url = "http://127.0.0.1:3000/meeting/all-meetings/1"
 
-  public periods = {
-    1: {
-      start: "08:00",
-      end: "10:00"
-    },
-    2: {
-      start: "10:30",
-      end: "12:30"
-    },
-    3: {
-      start: "13:00",
-      end: "15:00"
-    },
-    4: {
-      start: "15:30",
-      end: "17:30"
-    },
-  }
 
   role: string = "teacher"
   selectedDate = formatDate(new Date(), 'shortDate', 'en')
@@ -39,10 +22,9 @@ export class CalendarService {
   public apiGetDateEvents() {
     let params = {
       "role": this.role,
-      "date": this.selectedDate
     }
 
-    this.http.get(this.url, {
+    this.http.get(this._all_url, {
       params: {...params}
     }).subscribe(data => this.currentEvents = data);
   }
@@ -55,7 +37,7 @@ export class CalendarService {
       "date": today
     }
 
-    this.http.get(this.url, {
+    this.http.get(this._today_url, {
       params: {...params}
     }).subscribe(data => this.todayEvents = data);
   }

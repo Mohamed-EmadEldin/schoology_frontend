@@ -9,18 +9,10 @@ import {CalendarService} from "../../services/calendar.service";
 export class CurrentEventsComponent implements OnInit {
 
   @Input() event: any;
-  start: string = "";
-  end: string = "";
 
-  constructor(public calendarService: CalendarService) {
+  constructor() {
   }
 
-  ngOnInit(): void {
-    let period: number = this.event.period
-    // @ts-ignore
-    this.start = this.calendarService.periods[period].start
-    // @ts-ignore
-    this.end = this.calendarService.periods[period].end
-  }
+  ngOnInit(): void { }
 
 }
