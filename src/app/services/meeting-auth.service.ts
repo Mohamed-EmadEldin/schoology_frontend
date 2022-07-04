@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, ReplaySubject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {StateService} from "./state.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class MeetingAuthService {
 
   private auth2: gapi.auth2.GoogleAuth | undefined
   private subject = new ReplaySubject<gapi.auth2.GoogleUser | null>(1)
-  constructor(private httpClient:HttpClient) {
+  constructor(private httpClient:HttpClient,private state:StateService) {
     gapi.load('auth',()=>{
       // @ts-ignore
       this.auth2=gapi.auth2.init(
@@ -22,24 +23,22 @@ export class MeetingAuthService {
     })
 
   }
-  public signIn(){
-
+  public createMeet(formData:any){
 
     // @ts-ignore
     this.auth2.grantOfflineAccess({
       scope:"openid profile email https://www.googleapis.com/auth/calendar"
     }).then((resp) =>{
       let auth_code = resp.code;
-
       this.httpClient.post<any>("http://localhost:3000/meeting/create",{
         code:auth_code,
-        date_time:"2020-01-01",
-        period:3,
-        name:"meeting1",
+        date_time:formData.date,
+        period:formData.period,
+        name:formData.name,
         teacherId:1,
-        classId:1,
+        classId:formData.classId,
         courseId:1,
-        description:"math lesson 1 ",
+        description:formData.description,
 
       }).subscribe((res)=>{
         let data = res
