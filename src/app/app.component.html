@@ -1,5 +1,3 @@
-<app-nav></app-nav>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
-<app-sidebar></app-sidebar>
+<app-nav *ngIf="canShowNav"></app-nav>
+<router-outlet></router-outlet>
+<app-sidebar *ngIf="canShowNav"></app-sidebar>

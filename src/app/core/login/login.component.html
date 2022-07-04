@@ -1,0 +1,33 @@
+<div class="container wrapper">
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="left">
+
+        <div class="p-grid p-fluid">
+            <div class="col-12">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input type="text" formControlName="phone" pInputText placeholder="phone number">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input type="password" formControlName="password" pInputText placeholder="password">
+                </div>
+            </div>
+
+            <div class="col-6">
+
+                <p-button type="Submit" label="Submit"></p-button>
+            </div>
+
+        </div>
+
+    </form>
+
+    <div class="right">
+        <img [src]="image" alt="">
+
+    </div>
+</div>

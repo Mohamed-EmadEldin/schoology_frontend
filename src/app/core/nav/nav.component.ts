@@ -1,3 +1,4 @@
+import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {SidebarService} from "../../services/sidebar.service";
 
@@ -8,13 +9,21 @@ import {SidebarService} from "../../services/sidebar.service";
 })
 export class NavComponent implements OnInit {
 
-  constructor(public sidebar: SidebarService) { }
+  canShowNav = true;
+  constructor(
+    public sidebar: SidebarService,
+    private router: Router
+    ) { }
 
   menuClick () {
     this.sidebar.toggleActive();
   }
 
   ngOnInit(): void {
+        this.router.events.subscribe((event: any) => {
+      if(event instanceof NavigationEnd)
+        event.url === '/' || event.url === '/teacher-account' ||event.url === '/student-account'||'/registration' ||event.url === '/parent-account' ||event.url === '/admin-account' ? this.canShowNav = false : this.canShowNav = true;
+    })
   }
 
 }

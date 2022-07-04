@@ -1,3 +1,5 @@
+
+import { LoginComponent } from './core/login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Routes, RouterModule} from "@angular/router";
@@ -6,8 +8,27 @@ import {NotFoundComponent} from "./core/not-found/not-found.component";
 import {CalendarComponent} from "./classCalendar/calendar/calendar.component";
 import {CreateMeetingComponent} from "./meeting/create-meeting/create-meeting.component";
 
+
 const routes:Routes = [
   {path: "", component:HomeComponent},
+  {
+    path: "teacher-account",
+    component: LoginComponent
+  },
+  {
+    path: "student-account",
+    component: LoginComponent
+  },
+
+  {
+    path: "parent-account",
+    component: LoginComponent
+  },
+  {
+    path: "admin-account",
+    component: LoginComponent
+  },
+
   {path: "cal", component:CalendarComponent},
   {path: "create-meeting", component:CreateMeetingComponent},
   {path: '**', component:NotFoundComponent},
