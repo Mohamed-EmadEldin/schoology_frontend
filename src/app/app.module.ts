@@ -7,6 +7,7 @@ import {CoreModule} from "./core/core.module";
 import {RouterModule} from "@angular/router";
 import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 import {AppRoutingModule} from './app-routing.module';
 import {NotFoundComponent} from './core/not-found/not-found.component';
@@ -28,7 +29,8 @@ import { BodyModule } from './body/body.module';
         BrowserAnimationsModule,
         HttpClientModule,
         ClassCalendarModule,
-        MeetingModule
+        MeetingModule,
+        MatButtonModule,
 
     ],
   providers: [],
