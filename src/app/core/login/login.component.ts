@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,  } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -33,11 +33,11 @@ export class LoginComponent implements OnInit {
          break;
 
          case "/parent-account":
-          this.image ="../../../assets/images/backgrounds/Parents.png ";
+          this.image ="../../../assets/images/backgrounds/Parents.gif ";
          break;
 
          case "/admin-account":
-          this.image ="../../../assets/images/backgrounds/Admin.png ";
+          this.image ="../../../assets/images/backgrounds/Admin.gif ";
          break;
       default:
         break;

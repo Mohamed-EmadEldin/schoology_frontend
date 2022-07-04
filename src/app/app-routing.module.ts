@@ -1,4 +1,4 @@
-import { RegistrationComponent } from './core/registration/registration.component';
+
 import { LoginComponent } from './core/login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -26,10 +26,7 @@ const routes:Routes = [
     path: "admin-account",
     component: LoginComponent
   },
-  {
-    path: "registration",
-    component: RegistrationComponent
-  },
+
   {path: '**', component:NotFoundComponent},
 ]
 
