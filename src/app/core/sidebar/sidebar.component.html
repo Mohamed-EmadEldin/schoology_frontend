@@ -1,21 +1,12 @@
-
-
-
-
-
-
-
-
-<p-sidebar [(visible)]="sidebar.sidebar"  [baseZIndex]="10000" >
-  <ul class="layout-menu" role="menu">
-    <li class="layout-menuitem-category" *ngFor="let item of model; let i = index;" [tabIndex]=i  role="none">
-      <div class="layout-menuitem-root-text" [attr.aria-label]="item.label">{{item.label}}</div>
-      <ul role="menu">
-        <li *ngFor="let child of item.items" [routerLink]=child.routeTo role="none">
-          <i [class]=child.icon></i>
-          {{child.label}}</li>
-      </ul>
-    </li>
-  </ul>
+<p-sidebar [(visible)]="sidebar.sidebar" [baseZIndex]="10000">
+    <ul class="layout-menu" role="menu">
+        <li class="layout-menuitem-category" *ngFor="let item of model; let i = index;" [tabIndex]=i role="none">
+            <div class="layout-menuitem-root-text" [attr.aria-label]="item.label">{{item.label}}</div>
+            <ul role="menu">
+                <li *ngFor="let child of item.items" role="none">
+                    <i [class]=child.icon></i> {{child.label}}
+                </li>
+            </ul>
+        </li>
+    </ul>
 </p-sidebar>
-
