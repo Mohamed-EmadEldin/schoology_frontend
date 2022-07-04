@@ -1,5 +1,6 @@
-<!-- TODO: add lesson/meeting button -->
-<button pButton pRipple type="button" icon="pi pi-plus" label="Primary" class="p-button-sm p-button-rounded"></button>
+
+<button pButton pRipple type="button" icon="pi pi-plus" label="Add new meeting" class="p-button-sm p-button-rounded"  routerLink="/create-meeting">
+</button>
 <div class="d-flex flex-wrap">
   <app-current-events *ngFor="let event of eventsArray" [event]="event"></app-current-events>
 </div>
