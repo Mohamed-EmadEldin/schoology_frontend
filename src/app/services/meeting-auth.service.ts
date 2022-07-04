@@ -10,7 +10,7 @@ export class MeetingAuthService {
 
   private auth2: gapi.auth2.GoogleAuth | undefined
   private subject = new ReplaySubject<gapi.auth2.GoogleUser | null>(1)
-  constructor(private httpClient:HttpClient,private state:StateService) {
+  constructor(private httpClient:HttpClient,private stateService:StateService) {
     gapi.load('auth',()=>{
       // @ts-ignore
       this.auth2=gapi.auth2.init(
@@ -35,9 +35,9 @@ export class MeetingAuthService {
         date_time:formData.date,
         period:formData.period,
         name:formData.name,
-        teacherId:1,
+        teacherId:this.stateService.getState().userId,
         classId:formData.classId,
-        courseId:1,
+        courseId:this.stateService.getState().courseId,
         description:formData.description,
 
       }).subscribe((res)=>{
