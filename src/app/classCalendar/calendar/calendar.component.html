@@ -1,7 +1,7 @@
 <div class="container mt-2 border-2 border-">
   <div class="d-flex justify-content-end">
-    <button pButton pRipple type="button" icon="pi pi-plus" label="Primary"
-            class="align-self-end p-button-sm p-button-rounded align-self-end"></button>
+    <button pButton pRipple type="button" icon="pi pi-plus" label="Add new meeting" class="align-self-end p-button-sm p-button-rounded"  routerLink="/create-meeting">
+    </button>
   </div>
   <div class="d-flex flex-wrap mt-3 mb-2 gap-1">
     <app-current-events class="cv " *ngFor="let event of todayEventsArray" [event]="event"></app-current-events>

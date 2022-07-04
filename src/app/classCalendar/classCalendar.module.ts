@@ -8,6 +8,7 @@ import {CalendarModule} from "primeng/calendar";
 import {FormsModule} from "@angular/forms";
 import {CardModule} from "primeng/card";
 import {RippleModule} from "primeng/ripple";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -23,7 +24,8 @@ import {RippleModule} from "primeng/ripple";
         CalendarModule,
         FormsModule,
         CardModule,
-        RippleModule
+        RippleModule,
+        RouterModule
     ]
 })
 export class ClassCalendarModule { }
