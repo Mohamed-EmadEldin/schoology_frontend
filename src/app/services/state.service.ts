@@ -6,14 +6,15 @@ export interface IClassRoom {
   id: number
 }
 
-interface IAppState {
+export interface IAppState {
   userId: number, // userId based on the role like teacherId and studentId not userId from the database
   userName: string,
   userType: string,
   classes: IClassRoom[],
   courseId: number,
   classId: number,
-  studentId: number
+  studentId: number,
+  token:string
 }
 
 @Injectable({
@@ -21,7 +22,7 @@ interface IAppState {
 })
 
 export class StateService {
-  public state: IAppState = {userId: -1, userName: "", userType: "",classes:[],courseId:-1,classId:-1,studentId:-1};
+  public state: IAppState = {userId: -1, userName: "", userType: "",classes:[],courseId:-1,classId:-1,studentId:-1,token:""};
   constructor() {
     this.state.classId = 1
     this.state.userId = 1

@@ -15,6 +15,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {RippleModule} from 'primeng/ripple';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MessagesModule} from "primeng/messages";
+import {MessageService} from 'primeng/api';
 
 
 
@@ -30,21 +32,23 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarComponent,
 
   ],
-  imports: [
-    CommonModule,
-    ButtonModule,
-    RippleModule,
-    SidebarModule,
-    BrowserAnimationsModule,
-    RouterModule,
-    InputTextModule,
-    CheckboxModule,
-    ButtonModule,
-    RadioButtonModule,
-    RippleModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ]
+    imports: [
+        CommonModule,
+        ButtonModule,
+        RippleModule,
+        SidebarModule,
+        BrowserAnimationsModule,
+        RouterModule,
+        InputTextModule,
+        CheckboxModule,
+        ButtonModule,
+        RadioButtonModule,
+        RippleModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MessagesModule
+    ],
+  providers:[MessageService]
 })
 export class CoreModule { }
