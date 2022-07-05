@@ -6,7 +6,7 @@ import {Meeting} from "../../models/meeting";
 import {formatDate} from '@angular/common';
 
 
-interface IClass {
+export interface IUiClass {
   name: string,
   code: number
 }
@@ -26,7 +26,7 @@ export class CreateMeetingComponent implements OnInit {
   // description:"math lesson 1 ",
   // @ts-ignore
   // selectedClass:IClass;
-  classes: IClass[] = []
+  classes: IUiClass[] = []
 
   // @ts-ignore
   // date_time: Date;
@@ -51,11 +51,11 @@ export class CreateMeetingComponent implements OnInit {
 
 
   constructor(private stateService: StateService, private authService: MeetingAuthService) {
-    this.classes = [{name: "clas1", code: 1},
-      {name: "clas2", code: 2}]
+
   }
 
   ngOnInit(): void {
+    this.classes=this.stateService.mapClassesToUiRep()
   }
 
   printClass() {
