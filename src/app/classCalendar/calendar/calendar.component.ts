@@ -11,15 +11,18 @@ export class CalendarComponent implements OnInit {
   constructor(public calendarService : CalendarService) { }
 
   events: any;
-  eventsArray: any;
+  dateEventsArray: any;
+  todayEventsArray: any;
 
   ngOnInit(): void {
     try {
-      this.calendarService.callApi()
+      this.calendarService.apiGetDateEvents()
+      this.calendarService.apiGetTodayEvents()
       setTimeout(()=> {
-        this.events = this.calendarService.getEvents()
-        // this.eventsArray = Object.values(this.events)
-        console.log(this.events)
+        this.events = this.calendarService.getDateEvents()
+        this.dateEventsArray = Object.values(this.events)
+        this.events = this.calendarService.getTodayEvents()
+        this.todayEventsArray = Object.values(this.events)
       }, 500)
     }catch (e) {
       console.error(e)

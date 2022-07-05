@@ -8,16 +8,11 @@ import {CalendarService} from "../../services/calendar.service";
 })
 export class CurrentEventsComponent implements OnInit {
 
-  selectedDate: any;
-
   @Input() event: any;
 
-  constructor(public calendarService: CalendarService) {
-    this.selectedDate = calendarService.getSelectedDate();
+  constructor() {
   }
 
-  ngOnInit(): void {
-    console.log(this.event)
-  }
+  ngOnInit(): void { }
 
 }
