@@ -18,7 +18,6 @@ export class AuthService {
       classes: [{id: 1, name: "class1"}, {id: 2, name: "class2"}],
       userName:"Ahmed",
       userType:"teacher",
-
     })
   }
 }
