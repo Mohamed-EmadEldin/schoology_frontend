@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     this.http.post('http://localhost:3000/auth/signin', this.loginForm.value).subscribe(res => {
       console.log(res);
       if(res){
-        this.router.navigate(['/home'])
+        this.router.navigate(['/cal'])
       }
     })
 

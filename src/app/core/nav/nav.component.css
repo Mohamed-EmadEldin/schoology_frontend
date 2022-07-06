@@ -1,5 +1,15 @@
-nav
-{
-  margin-bottom: 30px;
+nav {
+    margin-bottom: 30px;
+}
 
+::ng-deep .mat-menu-content:not(:empty) {
+    background-color:#17212FFF;
+    padding: 10px;
+}
+
+.mat-menu-item {
+    background-color:#17212FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,5 +1,5 @@
 <p-sidebar [(visible)]="sidebar.sidebar" [baseZIndex]="10000">
-    <ul class="layout-menu" role="menu">
+    <!-- <ul class="layout-menu" role="menu">
         <li class="layout-menuitem-category" *ngFor="let item of model; let i = index;" [tabIndex]=i role="none">
             <div class="layout-menuitem-root-text" [attr.aria-label]="item.label">{{item.label}}</div>
             <ul role="menu">
@@ -8,5 +8,98 @@
                 </li>
             </ul>
         </li>
+    </ul> -->
+
+    <ul>
+
+        <h2>
+            <mat-icon>homes</mat-icon> Dashboard
+
+        </h2>
     </ul>
+    <!-- <ul *ngIf="user.role === 'admin'"> -->
+    <ul>
+
+        <li>
+            <button routerLink="cal" pButton type="button" icon="fa-regular fa-house" label="Calendar" class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+        </li>
+        <br>
+        <li>
+            <button routerLink=" " pButton type="button " label="quizzes " class="p-button-sm p-button-text ">
+        <mat-icon>quizzes</mat-icon>
+      </button>
+        </li>
+        <br>
+        <li>
+            <button routerLink=" " pButton type="button " label="Homework " class="p-button-sm p-button-text ">
+        <mat-icon>tasks</mat-icon>
+      </button>
+        </li>
+        <br>
+        <li>
+            <button routerLink=" " pButton type="button " label="Grades" class="p-button-sm p-button-text ">
+        <mat-icon>grades</mat-icon>
+      </button>
+        </li>
+        <br>
+        <li>
+            <button routerLink=" " pButton type="button " label="Messages " class="p-button-sm p-button-text ">
+        <mat-icon>messages</mat-icon>
+      </button>
+        </li>
+    </ul>
+    <br>
+    <ul>
+        <li>
+            <button routerLink="cal" pButton type="button" icon="fa-regular fa-house" label="Meeting" class="p-button-sm p-button-text "><mat-icon>calendar_month</mat-icon></button>
+        </li>
+        <br>
+        <li>
+            <button routerLink=" " pButton type="button " label="Solve-quizzes " class="p-button-sm p-button-text ">
+        <mat-icon>quizzes</mat-icon>
+      </button>
+        </li>
+        <br>
+        <li>
+            <button routerLink=" " pButton type="button " label="Solve-Homework " class="p-button-sm p-button-text ">
+        <mat-icon>tasks</mat-icon>
+      </button>
+        </li>
+        <br>
+        <li>
+            <button routerLink=" " pButton type="button " label="Your-Grades" class="p-button-sm p-button-text ">
+        <mat-icon>grades</mat-icon>
+      </button>
+        </li>
+        <br>
+        <li>
+            <button routerLink=" " pButton type="button " label="Messages " class="p-button-sm p-button-text ">
+        <mat-icon>messages</mat-icon>
+      </button>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <button routerLink="cal" pButton type="button" icon="fa-regular fa-house" label="Register-User" class="p-button-sm p-button-text ">
+        <mat-icon>app_registration</mat-icon>
+      </button>
+        </li>
+        <br>
+        <li>
+            <button routerLink=" " pButton type="button " label="add grades" class="p-button-sm p-button-text ">
+        <mat-icon>grades</mat-icon>
+      </button>
+        </li>
+        <br>
+        <li>
+            <button routerLink=" " pButton type="button " label="add user " class="p-button-sm p-button-text ">
+        <mat-icon>group_add</mat-icon>
+      </button>
+        </li>
+    </ul>
+
+
 </p-sidebar>
