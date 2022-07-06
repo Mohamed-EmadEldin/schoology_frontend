@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {formatDate} from "@angular/common";
+import {Table} from "primeng/table";
 
 @Component({
   selector: 'app-upcoming-events',
@@ -7,11 +9,25 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class UpcomingEventsComponent implements OnInit {
 
-  @Input() event: any;
+  @Input() events: any;
+  filterDate: string = "";
 
   constructor() { }
 
-  ngOnInit(): void {
+  @ViewChild('dt') dt: Table | undefined ;
+  applyFilterNameGlobal($event: any, stringVal: any) {
+    this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
+
+  applyFilterDateGlobal(stringVal: string){
+    let date =  formatDate(this.filterDate, 'yyyy-MM-dd', 'en')
+    this.dt!.filterGlobal(date, stringVal)
+  }
+
+  clearDateFilter(){
+    this.dt!.clear()
+  }
+
+  ngOnInit(): void { }
 
 }

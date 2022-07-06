@@ -5,6 +5,8 @@
 /*  width: 10rem;*/
 /*}*/
 
-.p-card{
-  width: 33rem !important;
-}
+/*:host  ::ng-deep .p-card {*/
+/*  .uv {*/
+/*    width: 33rem !important;*/
+/*  }*/
+/*}*/
