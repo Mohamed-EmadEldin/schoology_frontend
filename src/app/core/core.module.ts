@@ -4,6 +4,7 @@ import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {RouterModule} from "@angular/router";
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import{MatMenuModule} from '@angular/material/menu';
 
 import {SidebarModule} from "primeng/sidebar";
 
@@ -17,6 +18,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {RippleModule} from 'primeng/ripple';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -49,6 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
   ]
 })
 export class CoreModule { }
