@@ -14,10 +14,14 @@ import {NotFoundComponent} from './core/not-found/not-found.component';
 import {ClassCalendarModule} from "./classCalendar/classCalendar.module";
 import {MeetingModule} from "./meeting/meeting.module";
 import { BodyModule } from './body/body.module';
+import { StudentMessagesComponent } from './Messages/student-messages/student-messages.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
+    StudentMessagesComponent,
+
   ],
     imports: [
         BrowserModule,
