@@ -1,4 +1,5 @@
 
+
 import { LoginComponent } from './core/login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -31,6 +32,7 @@ const routes:Routes = [
 
   {path: "cal", component:CalendarComponent},
   {path: "create-meeting", component:CreateMeetingComponent},
+
   {path: '**', component:NotFoundComponent},
 ]
 

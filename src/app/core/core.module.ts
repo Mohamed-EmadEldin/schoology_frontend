@@ -18,7 +18,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {RippleModule} from 'primeng/ripple';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MessagesComponent } from './messages/messages.component';
+
 
 
 
@@ -28,7 +28,7 @@ import { MessagesComponent } from './messages/messages.component';
     NavComponent,
     SidebarComponent,
     LoginComponent,
-    MessagesComponent,
+  
 
   ],
   exports: [
@@ -54,6 +54,7 @@ import { MessagesComponent } from './messages/messages.component';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+
   ]
 })
 export class CoreModule { }
