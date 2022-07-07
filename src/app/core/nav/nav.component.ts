@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
         this.router.events.subscribe((event: any) => {
       if(event instanceof NavigationEnd)
-        event.url === '/' || event.url === '/teacher-account' ||event.url === '/student-account'||'/registration' ||event.url === '/parent-account' ||event.url === '/admin-account' ? this.canShowNav = false : this.canShowNav = true;
+        event.url === '/' || event.url === '/teacher-account' ||event.url === '/student-account' ||event.url === '/parent-account' ||event.url === '/admin-account' ? this.canShowNav = false : this.canShowNav = true;
     })
   }
 

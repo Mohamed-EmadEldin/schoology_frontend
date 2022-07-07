@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {RouterModule} from "@angular/router";
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import{MatMenuModule} from '@angular/material/menu';
 
 import {SidebarModule} from "primeng/sidebar";
 
@@ -47,7 +50,11 @@ import {MessageService} from 'primeng/api';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        MessagesModule
+        MessagesModule,
+      MatButtonModule,
+      MatIconModule,
+      MatMenuModule,
+
     ],
   providers:[MessageService]
 })

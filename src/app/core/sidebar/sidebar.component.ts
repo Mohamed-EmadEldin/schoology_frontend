@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SidebarService} from "../../services/sidebar.service";
 import {trigger, state, style, transition, animate} from "@angular/animations";
 
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -24,6 +25,8 @@ import {trigger, state, style, transition, animate} from "@angular/animations";
     ])
   ]
 })
+
+
 export class SidebarComponent implements OnInit {
 
   model: any[] | undefined
