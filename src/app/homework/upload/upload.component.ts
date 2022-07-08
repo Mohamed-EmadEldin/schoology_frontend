@@ -12,26 +12,26 @@ export class UploadComponent implements OnInit {
 
   constructor(private homeworkService :HomeworkService, private messageService :MessageService) { }
 
-  inputValue: string = '';
-  uploadedFiles: any[] = []
+  file : File = null!;
 
   ngOnInit(): void { }
 
-  onUpload($event: any) {
-    for(let file of $event.files) {
-      this.uploadedFiles.push(file);
-      console.log(this.uploadedFiles)
+  onChange($event: Event) {
+    // @ts-ignore
+    this.file = $event.target.files[0];
+  }
+
+  onUpload() {
+    if (this.file){
+      console.log(this.file)
+      this.homeworkService.uploadFile(this.file)
+        .then(()=> {
+          this.messageService.add({severity: 'info', detail: 'uploaded successfully'});
+          location.reload();
+        })
+        .catch(e => console.log(e))
+    }else {
+      this.messageService.add({severity: 'error', detail: 'no files selected'});
     }
-
-    this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
   }
-
-  selected() {
-    console.log(this.uploadedFiles)
-  }
-
-  upload() {
-    console.log('from upload')
-  }
-
 }

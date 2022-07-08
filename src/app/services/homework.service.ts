@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {StateService} from "./state.service";
-// import * as path from "path";
 
 
 @Injectable({
@@ -23,10 +22,10 @@ export class HomeworkService {
     this.url = `http://127.0.0.1:3000/files/${this.userId}`;
   }
 
-  async uploadFile(file: string, Fpath: string) {
-    this.http.post(`${this.url}/upload`, {
-      // 'file': path.join(Fpath, file)
-    }).subscribe(res => console.log(res))
+  async uploadFile(file: File) {
+    let formData = new FormData()
+    formData.append("file", file)
+    this.http.post(`${this.url}/upload`, formData).subscribe(res => console.log(res))
   }
 
   async getAllFiles() {
