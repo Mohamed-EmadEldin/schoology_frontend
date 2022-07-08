@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {IUiClass} from "../meeting/create-meeting/create-meeting.component";
+import {IUiClass} from "../teacher/meeting/create-meeting/create-meeting.component";
 
 export interface IClassRoom {
   name: string,

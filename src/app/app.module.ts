@@ -12,8 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {AppRoutingModule} from './app-routing.module';
 import {NotFoundComponent} from './core/not-found/not-found.component';
 import {ClassCalendarModule} from "./classCalendar/classCalendar.module";
-import {MeetingModule} from "./meeting/meeting.module";
 import { BodyModule } from './body/body.module';
+import {TeacherModule} from "./teacher/teacher.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +29,8 @@ import { BodyModule } from './body/body.module';
         BrowserAnimationsModule,
         HttpClientModule,
         ClassCalendarModule,
-        MeetingModule,
+       TeacherModule,
         MatButtonModule,
-
     ],
   providers: [],
   bootstrap: [AppComponent]

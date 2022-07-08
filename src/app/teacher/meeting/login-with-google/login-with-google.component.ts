@@ -3,7 +3,7 @@ import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 // @ts-ignore
 import { SocialAuthService,GoogleLoginProvider,SocialUser } from "@abacritt/angularx-social-login";
 import {HttpClient} from "@angular/common/http";
-import {MeetingAuthService} from "../../services/meeting-auth.service";
+import {MeetingAuthService} from "../../../services/meeting-auth.service";
 // @ts-ignore
 
 @Component({

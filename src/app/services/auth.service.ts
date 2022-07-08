@@ -16,21 +16,9 @@ export class AuthService {
   login(data:any)
   {
      return this.http.post<IAppState>('http://localhost:3000/auth/signin', data)
-
-
-       // .subscribe(res => {
-       //   console.log(res);
-       //   if(res){
-       //     this.router.navigate(['/home'])
-       //   }
-       // })
-
-    // this.stateService.setAppState({
-    //   classId: 1,
-    //   courseId: 1,
-    //   classes: [{id: 1, name: "class1"}, {id: 2, name: "class2"}],
-    //   userName:"Ahmed",
-    //   userType:"teacher",
-    // })
+  }
+  isLoggedIn():boolean
+  {
+    return  !!localStorage.getItem("token")
   }
 }

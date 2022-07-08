@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SidebarService} from "../../services/sidebar.service";
 import {trigger, state, style, transition, animate} from "@angular/animations";
+import {StateService} from "../../services/state.service";
 
 
 @Component({
@@ -31,7 +32,8 @@ export class SidebarComponent implements OnInit {
 
   model: any[] | undefined
 
-  constructor(public sidebar: SidebarService) {
+  constructor(public sidebar: SidebarService,public stateService:StateService) {
+
   }
 
   ngOnInit(): void {
