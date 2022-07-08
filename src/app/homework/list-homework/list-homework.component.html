@@ -1,0 +1,54 @@
+<p-table #dt [value]="allFiles" [paginator]="true" [rows]="5"
+         [filterDelay]="0" [globalFilterFields]="['name']">
+  <ng-template pTemplate="caption">
+    <div class="table-header d-flex">
+      <p class="flex-grow-1 align-self-center"> List of Files
+        <small class="mx-2">...click on filename to download it</small>
+      </p>
+      <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text" (input)="applyFilterNameGlobal($event, 'contains')"
+                 placeholder="filter file name"/>
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="name">
+        <div class="flex justify-content-between align-items-center">
+          name
+          <p-sortIcon field="name"></p-sortIcon>
+          <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="date">
+        <div class="flex justify-content-between align-items-center">
+          upload date
+          <p-sortIcon field="date"></p-sortIcon>
+        </div>
+      </th>
+      <th pSortableColumn="date">
+        <div class="flex justify-content-between align-items-center">
+          upload time
+          <p-sortIcon field="date"></p-sortIcon>
+        </div>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-allFile>
+    <tr>
+      <td>
+        <p (click)="download(allFile.name)">{{allFile.name}}</p>
+<!--        {{allFile.name}}-->
+<!--        <button class="btn btn-secondary btn-sm" (click)="download(allFile.name)">download</button>-->
+      </td>
+      <td>{{allFile.createdAt | date:'mediumDate'}}</td>
+      <td>{{allFile.createdAt | date:'shortTime'}}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="8">No files found.</td>
+    </tr>
+  </ng-template>
+</p-table>

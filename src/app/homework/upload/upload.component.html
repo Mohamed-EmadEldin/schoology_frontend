@@ -1,0 +1,9 @@
+<!--name="demo[]" url="./upload.php"-->
+<p-fileUpload (onSelect)="selected()" url="" (onUpload)="onUpload($event)" [multiple]="false">
+  <ng-template pTemplate="content">
+    <ul *ngIf="uploadedFiles.length">
+      <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+    </ul>
+  </ng-template>
+</p-fileUpload>
+<p-toast></p-toast>
