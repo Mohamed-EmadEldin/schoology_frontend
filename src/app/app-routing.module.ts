@@ -1,3 +1,4 @@
+import { MessagesComponent } from './classMessages/messages/messages.component';
 
 
 import { LoginComponent } from './core/login/login.component';
@@ -33,6 +34,7 @@ const routes:Routes = [
 
   {path: "cal", component:CalendarComponent},
   {path: "create-meeting", component:CreateMeetingComponent},
+  {path:"messages", component:MessagesComponent},
 
 
   {path: '**', component:NotFoundComponent},

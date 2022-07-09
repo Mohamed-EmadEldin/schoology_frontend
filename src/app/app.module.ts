@@ -1,4 +1,4 @@
-
+import { MessagesModule } from './classMessages/messages.module';
 
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from "@angular/common/http";
@@ -10,7 +10,11 @@ import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 
+import { MatTableModule } from '@angular/material/table';
 
+
+
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {AppRoutingModule} from './app-routing.module';
 import {NotFoundComponent} from './core/not-found/not-found.component';
 import {ClassCalendarModule} from "./classCalendar/classCalendar.module";
@@ -24,6 +28,7 @@ import { BodyModule } from './body/body.module';
     AppComponent,
     NotFoundComponent,
 
+
   ],
     imports: [
         BrowserModule,
@@ -32,14 +37,14 @@ import { BodyModule } from './body/body.module';
         AppRoutingModule,
         BodyModule,
         MatInputModule,
+        MatTableModule,
+        MatPaginatorModule,
         BrowserAnimationsModule,
         HttpClientModule,
         ClassCalendarModule,
         MeetingModule,
         MatButtonModule,
-       
-
-
+        MessagesModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
