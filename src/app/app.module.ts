@@ -18,6 +18,7 @@ import {MeetingModule} from "./meeting/meeting.module";
 import { BodyModule } from './body/body.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { BodyModule } from './body/body.module';
         ClassCalendarModule,
         MeetingModule,
         MatButtonModule,
+       
 
 
     ],
