@@ -1,0 +1,18 @@
+<div *ngIf="data.app == 'send' then send; else recieve">
+</div>
+
+
+<ng-template #send>
+
+
+    <mat-form-field appearance="fill">
+        <mat-label>message</mat-label>
+        <input name="msg" matInput [(ngModel)]="message" placeholder="type here">
+    </mat-form-field>
+
+    <button (click)="sendMsg()">send</button>
+
+</ng-template>
+<ng-template #recieve>
+    hello ya recieve
+</ng-template>
