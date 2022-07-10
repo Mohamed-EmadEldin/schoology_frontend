@@ -4,32 +4,40 @@
         The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
-    <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
+    <tr>
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+    </tr>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+    <tr>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+    </tr>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Message sent </th>
-        <td mat-cell *matCellDef="let element">
-            <button (click)="openSendMsgDialog(element)" class="btn btn-primary">send message</button>
-        </td>
-    </ng-container>
+    <tr>
+        <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef> Message sent </th>
+            <td mat-cell *matCellDef="let element">
+                <button (click)="openSendMsgDialog(element)" class="btn btn-primary">send message</button>
+            </td>
+        </ng-container>
+    </tr>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Message Received </th>
-        <td mat-cell *matCellDef="let element">
-            <button (click)="openRecievedMsgDialog(element)" class="btn btn-success">recieved message</button>
-        </td>
-    </ng-container>
+    <tr>
+        <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Message Received </th>
+            <td mat-cell *matCellDef="let element">
+                <button (click)="openRecievedMsgDialog(element)" class="btn btn-success">recieved message</button>
+            </td>
+        </ng-container>
+    </tr>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

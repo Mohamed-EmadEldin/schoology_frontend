@@ -14,3 +14,7 @@ table {
 .mat-cell:nth-child(3) {
     width: 200px !important;
 }
+
+tr {
+    border: 1px solid white;
+}
