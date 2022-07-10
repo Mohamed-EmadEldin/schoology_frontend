@@ -6,7 +6,7 @@ import {Routes, RouterModule} from "@angular/router";
 import {HomeComponent} from "./body/home/home.component";
 import {NotFoundComponent} from "./core/not-found/not-found.component";
 import {CalendarComponent} from "./classCalendar/calendar/calendar.component";
-import {CreateMeetingComponent} from "./meeting/create-meeting/create-meeting.component";
+import {CreateMeetingComponent} from "./teacher/meeting/create-meeting/create-meeting.component";
 import {HomeworkComponent} from "./homework/homework/homework.component";
 
 
@@ -29,6 +29,7 @@ const routes:Routes = [
     path: "admin-account",
     component: LoginComponent
   },
+  { path: 'teacher', loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule) },
 
   {path: "cal", component:CalendarComponent},
   {path: "create-meeting", component:CreateMeetingComponent},

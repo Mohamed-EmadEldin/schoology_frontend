@@ -8,7 +8,7 @@
         <p-message severity="error" text="Message Content" *ngIf="description.invalid && (form.submitted)"></p-message>
           <input type="text" pInputText [(ngModel)]="meeting.name" placeholder="Meeting Title" name="name" #name = "ngModel" required />
         <p-message severity="error" text="Message2 Content" *ngIf="name.invalid && (form.submitted)"></p-message>
-          <input type="submit" value="create meeting" (click)="handelSubmit(form)">
+        <button type="submit" pButton label="create meeting" (click)="handelSubmit(form)"></button>
 
         </div>
         <div class="right-inputs flex-column">
