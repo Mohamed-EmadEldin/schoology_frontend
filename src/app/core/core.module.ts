@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MessagesModule} from "primeng/messages";
 import {MessageService} from 'primeng/api';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 
 
@@ -28,6 +29,7 @@ import {MessageService} from 'primeng/api';
     NavComponent,
     SidebarComponent,
     LoginComponent,
+    UnauthorizedComponent,
 
   ],
   exports: [

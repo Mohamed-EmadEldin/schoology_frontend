@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
         console.log(res)
         this.stateService.setAppState(res)
         localStorage.setItem("token",`${res.token}`)
+        console.log(res.token )
         this.router.navigate([`${this.stateService.getState().userType}/cal`])
 
       },
