@@ -15,6 +15,7 @@ import {ClassCalendarModule} from "./classCalendar/classCalendar.module";
 import { BodyModule } from './body/body.module';
 import {TeacherModule} from "./teacher/teacher.module";
 import {HomeworkModule} from "./homework/homework.module";
+import {MessageModule} from "primeng/message";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {HomeworkModule} from "./homework/homework.module";
         HttpClientModule,
         ClassCalendarModule,
         MatButtonModule,
+        MessageModule,
 
     ],
   providers: [],

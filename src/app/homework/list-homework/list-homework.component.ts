@@ -31,6 +31,7 @@ export class ListHomeworkComponent implements OnInit {
     this.http.get(`${this.homeworkService.url}/download/${name}`).subscribe(data => {
       const a = document.createElement('a');
       a.setAttribute('target', '_blank');
+      // @ts-ignore
       let link = JSON.stringify(data).replaceAll('"','')
       a.setAttribute('href', link);
       document.body.appendChild(a);

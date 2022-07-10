@@ -9,7 +9,7 @@ import {StateService} from "../../services/state.service";
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(public calendarService : CalendarService,private stateService:StateService) { }
+  constructor(public calendarService : CalendarService,public stateService:StateService) { }
 
   events: any;
   dateEventsArray: any;
@@ -19,7 +19,6 @@ export class CalendarComponent implements OnInit {
     try {
       this.calendarService.apiGetDateEvents()
       this.calendarService.apiGetTodayEvents()
-      console.log( this.stateService.getState())
       setTimeout(()=> {
         this.events = this.calendarService.getDateEvents()
         this.dateEventsArray = Object.values(this.events)

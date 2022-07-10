@@ -2,22 +2,27 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {formatDate} from "@angular/common";
 import axios from "axios";
+import {StateService} from "./state.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalendarService {
 
-  private _today_url = "http://127.0.0.1:3000/meeting/my-meetings/1"
-  private _all_url = "http://127.0.0.1:3000/meeting/all-meetings/1"
+  private _today_url = "http://127.0.0.1:3000/meeting/my-meetings/"
+  private _all_url = "http://127.0.0.1:3000/meeting/all-meetings/"
 
 
-  role: string = "teacher"
+  role: string = ""
   selectedDate = formatDate(new Date(), 'shortDate', 'en')
   currentEvents: any;
   todayEvents: any;
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient,public stateService:StateService) {
+    this.role = this.stateService.getState().userType
+    this._all_url+=this.stateService.getState().userId
+    this._today_url+=this.stateService.getState().userId
+  }
 
   public apiGetDateEvents() {
     let params = {

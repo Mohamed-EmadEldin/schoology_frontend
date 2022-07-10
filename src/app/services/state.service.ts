@@ -13,6 +13,7 @@ export interface IAppState {
   classes: IClassRoom[],
   courseId: number,
   classId: number,
+  className:string,
   studentId: number,
   token:string
 }
@@ -22,17 +23,17 @@ export interface IAppState {
 })
 
 export class StateService {
-  public state: IAppState = {userId: -1, userName: "", userType: "",classes:[],courseId:-1,classId:-1,studentId:-1,token:""};
+  public state: IAppState = {userId: -1, userName: "", userType: "",classes:[],courseId:-1,classId:-1,studentId:-1,token:"",className:""};
   constructor() {
-    this.state.classId = 1
-    this.state.userId = 1
-    this.state.classes = [{id: 1, name: "class1"},
-      {id: 2, name: "class2"},
-      {id: 2, name: "class3"},
-    ]
-    this.state.userName = "Ahmed"
-    this.state.userType = "teacher"
-    this.state.courseId=1
+    // this.state.classId = 1
+    // this.state.userId = 1
+    // this.state.classes = [{id: 1, name: "class1"},
+    //   {id: 2, name: "class2"},
+    //   {id: 2, name: "class3"},
+    // ]
+    // this.state.userName = "Ahmed"
+    // this.state.userType = "teacher"
+    // this.state.courseId=1
   }
 
   public setAppState(newState: any) {

@@ -21,4 +21,12 @@ export class AuthService {
   {
     return  !!localStorage.getItem("token")
   }
+  isTeacher():boolean
+  {
+    return this.stateService.getState().userType === "teacher"
+  }
+
+  logout() {
+    localStorage.removeItem("token")
+  }
 }
