@@ -30,7 +30,7 @@ export class MeetingAuthService {
       scope:"openid profile email https://www.googleapis.com/auth/calendar"
     }).then((resp) =>{
       let auth_code = resp.code;
-      this.httpClient.post<any>("http://localhost:3000/meeting/create",{
+      let body ={
         code:auth_code,
         date_time:formData.date,
         period:formData.period,
@@ -40,7 +40,9 @@ export class MeetingAuthService {
         courseId:this.stateService.getState().courseId,
         description:formData.description,
 
-      }).subscribe((res)=>{
+      }
+      console.log(body)
+      this.httpClient.post<any>("http://localhost:3000/meeting/create",body).subscribe((res)=>{
         let data = res
         console.log(data)
       })

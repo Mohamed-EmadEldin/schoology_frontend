@@ -18,7 +18,9 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {RippleModule} from 'primeng/ripple';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import {MessagesModule} from "primeng/messages";
+import {MessageService} from 'primeng/api';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 
 
@@ -28,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     SidebarComponent,
     LoginComponent,
-  
+
+    UnauthorizedComponent,
 
   ],
   exports: [
@@ -36,25 +39,27 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarComponent,
 
   ],
-  imports: [
-    CommonModule,
-    ButtonModule,
-    RippleModule,
-    SidebarModule,
-    BrowserAnimationsModule,
-    RouterModule,
-    InputTextModule,
-    CheckboxModule,
-    ButtonModule,
-    RadioButtonModule,
-    RippleModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
+    imports: [
+        CommonModule,
+        ButtonModule,
+        RippleModule,
+        SidebarModule,
+        BrowserAnimationsModule,
+        RouterModule,
+        InputTextModule,
+        CheckboxModule,
+        ButtonModule,
+        RadioButtonModule,
+        RippleModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MessagesModule,
+      MatButtonModule,
+      MatIconModule,
+      MatMenuModule,
 
-  ]
+    ],
+  providers:[MessageService]
 })
 export class CoreModule { }

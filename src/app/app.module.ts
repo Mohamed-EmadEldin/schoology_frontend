@@ -18,10 +18,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {AppRoutingModule} from './app-routing.module';
 import {NotFoundComponent} from './core/not-found/not-found.component';
 import {ClassCalendarModule} from "./classCalendar/classCalendar.module";
-import {MeetingModule} from "./meeting/meeting.module";
 import { BodyModule } from './body/body.module';
 
 
+import {TeacherModule} from "./teacher/teacher.module";
+import {HomeworkModule} from "./homework/homework.module";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,6 @@ import { BodyModule } from './body/body.module';
         BrowserAnimationsModule,
         HttpClientModule,
         ClassCalendarModule,
-        MeetingModule,
         MatButtonModule,
         MessagesModule,
     ],

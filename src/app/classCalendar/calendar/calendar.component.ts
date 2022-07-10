@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CalendarService} from "../../services/calendar.service";
+import {StateService} from "../../services/state.service";
 
 @Component({
   selector: 'app-calendar',
@@ -8,7 +9,7 @@ import {CalendarService} from "../../services/calendar.service";
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(public calendarService : CalendarService) { }
+  constructor(public calendarService : CalendarService,private stateService:StateService) { }
 
   events: any;
   dateEventsArray: any;
@@ -18,6 +19,7 @@ export class CalendarComponent implements OnInit {
     try {
       this.calendarService.apiGetDateEvents()
       this.calendarService.apiGetTodayEvents()
+      console.log( this.stateService.getState())
       setTimeout(()=> {
         this.events = this.calendarService.getDateEvents()
         this.dateEventsArray = Object.values(this.events)
