@@ -14,6 +14,8 @@ import {NotFoundComponent} from './core/not-found/not-found.component';
 import {ClassCalendarModule} from "./classCalendar/classCalendar.module";
 import { BodyModule } from './body/body.module';
 import {TeacherModule} from "./teacher/teacher.module";
+import {HomeworkModule} from "./homework/homework.module";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +31,8 @@ import {TeacherModule} from "./teacher/teacher.module";
         BrowserAnimationsModule,
         HttpClientModule,
         ClassCalendarModule,
-       TeacherModule,
         MatButtonModule,
+
     ],
   providers: [],
   bootstrap: [AppComponent]
