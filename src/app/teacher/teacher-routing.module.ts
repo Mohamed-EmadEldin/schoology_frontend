@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'cal', component: CalendarComponent },
   { path: 'create-exam', component: CreateExamComponent },
   { path: 'list-quizzes', component: ListExamsComponent },
+  { path: 'create-quiz', component: CreateExamComponent },
 ];
 
 @NgModule({

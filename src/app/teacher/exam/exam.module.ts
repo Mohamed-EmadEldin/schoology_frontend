@@ -6,6 +6,11 @@ import {TableModule} from "primeng/table";
 import {InputTextModule} from "primeng/inputtext";
 import {CalendarModule} from "primeng/calendar";
 import {FormsModule} from "@angular/forms";
+import {RippleModule} from "primeng/ripple";
+import {RouterModule} from "@angular/router";
+import {CardModule} from "primeng/card";
+import {DropdownModule} from "primeng/dropdown";
+import {MessageModule} from "primeng/message";
 
 
 
@@ -19,7 +24,12 @@ import {FormsModule} from "@angular/forms";
     TableModule,
     InputTextModule,
     CalendarModule,
-    FormsModule
+    FormsModule,
+    RippleModule,
+    RouterModule,
+    CardModule,
+    DropdownModule,
+    MessageModule
   ]
 })
 export class ExamModule { }

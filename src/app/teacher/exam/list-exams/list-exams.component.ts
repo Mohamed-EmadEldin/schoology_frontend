@@ -43,4 +43,11 @@ export class ListExamsComponent implements OnInit {
     this.dt!.clear()
   }
 
+  submitExamResults(link:string) {
+    this.examService.submitExamResults(link).subscribe({
+      next:()=>{
+
+      }
+    })
+  }
 }
