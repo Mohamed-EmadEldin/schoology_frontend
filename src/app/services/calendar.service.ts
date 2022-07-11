@@ -19,22 +19,23 @@ export class CalendarService {
   todayEvents: any;
 
   constructor(public http: HttpClient,public stateService:StateService) {
-    this.role = this.stateService.getState().userType
-    this._all_url+=this.stateService.getState().userId
-    this._today_url+=this.stateService.getState().userId
   }
 
   public apiGetDateEvents() {
+    let url = this._all_url+this.stateService.getState().userId
+    this.role = this.stateService.getState().userType
     let params = {
       "role": this.role,
     }
 
-    this.http.get(this._all_url, {
+    this.http.get(url, {
       params: {...params}
     }).subscribe(data => this.currentEvents = data);
   }
 
   public apiGetTodayEvents() {
+    let url = this._today_url+this.stateService.getState().userId
+    this.role = this.stateService.getState().userType
     let date = new Date()
     let today : string = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
     let params = {
@@ -42,7 +43,7 @@ export class CalendarService {
       "date": today
     }
 
-    this.http.get(this._today_url, {
+    this.http.get(url, {
       params: {...params}
     }).subscribe(data => this.todayEvents = data);
   }

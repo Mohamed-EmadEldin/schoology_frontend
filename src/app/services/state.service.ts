@@ -43,14 +43,19 @@ export class StateService {
     this.state.courseId = newState?.courseId;
     this.state.classes = newState?.classes;
     this.state.studentId = newState?.studentId
+    this.state.classId = newState?.classId
+    console.log(this.state)
+    localStorage.setItem("state",JSON.stringify(this.state))
   }
   public getState(): IAppState {
-    return this.state
+
+    // @ts-ignore
+    return JSON.parse(localStorage.getItem("state"))
   }
 
   public mapClassesToUiRep():IUiClass[]
   {
-    return this.state.classes.map(classRoom=>{
+    return this.getState().classes.map(classRoom=>{
       return {name:classRoom.name,code:classRoom.id}
     })
   }
