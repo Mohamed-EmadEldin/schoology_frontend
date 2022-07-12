@@ -3,6 +3,8 @@ import {ExamService} from "../../../services/exam.service";
 import {Exam} from "../../../models/exam";
 import {Table} from "primeng/table";
 import {formatDate} from "@angular/common";
+import {Router} from "@angular/router";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-list-exams',
@@ -13,7 +15,7 @@ export class ListExamsComponent implements OnInit {
 
   public exams:any[]=[]
   filterDate: string = "";
-  constructor(public examService:ExamService) { }
+  constructor(public examService:ExamService,public router:Router,private messageService :MessageService) { }
 
   ngOnInit(): void {
    this.examService.apiGetDateExams().subscribe({
@@ -45,8 +47,18 @@ export class ListExamsComponent implements OnInit {
 
   submitExamResults(link:string) {
     this.examService.submitExamResults(link).subscribe({
-      next:()=>{
-
+      next:(res)=>{
+        console.log(res)
+        if(!res.error) {
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false
+          this.router.onSameUrlNavigation = 'reload'
+          this.router.navigate(['/teacher/list-quizzes'])
+        } else {
+          this.messageService.add({severity: 'error', detail: res.error})
+        }
+      },
+      error:(err)=>{
+        console.log(err)
       }
     })
   }

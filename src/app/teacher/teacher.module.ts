@@ -9,7 +9,7 @@ import {ExamModule} from "./exam/exam.module";
 
 @NgModule({
   declarations: [
-    TeacherComponent
+    TeacherComponent,
   ],
   imports: [
     CommonModule,

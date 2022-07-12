@@ -26,10 +26,9 @@ export class ExamService {
 
   }
 
-
   submitExamResults(link: string) {
 
-  return this.http.post(this._submit_results_url,{
+  return this.http.post<any>(this._submit_results_url,{
     link
   })
   }

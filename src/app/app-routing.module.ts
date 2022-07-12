@@ -1,7 +1,6 @@
-
-import { LoginComponent } from './core/login/login.component';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {LoginComponent} from './core/login/login.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {Routes, RouterModule} from "@angular/router";
 import {HomeComponent} from "./body/home/home.component";
 import {NotFoundComponent} from "./core/not-found/not-found.component";
@@ -11,10 +10,11 @@ import {HomeworkComponent} from "./homework/homework/homework.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {UnauthorizedComponent} from "./core/unauthorized/unauthorized.component";
 import {IsTeacherGuard} from "./guards/is-teacher.guard";
+import {IsStudentGuard} from "./guards/is-student.guard";
 
 
-const routes:Routes = [
-  {path: "", component:HomeComponent},
+const routes: Routes = [
+  {path: "", component: HomeComponent},
   {
     path: "teacher-account",
     component: LoginComponent
@@ -32,15 +32,20 @@ const routes:Routes = [
     path: "admin-account",
     component: LoginComponent
   },
-  { path: 'teacher', loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule) ,canActivate:[AuthGuard,IsTeacherGuard]},
-  {path: "cal", component:CalendarComponent},
-  {path: "create-meeting", component:CreateMeetingComponent},
-  {path: "homework", component:HomeworkComponent},
-  {path: "un-auth", component:UnauthorizedComponent},
-  { path: 'student', loadChildren: () => import('./student/student.module').then(m => m.StudentModule),canActivate:[AuthGuard] },
-  { path: 'parent', loadChildren: () => import('./parent/parent.module').then(m => m.ParentModule) },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-  {path: '**', component:NotFoundComponent},
+  {
+    path: 'teacher',
+    loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule),
+    canActivate: [AuthGuard, IsTeacherGuard]
+  },
+  {
+    path: 'student',
+    loadChildren: () => import('./student/student.module').then(m => m.StudentModule),
+    canActivate: [AuthGuard, IsStudentGuard]
+  },
+  {path: 'parent', loadChildren: () => import('./parent/parent.module').then(m => m.ParentModule)},
+  {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
+  {path: "un-auth", component: UnauthorizedComponent},
+  {path: '**', component: NotFoundComponent},
 ]
 
 @NgModule({
@@ -52,4 +57,5 @@ const routes:Routes = [
   exports: [RouterModule]
 })
 
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

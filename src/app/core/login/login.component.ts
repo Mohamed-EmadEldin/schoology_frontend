@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       phone: [''],
       password: ['']
-
     })
   }
 
