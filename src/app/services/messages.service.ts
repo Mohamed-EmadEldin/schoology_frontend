@@ -19,8 +19,11 @@ export class MessagesService {
     return this.http.post(`${this.baseUrl}/create`, message);
   }
 
-  filter(key:string){
-    return this.http.post(`${this.baseUrl}/filter?key=${key}`, {});
-  }
+  // filter(key:string){
+  //   return this.http.post(`${this.baseUrl}/filter?key=${key}`, {});
+  // }
 
+ filter(classID:number){
+   return this.http.post(`${this.baseUrl}/class/list-students/${classID}`, {});
+  }
 }
