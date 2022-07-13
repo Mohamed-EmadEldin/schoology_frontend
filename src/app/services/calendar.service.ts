@@ -45,7 +45,9 @@ export class CalendarService {
 
     this.http.get(url, {
       params: {...params}
-    }).subscribe(data => this.todayEvents = data);
+    }).subscribe(data => {
+      this.todayEvents = data
+    });
   }
 
   public getDateEvents() {

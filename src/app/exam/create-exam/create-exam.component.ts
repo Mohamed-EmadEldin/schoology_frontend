@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Exam} from "../../../models/exam";
-import {StateService} from "../../../services/state.service";
+import {Exam} from "../../models/exam";
+import {StateService} from "../../services/state.service";
 import {NgForm} from "@angular/forms";
 import {IUiClass} from "../../meeting/create-meeting/create-meeting.component";
-import {ExamService} from "../../../services/exam.service";
+import {ExamService} from "../../services/exam.service";
 import {Router} from "@angular/router";
 
 @Component({

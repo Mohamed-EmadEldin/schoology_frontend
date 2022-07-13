@@ -1,10 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ExamService} from "../../../services/exam.service";
-import {Exam} from "../../../models/exam";
+import {ExamService} from "../../services/exam.service";
+import {Exam} from "../../models/exam";
 import {Table} from "primeng/table";
 import {formatDate} from "@angular/common";
 import {Router} from "@angular/router";
 import {MessageService} from "primeng/api";
+import {StateService} from "../../services/state.service";
 
 @Component({
   selector: 'app-list-exams',
@@ -15,7 +16,7 @@ export class ListExamsComponent implements OnInit {
 
   public exams:any[]=[]
   filterDate: string = "";
-  constructor(public examService:ExamService,public router:Router,private messageService :MessageService) { }
+  constructor(public examService:ExamService,public router:Router,private messageService :MessageService , public stateService:StateService) { }
 
   ngOnInit(): void {
    this.examService.apiGetDateExams().subscribe({

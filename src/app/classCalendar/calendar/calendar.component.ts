@@ -17,14 +17,15 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     try {
-      this.calendarService.apiGetDateEvents()
       this.calendarService.apiGetTodayEvents()
+      this.calendarService.apiGetDateEvents()
       setTimeout(()=> {
         this.events = this.calendarService.getDateEvents()
         this.dateEventsArray = Object.values(this.events)
         this.events = this.calendarService.getTodayEvents()
         this.todayEventsArray = Object.values(this.events)
-      }, 500)
+        console.log(this.todayEventsArray)
+      }, 1000)
     }catch (e) {
       console.error(e)
     }

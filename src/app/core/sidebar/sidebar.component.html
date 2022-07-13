@@ -53,11 +53,11 @@
     <br>
     <ul *ngIf="this.stateService.getState().userType==='student'">
         <li>
-            <button routerLink="cal" pButton type="button" icon="fa-regular fa-house" label="Meeting" class="p-button-sm p-button-text "><mat-icon>calendar_month</mat-icon></button>
+            <button routerLink="/student/cal" pButton type="button" icon="fa-regular fa-house" label="Meeting" class="p-button-sm p-button-text "><mat-icon>calendar_month</mat-icon></button>
         </li>
         <br>
         <li>
-            <button routerLink=" " pButton type="button " label="Solve-quizzes " class="p-button-sm p-button-text ">
+            <button routerLink="/student/list-quizzes" pButton type="button " label="Solve-quizzes " class="p-button-sm p-button-text ">
         <mat-icon>quizzes</mat-icon>
       </button>
         </li>

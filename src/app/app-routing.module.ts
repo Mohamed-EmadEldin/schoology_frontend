@@ -5,7 +5,7 @@ import {Routes, RouterModule} from "@angular/router";
 import {HomeComponent} from "./body/home/home.component";
 import {NotFoundComponent} from "./core/not-found/not-found.component";
 import {CalendarComponent} from "./classCalendar/calendar/calendar.component";
-import {CreateMeetingComponent} from "./teacher/meeting/create-meeting/create-meeting.component";
+import {CreateMeetingComponent} from "./meeting/create-meeting/create-meeting.component";
 import {HomeworkComponent} from "./homework/homework/homework.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {UnauthorizedComponent} from "./core/unauthorized/unauthorized.component";

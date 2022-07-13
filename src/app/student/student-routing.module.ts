@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StudentComponent } from './student.component';
 import {CalendarComponent} from "../classCalendar/calendar/calendar.component";
-import {ListExamsComponent} from "../teacher/exam/list-exams/list-exams.component";
+import {ListExamsComponent} from "../exam/list-exams/list-exams.component";
 import {HomeworkComponent} from "../homework/homework/homework.component";
 import {StudentGradesComponent} from "../grades/student-grades/student-grades.component";
 

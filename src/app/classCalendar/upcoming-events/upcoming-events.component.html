@@ -23,7 +23,7 @@
           <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
-      <th>class name</th>
+      <th *ngIf="stateService.getState().userType === 'teacher'">class name</th>
       <th pSortableColumn="date">
         <div class="flex justify-content-between align-items-center">
           date
@@ -36,20 +36,20 @@
         </div>
       </th>
       <th>period</th>
-      <th>teacher</th>
-      <th>course</th>
-      <th>link</th>
+      <th *ngIf="stateService.getState().userType != 'teacher'">teacher</th>
+      <th *ngIf="stateService.getState().userType != 'teacher'">course</th>
+      <th *ngIf="stateService.getState().userType != 'parent'">link</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-event>
     <tr>
-      <td>{{event.name}}</td>
-      <td>{{event.classId}}</td>
+      <td >{{event.name}}</td>
+      <td *ngIf="stateService.getState().userType === 'teacher'">{{event.classId}}</td>
       <td>{{event.date}}</td>
       <td>{{event.period}}</td>
-      <td>{{event.teacherId}}</td>
-      <td>{{event.courseId}}</td>
-      <td>
+      <td *ngIf="stateService.getState().userType != 'teacher'">{{event.teacher.user.name}}</td>
+      <td *ngIf="stateService.getState().userType != 'teacher'">{{event.course.name}}</td>
+      <td *ngIf="stateService.getState().userType != 'parent'">
         <a href="{{event.link}}">go to meeting</a>
       </td>
     </tr>

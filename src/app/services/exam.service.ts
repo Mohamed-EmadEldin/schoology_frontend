@@ -19,7 +19,10 @@ export class ExamService {
   }
 
   public apiGetDateExams(): Observable<any> {
-    this._all_url = `http://127.0.0.1:3000/exam/list/teacher/${this.stateService.getState().userId}`
+    if(this.stateService.getState().userType === "teacher")
+       this._all_url = `http://127.0.0.1:3000/exam/list/teacher/${this.stateService.getState().userId}`
+    else if (this.stateService.getState().userType === "student")
+      this._all_url = `http://127.0.0.1:3000/exam/my-exams`
 
     return this.http.get(this._all_url)
 
