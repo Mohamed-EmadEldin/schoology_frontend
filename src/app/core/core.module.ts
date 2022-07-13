@@ -55,9 +55,9 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
         ReactiveFormsModule,
         HttpClientModule,
         MessagesModule,
-      MatButtonModule,
-      MatIconModule,
-      MatMenuModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
 
     ],
   providers:[MessageService]

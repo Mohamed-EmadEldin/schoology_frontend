@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 
+
 import { MatTableModule } from '@angular/material/table';
 
 
@@ -27,24 +28,24 @@ import {HomeworkModule} from "./homework/homework.module";
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
-
-
+    NotFoundComponent
   ],
-    imports: [
-        BrowserModule,
-        CoreModule,
-        RouterModule,
-        AppRoutingModule,
-        BodyModule,
-        MatInputModule,
-        MatTableModule,
-        MatPaginatorModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        ClassCalendarModule,
-        MatButtonModule,
-        MessagesModule,
+  imports: [
+      BrowserModule,
+      CoreModule,
+      RouterModule,
+      AppRoutingModule,
+      BodyModule,
+      MatInputModule,
+      MatTableModule,
+      MatPaginatorModule,
+      BrowserAnimationsModule,
+      HttpClientModule,
+      ClassCalendarModule,
+      MatButtonModule,
+      MessagesModule,
+      HomeworkModule,
+      TeacherModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

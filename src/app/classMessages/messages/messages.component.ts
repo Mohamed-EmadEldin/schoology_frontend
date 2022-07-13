@@ -1,7 +1,8 @@
+import { TeachersService } from './../../services/teachers.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
-import {Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 
 export interface PeriodicElement {
@@ -30,10 +31,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
    styleUrls: ['./messages.component.css']
   })
 
-export class MessagesComponent {
+export class MessagesComponent implements OnInit{
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   mySource = ELEMENT_DATA;
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private teachersService: TeachersService) {}
+
+
+  ngOnInit(){
+    this.teachersService.getTeachers().subscribe( (teachers: any) => {
+      this.mySource = teachers;
+    })
+
+  }
 
   openSendMsgDialog(user: any){
       const dialogRef = this.dialog.open(PopUpComponent, {
