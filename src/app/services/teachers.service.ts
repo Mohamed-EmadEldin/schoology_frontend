@@ -11,6 +11,6 @@ export class TeachersService {
   constructor(private http: HttpClient) { }
 
   getTeachers(){
-     return this.http.get(`${this.baserUrl}/teachers`)
+     return this.http.get(`${this.baserUrl}/teacher/my-teachers`)
   }
 }
