@@ -1,6 +1,6 @@
 <p-toast></p-toast>
 <div class="container mt-2 border-2 border-round-3xl">
-  <div class="d-flex justify-content-end" *ngIf="">
+  <div class="d-flex justify-content-end" *ngIf="stateService.getState().userType ==='teacher'">
     <button pButton pRipple type="button" icon="pi pi-plus" label="Add new Quiz"
             class="align-self-end p-button-sm p-button-rounded my-2"  routerLink="/teacher/create-quiz">
     </button>

@@ -44,7 +44,7 @@
   <ng-template pTemplate="body" let-event>
     <tr>
       <td >{{event.name}}</td>
-      <td *ngIf="stateService.getState().userType === 'teacher'">{{event.classId}}</td>
+      <td *ngIf="stateService.getState().userType === 'teacher'">{{event.class.name}}</td>
       <td>{{event.date}}</td>
       <td>{{event.period}}</td>
       <td *ngIf="stateService.getState().userType != 'teacher'">{{event.teacher.user.name}}</td>
