@@ -22,9 +22,11 @@ export class HomeworkService {
     this.url = `http://127.0.0.1:3000/files/${this.userId}`;
   }
 
-  async uploadFile(file: File) {
+  async uploadFile(file: File, classId: number) {
     let formData = new FormData()
-    formData.append("file", file)
+    formData.append("classId", classId.toString())
+    formData.append("files", file)
+    console.log(formData)
     this.http.post(`${this.url}/upload`, formData).subscribe(res => console.log(res))
   }
 
