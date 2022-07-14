@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CalendarService} from "../../services/calendar.service";
+import {StateService} from "../../services/state.service";
 
 @Component({
   selector: 'app-current-events',
@@ -10,7 +11,7 @@ export class CurrentEventsComponent implements OnInit {
 
   @Input() event: any;
 
-  constructor() {
+  constructor(public stateService:StateService) {
   }
 
   ngOnInit(): void { }

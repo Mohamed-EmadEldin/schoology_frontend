@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {StateService} from "../../../services/state.service";
-import {MeetingAuthService} from "../../../services/meeting-auth.service";
+import {StateService} from "../../services/state.service";
+import {MeetingAuthService} from "../../services/meeting-auth.service";
 import {FormControl, FormGroup, NgForm, NgModel, Validators} from "@angular/forms";
-import {Meeting} from "../../../models/meeting";
+import {Meeting} from "../../models/meeting";
 import {formatDate} from '@angular/common';
 
 

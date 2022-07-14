@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Exam} from "../../../models/exam";
-import {StateService} from "../../../services/state.service";
+import {Exam} from "../../models/exam";
+import {StateService} from "../../services/state.service";
 import {NgForm} from "@angular/forms";
 import {IUiClass} from "../../meeting/create-meeting/create-meeting.component";
-import {ExamService} from "../../../services/exam.service";
+import {ExamService} from "../../services/exam.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-exam',
@@ -14,7 +15,7 @@ export class CreateExamComponent implements OnInit {
 
   public exam:Exam
   public classes:IUiClass[] =[]
-  constructor(public stateService:StateService , public examService:ExamService) {
+  constructor(public stateService:StateService , public examService:ExamService,public router:Router) {
     this.exam = new Exam()
     this.exam.courseId = this.stateService.getState().courseId
   }
@@ -29,6 +30,7 @@ export class CreateExamComponent implements OnInit {
       this.examService.createExam(this.exam).subscribe({
         next:res =>{
           console.log(res)
+          this.router.navigate(['/teacher/list-quizzes'])
         }
       })
     }

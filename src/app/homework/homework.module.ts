@@ -11,6 +11,8 @@ import { HomeworkComponent } from './homework/homework.component';
 import {TableModule} from "primeng/table";
 import {CalendarModule} from "primeng/calendar";
 import {DividerModule} from "primeng/divider";
+import {DropdownModule} from "primeng/dropdown";
+import {MessageModule} from "primeng/message";
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import {DividerModule} from "primeng/divider";
     ToastModule,
     TableModule,
     CalendarModule,
-    DividerModule
+    DividerModule,
+    DropdownModule,
+    MessageModule
   ]
 })
 export class HomeworkModule { }
