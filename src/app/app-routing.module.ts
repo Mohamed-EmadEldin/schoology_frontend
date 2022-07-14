@@ -35,6 +35,7 @@ const routes:Routes = [
     component: LoginComponent
   },
   { path: 'teacher', loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule) },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
 
   {path: "cal", component:CalendarComponent},
   {path: "create-meeting", component:CreateMeetingComponent},

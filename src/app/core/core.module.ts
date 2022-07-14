@@ -22,6 +22,7 @@ import {MessagesModule} from "primeng/messages";
 import {MessageService} from 'primeng/api';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -58,6 +59,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
         MatButtonModule,
         MatIconModule,
         MatMenuModule,
+        MatFormFieldModule
 
     ],
   providers:[MessageService]
