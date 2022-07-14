@@ -13,6 +13,7 @@ export class GradesService {
   private readonly _available_grades_url: string = `http://127.0.0.1:3000/grades/list/available-grades`
   private readonly _students_grades_perExam_url: string = 'http://127.0.0.1:3000/grades/list/students-grades/'
   private readonly _my_grades_url: string = 'http://localhost:3000/grades/list/my-grades'
+  private readonly _my_child_grades_url: string = 'http://localhost:3000/grades/list/my-child-grades'
 
   constructor(public http: HttpClient, public stateService: StateService) {
     this._all_url = `http://127.0.0.1:3000/exam/list/teacher/${this.stateService.getState().userId}`
@@ -27,7 +28,10 @@ export class GradesService {
   }
   public getMygrades()
   {
-    return this.http.get(this._my_grades_url)
-
+    if(this.stateService.getState().userType==='student')
+      return this.http.get(this._my_grades_url)
+    else
+      return this.http.get(this._my_child_grades_url)
   }
+
 }

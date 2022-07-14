@@ -23,6 +23,8 @@ export class ExamService {
        this._all_url = `http://127.0.0.1:3000/exam/list/teacher/${this.stateService.getState().userId}`
     else if (this.stateService.getState().userType === "student")
       this._all_url = `http://127.0.0.1:3000/exam/my-exams`
+    else if(this.stateService.getState().userType === "parent")
+      this._all_url = `http://127.0.0.1:3000/exam//my-child-exams`
 
     return this.http.get(this._all_url)
 

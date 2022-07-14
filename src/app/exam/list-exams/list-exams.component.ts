@@ -20,9 +20,9 @@ export class ListExamsComponent implements OnInit {
 
   ngOnInit(): void {
    this.examService.apiGetDateExams().subscribe({
-     next: (res) => {
+     next: (res) => {       console.log(this.exams)
+
        this.exams = res
-       console.log(this.exams)
      },
      error:(error)=>{
        console.log(error)
