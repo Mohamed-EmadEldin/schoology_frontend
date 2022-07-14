@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StateService} from "../../services/state.service";
 
 @Component({
   selector: 'app-homework',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeworkComponent implements OnInit {
 
-  constructor() { }
+  constructor(public stateService:StateService) { }
 
   ngOnInit(): void {
   }

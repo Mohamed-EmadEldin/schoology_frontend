@@ -1,5 +1,5 @@
 <div class="container">
-  <app-upload></app-upload>
+  <app-upload *ngIf="stateService.getState().userType === 'teacher'"></app-upload>
   <p-divider type="dashed" align="center">
   </p-divider>
   <app-list-homework></app-list-homework>
