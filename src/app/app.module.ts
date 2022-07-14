@@ -24,11 +24,13 @@ import { BodyModule } from './body/body.module';
 
 import {TeacherModule} from "./teacher/teacher.module";
 import {HomeworkModule} from "./homework/homework.module";
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AdminComponent
   ],
   imports: [
       BrowserModule,
