@@ -22,11 +22,15 @@ import {HomeworkModule} from "./homework/homework.module";
 import {MessageModule} from "primeng/message";
 import {AuthtokenInterceptor} from "./interceptors/authtoken.interceptor";
 import {GradesModule} from "./grades/grades.module";
+import { NotificationComponent } from './notification/notification.component';
+import {TableModule} from "primeng/table";
+import {InputTextModule} from "primeng/inputtext";
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +44,9 @@ import {GradesModule} from "./grades/grades.module";
     ClassCalendarModule,
     MatButtonModule,
     MessageModule,
-    GradesModule
-
+    GradesModule,
+    TableModule,
+    InputTextModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthtokenInterceptor, multi: true}
