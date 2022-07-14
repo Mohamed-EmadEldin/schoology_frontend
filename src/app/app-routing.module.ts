@@ -13,8 +13,8 @@ import {IsTeacherGuard} from "./guards/is-teacher.guard";
 import {IsStudentGuard} from "./guards/is-student.guard";
 
 
-const routes: Routes = [
-  {path: "", component: HomeComponent},
+const routes:Routes = [
+  {path: "", component:HomeComponent},
   {
     path: "teacher-account",
     component: LoginComponent
@@ -57,5 +57,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

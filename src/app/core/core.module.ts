@@ -24,11 +24,13 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 
 
+
 @NgModule({
   declarations: [
     NavComponent,
     SidebarComponent,
     LoginComponent,
+
     UnauthorizedComponent,
 
   ],

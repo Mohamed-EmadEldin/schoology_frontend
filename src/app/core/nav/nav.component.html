@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarToggler">
         <ul class="navbar-nav">
             <li class="nav-item px-3">
-                <button *ngIf="canShowNav" routerLink="" mat-icon-button [matMenuTriggerFor]="settingsMenu"><mat-icon>notifications</mat-icon> </button>
+                <button *ngIf="canShowNav" mat-icon-button [matMenuTriggerFor]="settingsMenu"><mat-icon>notifications</mat-icon> </button>
 
                 <mat-menu #settingsMenu>
                     <menu mat-menu-item>
@@ -43,7 +43,7 @@
 
 
             <li>
-                <button *ngIf="canShowNav" pButton pRipple type="button" label="Profile" class="p-button-sm p-button-outlined p-button-text" [matMenuTriggerFor]="profilesMenu"><mat-icon></mat-icon> </button>
+                <button *ngIf="canShowNav" pButton pRipple type="button" label="Profile" class="p-button-sm p-button-outlined p-button-text" [matMenuTriggerFor]="profilesMenu"><mat-icon>arrow_drop_down</mat-icon> </button>
 
                 <mat-menu #profilesMenu>
                     <menu mat-menu-item>
