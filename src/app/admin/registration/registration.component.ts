@@ -39,6 +39,7 @@ export class RegistrationComponent implements OnInit {
       studentId:['', [Validators.required] ],
       studentClass:['', [Validators.required] ],
       teacherClasses:['', [Validators.required] ],
+      teacherCourses:['',[Validators.required]],
     })
   }
 
