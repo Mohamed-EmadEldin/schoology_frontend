@@ -7,7 +7,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   styleUrls: ['./pop-up.component.css']
 })
 export class PopUpComponent implements OnInit {
-  message: string = '';
+  message: any = '';
 
   constructor(
     public dialogRef: MatDialogRef  <PopUpComponent>,

@@ -14,10 +14,12 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from "@angular/material/form-field";
 
+
 @NgModule({
   declarations: [
     MessagesComponent,
-    PopUpComponent
+    PopUpComponent,
+
   ],
   imports: [
     CommonModule,
@@ -27,18 +29,17 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MatDialogModule,
     MatInputModule,
     FormsModule,
+    FormsModule,
     MatFormFieldModule,
+  ],
+  exports:[
+  MessagesComponent,
   ],
   providers: [
     {
       provide: MatDialogRef,
       useValue: {}
     },
-  ],
-  exports:[
-    MessagesComponent,
-    PopUpComponent,
-
   ]
 })
 export class MessagesModule { }

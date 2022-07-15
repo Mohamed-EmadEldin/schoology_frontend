@@ -1,4 +1,4 @@
-import { MessagesComponent } from './classMessages/messages/messages.component';
+import { MessagesComponent } from '../classMessages/messages/messages.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TeacherComponent } from './teacher.component';
