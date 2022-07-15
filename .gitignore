@@ -43,3 +43,5 @@ Thumbs.db
 
 # spec test files
 **/*.spec.ts
+
+/.vscode/
