@@ -1,0 +1,57 @@
+<form [formGroup]="registrationForm" (ngSubmit)="register()">
+
+    <mat-form-field appearance="fill">
+        <mat-label>name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>email</mat-label>
+        <input matInput formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>password</mat-label>
+        <input matInput formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>confirmPassword</mat-label>
+        <input matInput formControlName="confirmPassword">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>phoneNumber</mat-label>
+        <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <mat-radio-group aria-label="Select an option" formControlName="roleId">
+        <mat-radio-button value="0">teacher</mat-radio-button>
+        <mat-radio-button value="1">student</mat-radio-button>
+        <mat-radio-button value="2">parent </mat-radio-button>
+    </mat-radio-group>
+
+    <div *ngIf="student">
+        <mat-form-field appearance="fill">
+            <mat-label>studentClass</mat-label>
+            <input matInput formControlName="studentClass">
+        </mat-form-field>
+    </div>
+
+
+    <div *ngIf="teacher">
+        <mat-form-field appearance="fill">
+            <mat-label>teacherClasses</mat-label>
+            <!-- must be comma separted -->
+            <input matInput formControlName="teacherClasses">
+        </mat-form-field>
+    </div>
+
+    <div *ngIf="parent">
+        <mat-form-field appearance="fill">
+            <mat-label>studentId</mat-label>
+            <input matInput formControlName="studentId">
+        </mat-form-field>
+    </div>
+    <button>submit</button>
+</form>

@@ -1,10 +1,18 @@
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegistrationComponent } from './registration/registration.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin.component';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [{ path: '', component: AdminComponent }];
+
+const routes: Routes = [
+  { path: 'register', component: RegistrationComponent },
+  {path: 'dashboard',component:DashboardComponent},
+];
+
 
 @NgModule({
+  declarations: [],
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })

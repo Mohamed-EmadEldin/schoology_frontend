@@ -1,3 +1,4 @@
+import { MessagesComponent } from './classMessages/messages/messages.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TeacherComponent } from './teacher.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'create-exam', component: CreateExamComponent },
   { path: 'list-quizzes', component: ListExamsComponent },
   { path: 'create-quiz', component: CreateExamComponent },
+  { path: 'messages', component: MessagesComponent},
   { path: 'home-work', component: HomeworkComponent },
   { path: 'classes-grades', component: ClassesGradesComponent },
   { path: 'students-grades/:id', component: StudentsGradesComponent },

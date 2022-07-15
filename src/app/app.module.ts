@@ -25,12 +25,14 @@ import {GradesModule} from "./grades/grades.module";
 import { NotificationComponent } from './notification/notification.component';
 import {TableModule} from "primeng/table";
 import {InputTextModule} from "primeng/inputtext";
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    NotificationComponent
+    NotificationComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
