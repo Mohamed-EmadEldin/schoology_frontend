@@ -6,7 +6,7 @@ import { TeacherComponent } from './teacher.component';
 
 import {MeetingModule} from "../meeting/meeting.module";
 import {ExamModule} from "../exam/exam.module";
-// import { MessagestModule } from '../classMessages/messages.module';
+import { MessagesModule } from './classMessages/messages.module';
 import {MatTableModule} from '@angular/material/table';
 
 
@@ -21,7 +21,7 @@ import {MatTableModule} from '@angular/material/table';
     MeetingModule,
     ExamModule,
     MatTableModule,
-    // MessagesModule,
+    MessagesModule,
   ]
 })
 export class TeacherModule { }

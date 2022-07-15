@@ -1,4 +1,4 @@
-import { TeachersService } from './../../services/teachers.service';
+import { TeachersService } from '../../services/teachers.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
