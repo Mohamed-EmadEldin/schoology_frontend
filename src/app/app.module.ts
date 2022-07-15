@@ -7,11 +7,7 @@ import {RouterModule} from "@angular/router";
 import {MatInputModule} from '@angular/material/input';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
-
 import { MatTableModule } from '@angular/material/table';
-
-
-
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {AppRoutingModule} from './app-routing.module';
 import {NotFoundComponent} from './core/not-found/not-found.component';
@@ -26,13 +22,15 @@ import { NotificationComponent } from './notification/notification.component';
 import {TableModule} from "primeng/table";
 import {InputTextModule} from "primeng/inputtext";
 import { AdminComponent } from './admin/admin.component';
+import {MessagesModule} from "./classMessages/messages.module";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     NotificationComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +46,12 @@ import { AdminComponent } from './admin/admin.component';
     MessageModule,
     GradesModule,
     TableModule,
-    InputTextModule
+    InputTextModule,
+    MessagesModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthtokenInterceptor, multi: true}
