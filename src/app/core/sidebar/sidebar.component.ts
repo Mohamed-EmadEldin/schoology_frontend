@@ -4,6 +4,7 @@ import {trigger, state, style, transition, animate} from "@angular/animations";
 import {StateService} from "../../services/state.service";
 
 
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',

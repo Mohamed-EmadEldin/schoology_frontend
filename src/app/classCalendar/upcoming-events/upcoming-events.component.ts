@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {formatDate} from "@angular/common";
 import {Table} from "primeng/table";
+import {StateService} from "../../services/state.service";
 
 @Component({
   selector: 'app-upcoming-events',
@@ -12,7 +13,7 @@ export class UpcomingEventsComponent implements OnInit {
   @Input() events: any;
   filterDate: string = "";
 
-  constructor() { }
+  constructor(public stateService:StateService) { }
 
   @ViewChild('dt') dt: Table | undefined ;
   applyFilterNameGlobal($event: any, stringVal: any) {

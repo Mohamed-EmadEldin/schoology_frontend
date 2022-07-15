@@ -11,6 +11,7 @@ import {RouterModule} from "@angular/router";
 import {CardModule} from "primeng/card";
 import {DropdownModule} from "primeng/dropdown";
 import {MessageModule} from "primeng/message";
+import {ToastModule} from "primeng/toast";
 
 
 
@@ -19,17 +20,18 @@ import {MessageModule} from "primeng/message";
     CreateExamComponent,
     ListExamsComponent
   ],
-  imports: [
-    CommonModule,
-    TableModule,
-    InputTextModule,
-    CalendarModule,
-    FormsModule,
-    RippleModule,
-    RouterModule,
-    CardModule,
-    DropdownModule,
-    MessageModule
-  ]
+    imports: [
+        CommonModule,
+        TableModule,
+        InputTextModule,
+        CalendarModule,
+        FormsModule,
+        RippleModule,
+        RouterModule,
+        CardModule,
+        DropdownModule,
+        MessageModule,
+        ToastModule
+    ]
 })
 export class ExamModule { }

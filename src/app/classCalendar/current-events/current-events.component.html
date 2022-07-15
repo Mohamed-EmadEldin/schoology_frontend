@@ -1,4 +1,4 @@
-<p-card class="cv" [header]="event.name" subheader="event.class.name" [style]="{width: '360px'}"
+<p-card class="cv" [header]="event.name" [subheader]="event.class.name" [style]="{width: '360px'}"
         styleClass="p-card-shadow">
   <ng-template pTemplate="header">
 
@@ -8,6 +8,6 @@
   </div>
   <ng-template pTemplate="footer">
     <a [href]="event.link">go to the meeting</a>
-    <p>created by: {{event.teacherId}}</p>
+    <p *ngIf="stateService.getState().userType != 'teacher'">created by: {{event.teacher.user.name}}</p>
   </ng-template>
 </p-card>

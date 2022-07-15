@@ -1,0 +1,48 @@
+<div class="container mt-2 border-2 border-round-3xl">
+  <p-table #dt [value]="notifications" [paginator]="true" [rows]="5"
+           [filterDelay]="0" [globalFilterFields]="['name', 'content']">
+    <ng-template pTemplate="caption">
+      <div class="table-header d-flex">
+        <p class="flex-grow-1 align-self-center"> List of Notifications </p>
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text" (input)="applyFilterNameGlobal($event, 'contains')"
+                 placeholder="filter notifications"/>
+      </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">
+          <div class="flex justify-content-between align-items-center">
+            teacher
+            <p-sortIcon field="name"></p-sortIcon>
+            <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="content">
+          <div class="flex justify-content-between align-items-center">
+            date
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-between align-items-center">
+            content
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-notification>
+      <tr>
+        <td>{{notification.sender.name}}</td>
+        <td>{{notification.createdAt | date:'medium'}}</td>
+        <td>{{notification.content}}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No notifications for now.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -1,6 +1,7 @@
 import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {SidebarService} from "../../services/sidebar.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-nav',
@@ -12,7 +13,9 @@ export class NavComponent implements OnInit {
   canShowNav = true;
   constructor(
     public sidebar: SidebarService,
-    private router: Router
+    private router: Router,
+    private authService:AuthService,
+
     ) { }
 
   menuClick () {
@@ -26,4 +29,9 @@ export class NavComponent implements OnInit {
     })
   }
 
+  logout() : void
+  {
+    this.authService.logout()
+    this.router.navigate([""])
+  }
 }
