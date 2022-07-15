@@ -13,4 +13,8 @@ export class TeachersService {
   getTeachers(){
      return this.http.get(`${this.baserUrl}/teacher/my-teachers`)
   }
+
+  register(teacher: any){
+    return this.http.post(`${this.baserUrl}/auth/signup/teacher`, teacher)
+  }
 }

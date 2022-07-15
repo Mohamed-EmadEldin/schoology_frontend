@@ -22,13 +22,13 @@
 
     <mat-form-field appearance="fill">
         <mat-label>phoneNumber</mat-label>
-        <input matInput formControlName="phoneNumber">
+        <input matInput formControlName="phone">
     </mat-form-field>
 
-    <mat-radio-group #roles aria-label="Select an option" formControlName="roles">
-        <mat-radio-button value="teacher">teacher</mat-radio-button>
-        <mat-radio-button value="student">student</mat-radio-button>
-        <mat-radio-button value="parent">parent </mat-radio-button>
+    <mat-radio-group aria-label="Select an option" formControlName="roleId">
+        <mat-radio-button value="0">teacher</mat-radio-button>
+        <mat-radio-button value="1">student</mat-radio-button>
+        <mat-radio-button value="2">parent </mat-radio-button>
     </mat-radio-group>
 
     <div *ngIf="student">

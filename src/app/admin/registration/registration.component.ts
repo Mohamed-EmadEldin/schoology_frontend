@@ -1,3 +1,4 @@
+import { TeachersService } from './../../services/teachers.service';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
@@ -15,15 +16,15 @@ export class RegistrationComponent implements OnInit {
   teacher:boolean = false;
   parent:boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private teachersService: TeachersService) { }
 
   ngOnInit(): void {
     this.initForm();
 
-    this.registrationForm.get('roles')?.valueChanges.subscribe(data => {
-      if(data === 'student') this.student = true; else this.student = false;
-      if(data === 'teacher') this.teacher = true; else this.teacher = false;
-      if(data === 'parent') this.parent = true; else this.parent = false
+    this.registrationForm.get('roleId')?.valueChanges.subscribe(data => {
+      if(data === '0') this.student = true; else this.student = false;
+      if(data === '1') this.teacher = true; else this.teacher = false;
+      if(data === '2') this.parent = true; else this.parent = false
     })
   }
 
@@ -32,9 +33,9 @@ export class RegistrationComponent implements OnInit {
       name:['', [Validators.required] ],
       email:['', [Validators.required] ],
       password:['', [Validators.required] ],
-      phoneNumber:['', [Validators.required] ],
+      phone:['', [Validators.required] ],
       confirmPassword:['', [Validators.required] ],
-      roles:['', [Validators.required] ],
+      roleId:['', [Validators.required] ],
       studentId:['', [Validators.required] ],
       studentClass:['', [Validators.required] ],
       teacherClasses:['', [Validators.required] ],
@@ -43,6 +44,11 @@ export class RegistrationComponent implements OnInit {
 
   register(){
     console.log(this.registrationForm.value);
+
+    this.teachersService.register(this.registrationForm.value).subscribe(res => {
+      console.log(res);
+
+    })
 
   }
 
