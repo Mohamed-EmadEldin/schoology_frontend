@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="messages-container">
+
+    <div class="message-card" *ngFor="let message of messages">
+      <div class="card-container">
+        <div class="my-message" *ngIf="message.senderId === myId">
+          <div *ngIf="message.senderId === myId">
+            <mat-card>
+              <mat-card-title-group>
+                <mat-card-title>{{message.senderId}}</mat-card-title>
+                <mat-card-subtitle> time</mat-card-subtitle>
+              </mat-card-title-group>
+              <mat-card-content>
+                <p class="my-message">
+                  {{message.message}}
+                </p>
+
+              </mat-card-content>
+            </mat-card>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card-container">
+        <div class="other-message" *ngIf="message.senderId != myId">
+          <div *ngIf="message.senderId != myId">
+            <mat-card>
+              <mat-card-title-group>
+                <mat-card-title>{{message.senderId}}</mat-card-title>
+                <mat-card-subtitle> time</mat-card-subtitle>
+              </mat-card-title-group>
+              <mat-card-content>
+                <p class="other-message">
+                  {{message.message}}
+                </p>
+
+              </mat-card-content>
+            </mat-card>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="messages-sender">
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <input type="text" pInputText placeholder="Keyword">
+        <button type="button" pButton pRipple icon="pi pi-send" styleClass="p-button-primary"></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+

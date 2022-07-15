@@ -5,12 +5,7 @@
 <ng-template #send>
 
 
-    <mat-form-field appearance="fill">
-        <mat-label>message</mat-label>
-        <input name="msg" matInput [(ngModel)]="message" placeholder="type here">
-    </mat-form-field>
-
-    <button (click)="sendMsg()">send</button>
+  <app-messages-window></app-messages-window>
 
 </ng-template>
 <ng-template #recieve>

@@ -13,13 +13,18 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { MessagesWindowComponent } from './messages-window/messages-window.component';
+import {InputTextModule} from "primeng/inputtext";
+import {ButtonModule} from "primeng/button";
+import {RippleModule} from "primeng/ripple";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
   declarations: [
     MessagesComponent,
     PopUpComponent,
-
+    MessagesWindowComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +36,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     FormsModule,
     FormsModule,
     MatFormFieldModule,
+    InputTextModule,
+    ButtonModule,
+    RippleModule,
+    MatCardModule,
   ],
   exports:[
   MessagesComponent,

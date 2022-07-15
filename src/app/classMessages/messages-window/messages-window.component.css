@@ -1,0 +1,48 @@
+.root
+{
+  --margin:40px
+}
+
+.messages-container
+{
+  height:300px;
+  overflow-y:auto;
+}
+.message-card
+{
+  display:flex;
+  /*border:1px blue solid;*/
+  padding:0;
+  width:100%;
+}
+.my-message .mat-focus-indicator
+{
+  width:80%;
+  /*padding: 10px;*/
+  /*!*margin: 10px;*!*/
+  /*align-self:end;*/
+  /*!*border:1px red solid;*!*/
+  /*text-align:left;*/
+  /*color: black;*/
+  height:50%;
+  background-color: #FFF80A;
+  /*border-radius:10px*/
+}
+.card-container{
+  width:100%;
+  margin: 10px;
+
+}
+.other-message .mat-focus-indicator
+{
+  /*padding: 10px;*/
+  /*margin: 0 10px 0 0;*/
+  /*width:50%;*/
+  /*text-align:right;*/
+  /*color: white;*/
+  background-color: #3AB4F2;
+  /*border-radius:10px;*/
+  /*align-self:start;*/
+  /*border:1px red solid;*/
+
+}
