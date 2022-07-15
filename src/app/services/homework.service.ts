@@ -18,21 +18,22 @@ export class HomeworkService {
       this.userId = stateService.getState().userId
     }
     //TODO: [ph]
-    this.userId = 1
-    this.url = `http://127.0.0.1:3000/files/${this.userId}`;
+    // this.userId = 1
+    this.url = `http://127.0.0.1:3000/files`;
   }
 
   async uploadFile(file: File, classId: number) {
+    let uploadeUrl = this.url +`/${this.stateService.getState().userId}`
     let formData = new FormData()
     formData.append("classId", classId.toString())
     formData.append("files", file)
     console.log(formData)
-    this.http.post(`${this.url}/upload`, formData).subscribe(res => console.log(res))
+    this.http.post(`${uploadeUrl}/upload`, formData).subscribe(res => console.log(res))
   }
 
-  async getAllFiles() {
-    this.http.get(`${this.url}/allFiles`)
-      .subscribe(data => this.fileList = data)
+   getAllFiles() {
+     return this.http.get<any>(`${this.url}/${this.stateService.getState().userType}/myFiles`)
+
   }
 
   getFileList() {
