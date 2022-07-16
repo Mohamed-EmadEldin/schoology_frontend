@@ -1,3 +1,4 @@
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { MessagesComponent } from './classMessages/messages/messages.component';
 
 
@@ -37,6 +38,12 @@ const routes:Routes = [
     path: "admin-account",
     component: LoginComponent
   },
+  {
+    path: "dashbord",
+    component: DashboardComponent
+  },
+
+
   {
     path: 'teacher',
     loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule),

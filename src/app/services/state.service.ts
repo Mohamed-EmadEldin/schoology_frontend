@@ -44,7 +44,6 @@ export class StateService {
     this.state.classes = newState?.classes;
     this.state.studentId = newState?.studentId
     this.state.classId = newState?.classId
-    console.log(this.state)
     localStorage.setItem("state",JSON.stringify(this.state))
   }
   public getState(): IAppState {

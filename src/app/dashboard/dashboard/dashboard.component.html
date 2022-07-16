@@ -1,29 +1,85 @@
 <!-- profile section  -->
 
+<h1>welcome {{userName}}</h1>
 
 <!-- announcement section -->
-<form class="example-form">
+<!-- <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Message</mat-label>
+        <mat-label>Announcement</mat-label>
         <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
         <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
     </mat-form-field>
-</form>
-<!--slider section-->
-<ng-image-slider [images]="imageObject" #nav></ng-image-slider>
+</form> -->
+
+<header>
+    <h1>Announcements</h1>
+</header>
+<section class="announcement">
+
+    <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur odio facilis, nihil voluptatum atque quaerat? Quas quam et iste dignissimos vel obcaecati magni, esse vero id minus, deserunt sit culpa?</h3>
+    <img src="../../../assets/images/backgrounds/bg1png.png" alt="">
+
+</section>
+<br>
+<br>
+
+<div class="w-50 m-auto">
+    <!--slider section-->
+    <h1>our school</h1>
+    <!-- <ng-image-slider [images]="imageObject" #nav></ng-image-slider> -->
+    <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide>
+            <img src="assets/images/slider/1.jpg" alt="">
+        </ng-template>
+
+        <ng-template carouselSlide>
+            <img src="assets/images/slider/2.jpg" alt="">
+        </ng-template>
+
+        <ng-template carouselSlide>
+            <img src="assets/images/slider/3.jpg" alt="">
+        </ng-template>
+
+        <ng-template carouselSlide>
+            <img src="assets/images/slider/4.jpg" alt="">
+        </ng-template>
+    </owl-carousel-o>
+</div>
+
+<!-- <button (click)="prevImageClick()">Prev</button>
+<button (click)="nextImageClick()">Next</button>  -->
+
 
 <!--gallery events-->
-<mat-grid-list cols="4" rowHeight="2:1">
-    <mat-grid-tile>1</mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-    <mat-grid-tile>3</mat-grid-tile>
-    <mat-grid-tile>4</mat-grid-tile>
-</mat-grid-list>
+<div class="w-75 m-auto">
+    <h1>events</h1>
+    <mat-grid-list cols="4" rowHeight="1:1">
+
+        <mat-grid-tile>
+            <img src='assets/images/slider/1.jpg' alt="">
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <img src='assets/images/slider/1.jpg' alt="">
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <img src='assets/images/slider/1.jpg' alt="">
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <img src='assets/images/slider/1.jpg' alt="">
+        </mat-grid-tile>
+
+
+
+    </mat-grid-list>
+</div>
 
 
 <!--calendar-->
-<mat-card class="demo-inline-calendar-card">
+<mat-card class="demo-inline-calendar-card w-25 m-auto">
     <mat-calendar [(selected)]="selected"></mat-calendar>
 </mat-card>
 <p>Selected date: {{selected}}</p>

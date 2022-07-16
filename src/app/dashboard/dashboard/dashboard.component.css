@@ -11,3 +11,30 @@
 .demo-inline-calendar-card {
     width: 300px;
 }
+
+section.announcement {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(239, 239, 239);
+    padding: 20px;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+section.announcement img {
+    max-width: 30%;
+}
+
+section.announcement h3 {
+    color: green;
+    margin-bottom: 0;
+}
+
+.owl-carousel {
+    margin-bottom: 50px;
+}
+
+::ng-deep .owl-carousel .owl-item img {
+    height: 350px !important;
+}

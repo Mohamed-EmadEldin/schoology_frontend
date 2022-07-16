@@ -26,9 +26,9 @@
     </mat-form-field>
 
     <mat-radio-group aria-label="Select an option" formControlName="roleId">
-        <mat-radio-button value="0">teacher</mat-radio-button>
-        <mat-radio-button value="1">student</mat-radio-button>
-        <mat-radio-button value="2">parent </mat-radio-button>
+        <mat-radio-button value="1">teacher</mat-radio-button>
+        <mat-radio-button value="2">student</mat-radio-button>
+        <mat-radio-button value="3">parent </mat-radio-button>
     </mat-radio-group>
 
     <div *ngIf="student">
@@ -41,9 +41,16 @@
 
     <div *ngIf="teacher">
         <mat-form-field appearance="fill">
-            <mat-label>teacherClasses</mat-label>
+            <mat-label>Classes</mat-label>
             <!-- must be comma separted -->
-            <input matInput formControlName="teacherClasses">
+            <input (input)="setClasses()" matInput formControlName="classes">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>courseId</mat-label>
+            <!-- must be comma separted -->
+            <input matInput formControlName="courseId">
         </mat-form-field>
     </div>
 
