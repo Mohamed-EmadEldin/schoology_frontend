@@ -24,13 +24,17 @@ import {InputTextModule} from "primeng/inputtext";
 import { AdminComponent } from './admin/admin.component';
 import {MessagesModule} from "./classMessages/messages.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
-
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     NotificationComponent,
     AdminComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MessagesModule,
     MatFormFieldModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatCardModule,
+    MatGridListModule,
 
   ],
   providers: [
