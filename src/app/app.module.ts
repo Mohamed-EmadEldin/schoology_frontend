@@ -28,6 +28,7 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { NgImageSliderModule } from 'ng-image-slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     NotificationComponent,
     AdminComponent,
     DashboardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatDatepickerModule,
     MatCardModule,
     MatGridListModule,
+    NgImageSliderModule,
 
   ],
   providers: [
