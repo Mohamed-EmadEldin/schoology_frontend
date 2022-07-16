@@ -64,8 +64,11 @@ export class LoginComponent implements OnInit {
         this.stateService.setAppState(res)
         localStorage.setItem("token",`${res.token}`)
         console.log(res.token )
+      if (this.stateService.getState().userType === 'teacher' || 'student'){
         this.router.navigate([`${this.stateService.getState().userType}/cal`])
-
+      }else if (this.stateService.getState().userType === 'admin') {
+        this.router.navigate(['/admin'])
+      }
       },
       error => {
         console.log(error)
