@@ -1,0 +1,91 @@
+<p-toast></p-toast>
+<div class="container">
+  <p class="h3">Classes</p>
+
+  <p-dialog header="add class" [(visible)]="displayCreateModel" [modal]="true" [draggable]="false">
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-desktop"></i></span>
+        <input #name type="text" pInputText placeholder="name">
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-plus-circle" (click)="createClass(name.value)" label="Add" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <p-toolbar styleClass="mb-4">
+    <ng-template pTemplate="left">
+      <button pButton pRipple label="add new" icon="pi pi-plus-circle" class="p-button p-button-sm p-badge-secondary"
+      (click)="openCreateDialog()" ></button>
+      <button pButton pRipple icon="pi pi-trash" class="p-button-danger p-button-sm mx-2"
+              (click)="deleteSelectedClasses()" [disabled]="!selectedClasses || !selectedClasses.length"></button>
+    </ng-template>
+    <ng-template pTemplate="right">
+      <input pInputText type="text" (input)="applyFilterNameGlobal($event, 'contains')"
+             placeholder="filter class name"/>
+    </ng-template>
+  </p-toolbar>
+
+  <!--
+      TODO: multi-delete from db
+  -->
+  <p-table #dt [value]="_classes" dataKey="id" editMode="row" responsiveLayout="scroll" [globalFilterFields]="['name']"
+           styleClass="p-datatable-striped"
+           [(selection)]="selectedClasses" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,25,50]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th>Name</th>
+        <th>Created at</th>
+        <th>updated at</th>
+        <th style="width:8rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-_class let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="_class">
+        <td>
+          <p-tableCheckbox [value]="_class"></p-tableCheckbox>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="_class.name">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{_class.name}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          {{_class.createdAt | date: 'medium'}}
+        </td>
+        <td>
+          {{_class.updatedAt | date: 'medium'}}
+        </td>
+        <td style="text-align:center">
+          <div class="d-flex">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
+                    (click)="onRowEditInit(_class)" class="p-button-rounded p-button-text"></button>
+
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow label="save"
+                    (click)="onRowEditSave(_class)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow label="cancel"
+                    (click)="onRowEditCancel(_class, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+
+            <button pButton pRipple type="button" icon="pi pi-times"
+                    (click)="delete(_class)" class="p-button-rounded p-button-text p-button-danger"></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{_classes ? _classes.length : 0 }} classes.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<p-confirmDialog></p-confirmDialog>
