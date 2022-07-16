@@ -14,10 +14,15 @@ export interface PeriodicElement {
   receiveMessage:string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, class: 'Hydrogen',studentName:'Ahmed',ParentName:'Mohamed', sendMessage: 'send', receiveMessage: 'receive'},
+export interface ITeacherMessages {
+  position:number;
+  class:string;
+  senderName: string;
+  date:string;
+  senderType:string
+}
 
-];
+let ELEMENT_DATA: any [] = [];
 
 @Component({
     selector: 'table-pagination-example',
@@ -26,8 +31,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
   })
 
 export class MessagesComponent implements OnInit{
-  displayedColumns: string[] = [  'position','studentName', 'class', 'ParentName', 'sendMessage', 'receiveMessage'];
+  displayedColumns: string[] = [  'position','SenderName', 'Student/Parent','class', 'Date', 'Contact'];
   mySource = ELEMENT_DATA;
+
   constructor(public dialog: MatDialog, private messagesService: MessagesService) {}
 
   openSendMsgDialog(user: any){
@@ -38,6 +44,13 @@ export class MessagesComponent implements OnInit{
   }
 
   ngOnInit() {
+
+    this.messagesService.getMyMessages().subscribe({
+      next:(messages:any)=>{
+        this.mySource = messages
+        console.log(messages)
+      }
+    })
 
   }
 

@@ -8,14 +8,14 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class PopUpComponent implements OnInit {
   message: any = '';
-
+  senderId:number=-1;
   constructor(
     public dialogRef: MatDialogRef  <PopUpComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
+    this.senderId= this.data.user.senderId
   }
 
   sendMsg(){
