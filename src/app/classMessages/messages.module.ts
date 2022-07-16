@@ -18,6 +18,7 @@ import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {MatCardModule} from "@angular/material/card";
+import {ToastModule} from "primeng/toast";
 
 
 @NgModule({
@@ -26,21 +27,22 @@ import {MatCardModule} from "@angular/material/card";
     PopUpComponent,
     MessagesWindowComponent,
   ],
-  imports: [
-    CommonModule,
-    MatPaginatorModule,
-    RouterModule,
-    MatTableModule,
-    MatDialogModule,
-    MatInputModule,
-    FormsModule,
-    FormsModule,
-    MatFormFieldModule,
-    InputTextModule,
-    ButtonModule,
-    RippleModule,
-    MatCardModule,
-  ],
+    imports: [
+        CommonModule,
+        MatPaginatorModule,
+        RouterModule,
+        MatTableModule,
+        MatDialogModule,
+        MatInputModule,
+        FormsModule,
+        FormsModule,
+        MatFormFieldModule,
+        InputTextModule,
+        ButtonModule,
+        RippleModule,
+        MatCardModule,
+        ToastModule,
+    ],
   exports:[
   MessagesComponent,
   ],

@@ -1,4 +1,5 @@
 <div class="container">
+  <p-toast></p-toast>
   <div class="messages-container">
 
     <div class="message-card" *ngFor="let message of messages">
@@ -7,7 +8,7 @@
           <div *ngIf="message.senderId === myId">
             <mat-card>
               <mat-card-title-group>
-                <mat-card-title>{{message.senderId}}</mat-card-title>
+                <mat-card-title>{{message.sender.name}}</mat-card-title>
                 <mat-card-subtitle> time</mat-card-subtitle>
               </mat-card-title-group>
               <mat-card-content>
@@ -27,7 +28,7 @@
           <div *ngIf="message.senderId != myId">
             <mat-card>
               <mat-card-title-group>
-                <mat-card-title>{{message.senderId}}</mat-card-title>
+                <mat-card-title>{{message.sender.name}}</mat-card-title>
                 <mat-card-subtitle> time</mat-card-subtitle>
               </mat-card-title-group>
               <mat-card-content>
@@ -48,8 +49,8 @@
   <div class="messages-sender">
     <div class="col-12 md:col-4">
       <div class="p-inputgroup">
-        <input type="text" pInputText placeholder="Keyword">
-        <button type="button" pButton pRipple icon="pi pi-send" styleClass="p-button-primary"></button>
+        <input type="text" pInputText placeholder="Keyword" [(ngModel)]="newMessage">
+        <button type="button" pButton pRipple icon="pi pi-send" styleClass="p-button-primary" (click)="sendMessage()"></button>
       </div>
     </div>
   </div>
