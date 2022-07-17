@@ -5,6 +5,8 @@ import {CalendarComponent} from "../classCalendar/calendar/calendar.component";
 import {ListExamsComponent} from "../exam/list-exams/list-exams.component";
 import {HomeworkComponent} from "../homework/homework/homework.component";
 import {StudentGradesComponent} from "../grades/student-grades/student-grades.component";
+import {MessagesComponent} from "../classMessages/messages/messages.component";
+import {SendMessageComponent} from "../classMessages/send-message/send-message.component";
 
 const routes: Routes = [
   { path: '', component: CalendarComponent },
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'list-quizzes', component: ListExamsComponent },
   { path: 'home-work', component: HomeworkComponent },
   { path: 'grades', component: StudentGradesComponent },
+  { path: 'messages', component: MessagesComponent},
+  { path: 'send-message', component: SendMessageComponent},
 ];
 
 @NgModule({

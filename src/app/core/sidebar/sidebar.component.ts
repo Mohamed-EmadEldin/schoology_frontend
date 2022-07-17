@@ -32,12 +32,15 @@ import {StateService} from "../../services/state.service";
 export class SidebarComponent implements OnInit {
 
   model: any[] | undefined
+  newMessagesCount:number =-1
 
   constructor(public sidebar: SidebarService,public stateService:StateService) {
 
   }
 
   ngOnInit(): void {
+    this.newMessagesCount = this.stateService.getState().newMessagesCount
+    console.log(this.newMessagesCount)
     this.model = [
       {
         label: 'Home',

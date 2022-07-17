@@ -1,5 +1,5 @@
 table {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     background-color: #071426;
     border: 2px solid white;
@@ -17,4 +17,9 @@ table {
 
 tr {
     border: 1px solid white;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
 }

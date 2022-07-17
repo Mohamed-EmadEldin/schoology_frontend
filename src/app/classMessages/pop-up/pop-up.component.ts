@@ -7,15 +7,17 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   styleUrls: ['./pop-up.component.css']
 })
 export class PopUpComponent implements OnInit {
-  message: string = '';
-
+  message: any = '';
+  otherId:number=-1;
+  senderName:string="";
   constructor(
     public dialogRef: MatDialogRef  <PopUpComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
+    this.otherId= this.data.user.otherId
+    this.senderName= this.data.user.senderName
   }
 
   sendMsg(){
