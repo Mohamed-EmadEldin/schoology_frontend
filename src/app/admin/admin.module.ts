@@ -18,6 +18,8 @@ import {ToastModule} from "primeng/toast";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ToolbarModule} from "primeng/toolbar";
 import {DialogModule} from "primeng/dialog";
+import {AutoCompleteModule} from "primeng/autocomplete";
+import {CalendarModule} from "primeng/calendar";
 
 
 @NgModule({
@@ -28,20 +30,22 @@ import {DialogModule} from "primeng/dialog";
     UsersCrudComponent,
     ClassCrudComponent
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    CardModule,
-    TableModule,
-    InputTextModule,
-    FormsModule,
-    DropdownModule,
-    ButtonModule,
-    RippleModule,
-    ToastModule,
-    ConfirmDialogModule,
-    ToolbarModule,
-    DialogModule
-  ]
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        CardModule,
+        TableModule,
+        InputTextModule,
+        FormsModule,
+        DropdownModule,
+        ButtonModule,
+        RippleModule,
+        ToastModule,
+        ConfirmDialogModule,
+        ToolbarModule,
+        DialogModule,
+        AutoCompleteModule,
+        CalendarModule
+    ]
 })
 export class AdminModule { }

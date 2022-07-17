@@ -12,6 +12,7 @@ import {UnauthorizedComponent} from "./core/unauthorized/unauthorized.component"
 import {IsTeacherGuard} from "./guards/is-teacher.guard";
 import {IsStudentGuard} from "./guards/is-student.guard";
 import {NotificationComponent} from "./notification/notification.component";
+import {IsAdminGuard} from "./guards/is-admin.guard";
 
 
 const routes:Routes = [
@@ -44,7 +45,7 @@ const routes:Routes = [
     canActivate: [AuthGuard, IsStudentGuard]
   },
   {path: 'parent', loadChildren: () => import('./parent/parent.module').then(m => m.ParentModule)},
-  {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
+  {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard, IsAdminGuard]},
   { path: "notification", component: NotificationComponent },
   {path: "un-auth", component: UnauthorizedComponent},
   {path: '**', component: NotFoundComponent},
