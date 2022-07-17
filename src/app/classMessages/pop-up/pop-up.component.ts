@@ -16,7 +16,7 @@ export class PopUpComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.otherId= this.data.user.senderId
+    this.otherId= this.data.user.otherId
     this.senderName= this.data.user.senderName
   }
 

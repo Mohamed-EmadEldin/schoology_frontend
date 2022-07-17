@@ -46,6 +46,7 @@ export class MessagesWindowComponent implements OnInit {
 
   sendMessage() {
     let message = new Message(this.newMessage,this.otherId)
+    console.log(message)
     this.appmessageService.sendMessages(message).subscribe({next:(message)=>{
         this.messages.push(message)
         this.messageService.add({severity:'success', summary:'Success', detail:`your message has been sent`});

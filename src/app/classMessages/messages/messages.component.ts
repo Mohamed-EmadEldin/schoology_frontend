@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 
 import {Component, OnInit} from '@angular/core';
 import { PopUpComponent } from '../pop-up/pop-up.component';
+import {StateService} from "../../services/state.service";
 
 export interface PeriodicElement {
   position:number;
@@ -31,12 +32,13 @@ let ELEMENT_DATA: any [] = [];
   })
 
 export class MessagesComponent implements OnInit{
-  displayedColumns: string[] = [  'position','SenderName', 'Student/Parent','class', 'Date', 'Contact'];
+  displayedColumns: string[] = []
   mySource = ELEMENT_DATA;
 
-  constructor(public dialog: MatDialog, private messagesService: MessagesService) {}
+  constructor(public dialog: MatDialog, private messagesService: MessagesService,public stateService:StateService) {}
 
   openSendMsgDialog(user: any){
+    user['otherId'] = user.senderId
       const dialogRef = this.dialog.open(PopUpComponent, {
         width: '500px',
         data: {app: 'send', user},
@@ -45,6 +47,15 @@ export class MessagesComponent implements OnInit{
 
   ngOnInit() {
 
+      if(this.stateService.getState().userType === 'teacher')
+      {
+        this.displayedColumns=[ 'SenderName', 'Student/Parent','class', 'Date', 'Contact'];
+      }
+      else if (this.stateService.getState().userType === 'parent' || this.stateService.getState().userType === 'student')
+      {
+        this.displayedColumns=[  'teacher', 'course', 'Date', 'Contact'];
+
+      }
     this.messagesService.getMyMessages().subscribe({
       next:(messages:any)=>{
         this.mySource = messages
