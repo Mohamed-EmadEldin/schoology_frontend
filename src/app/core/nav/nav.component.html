@@ -28,7 +28,8 @@
 
 
             <li class="nav-item px-3">
-                <button routerLink="" pButton pRipple type="button" label="button 1" class="p-button-sm p-button-outlined p-button-text"></button>
+              <button *ngIf="canShowNav" mat-icon-button [matMenuTriggerFor]="settingsMenu"><mat-icon> Messages </mat-icon> </button>
+
             </li>
 
 
