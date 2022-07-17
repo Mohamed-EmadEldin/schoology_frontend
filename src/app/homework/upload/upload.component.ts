@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MessageService} from "primeng/api";
 import {HomeworkService} from "../../services/homework.service";
-import {IUiClass} from "../../meeting/create-meeting/create-meeting.component";
+import {IUiClass} from "../../Interfaces";
 import {StateService} from "../../services/state.service";
-import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-upload',
