@@ -25,7 +25,7 @@ export class MessagesWindowComponent implements OnInit {
   public messages: any = []
   public newMessage:any =""
 
-  constructor(public stateService: StateService, public appmessageService: MessagesService,private messageService: MessageService) {
+  constructor(public stateService: StateService, public appMessageService: MessagesService,private messageService: MessageService) {
   }
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class MessagesWindowComponent implements OnInit {
     //   {senderId: this.myId, receiverId: this.senderId, message: "bla bla bla"},
     // ]
     console.log(this.otherId)
-    this.appmessageService.getMessages(this.otherId).subscribe({
+    this.appMessageService.getMessages(this.otherId).subscribe({
       next: (messages) => {
         this.messages =messages
       }
@@ -47,7 +47,7 @@ export class MessagesWindowComponent implements OnInit {
   sendMessage() {
     let message = new Message(this.newMessage,this.otherId)
     console.log(message)
-    this.appmessageService.sendMessages(message).subscribe({next:(message)=>{
+    this.appMessageService.sendMessages(message).subscribe({next:(message)=>{
         this.messages.push(message)
         this.messageService.add({severity:'success', summary:'Success', detail:`your message has been sent`});
 
