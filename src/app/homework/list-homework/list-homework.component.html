@@ -21,6 +21,28 @@
           <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
+      <ng-template [ngIf]="stateService.getState().userType != 'teacher'">
+        <th pSortableColumn="teacher.user.name">
+          <div class="flex justify-content-between align-items-center">
+           Teacher
+            <p-sortIcon field="teacher.user.name"></p-sortIcon>
+          </div>
+        </th>
+        <th pSortableColumn="teacher.user.name">
+          <div class="flex justify-content-between align-items-center">
+            Course
+            <p-sortIcon field="teacher.course.name"></p-sortIcon>
+          </div>
+        </th>
+      </ng-template>
+      <ng-template [ngIf]="stateService.getState().userType === 'teacher'">
+        <th pSortableColumn="class.name">
+          <div class="flex justify-content-between align-items-center">
+            Class
+            <p-sortIcon field="teacher.course.name"></p-sortIcon>
+          </div>
+        </th>
+      </ng-template>
       <th pSortableColumn="date">
         <div class="flex justify-content-between align-items-center">
           upload date
@@ -33,6 +55,7 @@
           <p-sortIcon field="date"></p-sortIcon>
         </div>
       </th>
+
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-allFile>
@@ -42,8 +65,18 @@
 <!--        {{allFile.name}}-->
 <!--        <button class="btn btn-secondary btn-sm" (click)="download(allFile.name)">download</button>-->
       </td>
+      <ng-template [ngIf]="stateService.getState().userType != 'teacher'">
+        <td>{{allFile.teacher.user.name }}</td>
+        <td>{{allFile.teacher.Course.name }}</td>
+
+      </ng-template>
+      <ng-template [ngIf]="stateService.getState().userType === 'teacher'">
+        <td>{{allFile.class.name }}</td>
+
+      </ng-template>
       <td>{{allFile.createdAt | date:'mediumDate'}}</td>
       <td>{{allFile.createdAt | date:'shortTime'}}</td>
+
     </tr>
   </ng-template>
   <ng-template pTemplate="emptymessage">

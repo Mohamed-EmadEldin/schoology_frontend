@@ -15,9 +15,10 @@
     <h2>
       <mat-icon>homes</mat-icon>
       Dashboard
+
     </h2>
   </ul>
-<div *ngIf="stateService.getState()">
+  <!-- <ul *ngIf="user.role === 'admin'"> -->
   <ul *ngIf="this.stateService.getState().userType==='teacher'">
 
     <li>
@@ -49,11 +50,17 @@
     </li>
     <br>
     <li>
-      <button routerLink="messages" pButton type="button " label="Messages " class="p-button-sm p-button-text ">
-        <mat-icon>messages</mat-icon>
-      </button>
+      <div>
+        <button routerLink="/teacher/messages" pButton type="button " label="Messages "
+                class="p-button-sm p-button-text ">
+          <mat-icon>messages</mat-icon>
+        </button>
+        <p-badge [value]="newMessagesCount.toString()" severity="info"></p-badge>
+
+      </div>
     </li>
   </ul>
+  <br>
   <ul *ngIf="this.stateService.getState().userType==='student'">
     <li>
       <button routerLink="/student/cal" pButton type="button" icon="fa-regular fa-house" label="Meeting"
@@ -70,7 +77,8 @@
     </li>
     <br>
     <li>
-      <button routerLink=" " pButton type="button " label="Solve-Homework " class="p-button-sm p-button-text ">
+      <button routerLink="student/home-work" pButton type="button " label="Solve-Homework "
+              class="p-button-sm p-button-text ">
         <mat-icon>tasks</mat-icon>
       </button>
     </li>
@@ -82,9 +90,52 @@
     </li>
     <br>
     <li>
-      <button routerLink=" " pButton type="button " label="Messages " class="p-button-sm p-button-text ">
-        <mat-icon>messages</mat-icon>
+      <div class="d-flex">
+        <button routerLink="student/messages" pButton type="button " label="Messages "
+                class="p-button-sm p-button-text ">
+          <mat-icon>messages</mat-icon>
+        </button>
+        <p-badge [value]="newMessagesCount.toString()" severity="info"></p-badge>
+      </div>
+    </li>
+  </ul>
+
+  <ul *ngIf="this.stateService.getState().userType==='parent'">
+    <li>
+      <button routerLink="/parent/cal" pButton type="button" icon="fa-regular fa-house" label="Meeting"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
       </button>
+    </li>
+    <br>
+    <li>
+      <button routerLink="/parent/list-quizzes" pButton type="button " label="my-child-quizzes "
+              class="p-button-sm p-button-text ">
+        <mat-icon>quizzes</mat-icon>
+      </button>
+    </li>
+    <br>
+    <li>
+      <button routerLink="parent/home-work" pButton type="button " label="my-child-Homework "
+              class="p-button-sm p-button-text ">
+        <mat-icon>tasks</mat-icon>
+      </button>
+    </li>
+    <br>
+    <li>
+      <button routerLink="parent/grades" pButton type="button " label="My-child-Grades"
+              class="p-button-sm p-button-text ">
+        <mat-icon>grades</mat-icon>
+      </button>
+    </li>
+    <br>
+    <li>
+      <div>
+        <button routerLink=" " pButton type="button " label="Messages " class="p-button-sm p-button-text ">
+          <mat-icon>messages</mat-icon>
+        </button>
+        <p-badge [value]="newMessagesCount.toString()" severity="info"></p-badge>
+      </div>
     </li>
   </ul>
   <ul *ngIf="this.stateService.getState().userType==='admin'">
@@ -107,7 +158,6 @@
       </button>
     </li>
   </ul>
-</div>
 
 
 </p-sidebar>

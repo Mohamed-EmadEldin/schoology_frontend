@@ -1,28 +1,29 @@
+import { MessagesService } from '../../services/messages.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { PopUpComponent } from '../pop-up/pop-up.component';
+import {StateService} from "../../services/state.service";
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  sendMessage: number;
-  symbol: string;
+  position:number;
+  class:string;
+  studentName: string;
+  ParentName: string;
+  sendMessage: string;
+  receiveMessage:string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', sendMessage: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', sendMessage: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', sendMessage: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', sendMessage: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', sendMessage: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', sendMessage: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', sendMessage: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', sendMessage: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', sendMessage: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', sendMessage: 20.1797, symbol: 'Ne'},
-];
+export interface ITeacherMessages {
+  position:number;
+  class:string;
+  senderName: string;
+  date:string;
+  senderType:string
+}
+
+let ELEMENT_DATA: any [] = [];
 
 @Component({
     selector: 'table-pagination-example',
@@ -30,23 +31,61 @@ const ELEMENT_DATA: PeriodicElement[] = [
    styleUrls: ['./messages.component.css']
   })
 
-export class MessagesComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+export class MessagesComponent implements OnInit{
+  displayedColumns: string[] = []
   mySource = ELEMENT_DATA;
-  constructor(public dialog: MatDialog) {}
+
+  constructor(public dialog: MatDialog, private messagesService: MessagesService,public stateService:StateService) {}
 
   openSendMsgDialog(user: any){
+    user['otherId'] = user.senderId
       const dialogRef = this.dialog.open(PopUpComponent, {
         width: '500px',
         data: {app: 'send', user},
       });
   }
 
+  ngOnInit() {
+
+      if(this.stateService.getState().userType === 'teacher')
+      {
+        this.displayedColumns=[ 'SenderName', 'Student/Parent','class', 'Date', 'Contact'];
+      }
+      else if (this.stateService.getState().userType === 'parent' || this.stateService.getState().userType === 'student')
+      {
+        this.displayedColumns=[  'teacher', 'course', 'Date', 'Contact'];
+
+      }
+    this.messagesService.getMyMessages().subscribe({
+      next:(messages:any)=>{
+        this.mySource = messages
+        console.log(messages)
+      }
+    })
+
+  }
 
   openRecievedMsgDialog(user: any){
     const dialogRef = this.dialog.open(PopUpComponent, {
       width: '500px',
       data: {app: 'recieve', user},
     });
+  }
+
+  applyFilter(event: any){
+
+    console.log(event.target.value);
+    this.messagesService.filter(event.target.value).subscribe((res: any) => {
+      this.mySource = res;
+    })
+
+    // this.mySource = [
+    //   {position: 1, class: 'Hydrogen',studentName:'Ahmed',ParentName:'Mohamed', sendMessage: 'send', receiveMessage: 'receive'},
+    //   {position: 1, class: 'Hydrogen',studentName:'Ahmed',ParentName:'Mohamed', sendMessage: 'send', receiveMessage: 'receive'},
+    //   {position: 1, class: 'Hydrogen',studentName:'Ahmed',ParentName:'Mohamed', sendMessage: 'send', receiveMessage: 'receive'},
+    //   {position: 1, class: 'Hydrogen',studentName:'Ahmed',ParentName:'Mohamed', sendMessage: 'send', receiveMessage: 'receive'},
+    //   {position: 1, class: 'Hydrogen',studentName:'Ahmed',ParentName:'Mohamed', sendMessage: 'send', receiveMessage: 'receive'},
+
+    // ];
   }
 }

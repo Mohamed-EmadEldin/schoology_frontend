@@ -1,0 +1,34 @@
+<h1>welcome {{userName}}</h1>
+
+
+<div class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Announcement</mat-label>
+        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
+    </mat-form-field>
+
+    <button class="btn btn-primary" (click)="sendAnnouncement(message)">add announcement</button>
+</div>
+
+<section class="schools">
+    <label for="schoolsFile">input heeeeeere</label>
+    <input id="schoolsFile" class="d-none" type="file" (change)="onChangeSchools($event)" multiple>
+    <section *ngIf="schoolsFilesArray">
+        <div *ngFor="let file of schoolsFilesArray; let i = index">
+            <img [src]="file" alt="">
+            <button (click)="removeSchoolImg(i)">remove</button>
+        </div>
+    </section>
+</section>
+
+
+
+<section class="events">
+    <input type="file" (change)="onChangeEvents($event)" multiple>
+    <section *ngIf="eventsFilesArray">
+        <div *ngFor="let file of eventsFilesArray; let i = index">
+            <img [src]="file" alt="">
+            <button (click)="removeEventsImg(i)">remove</button>
+        </div>
+    </section>
+</section>

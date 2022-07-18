@@ -1,6 +1,8 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { RegistrationComponent } from './registration/registration.component';
+import { CoreModule } from '../core/core.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import {CardModule} from "primeng/card";
@@ -22,6 +24,11 @@ import {AutoCompleteModule} from "primeng/autocomplete";
 import {CalendarModule} from "primeng/calendar";
 import {MessageModule} from "primeng/message";
 
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatRadioModule} from '@angular/material/radio';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +36,9 @@ import {MessageModule} from "primeng/message";
     MeetingCrudComponent,
     ExamsCrudComponent,
     UsersCrudComponent,
-    ClassCrudComponent
+    ClassCrudComponent,
+    RegistrationComponent,
+    DashboardComponent
   ],
     imports: [
         CommonModule,
@@ -47,7 +56,11 @@ import {MessageModule} from "primeng/message";
         DialogModule,
         AutoCompleteModule,
         CalendarModule,
-        MessageModule
+        MessageModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatRadioModule
     ]
 })
 export class AdminModule { }

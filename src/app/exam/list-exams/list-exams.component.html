@@ -9,11 +9,11 @@
          [filterDelay]="0" [globalFilterFields]="['name', 'date','classRoom']">
   <ng-template pTemplate="caption">
     <div class="table-header d-flex">
-      <p class="flex-grow-1 align-self-center"> List of Meetings </p>
+      <p class="flex-grow-1 align-self-center"> List of Quizzes </p>
       <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
           <input pInputText type="text" (input)="applyFilterNameGlobal($event, 'contains')"
-                 placeholder="filter meeting name"/>
+                 placeholder="filter Quiz name"/>
             <p-calendar [(ngModel)]="filterDate" dateFormat="yy-mm-dd" [showButtonBar]="true"
                         (onSelect)="applyFilterDateGlobal('equals')"
                         (onClearClick)="clearDateFilter()"
@@ -30,7 +30,9 @@
           <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
-      <th>class name</th>
+      <th *ngIf="stateService.getState().userType === 'teacher'">class name</th>
+      <th *ngIf="stateService.getState().userType != 'teacher'">teacher name</th>
+      <th *ngIf="stateService.getState().userType != 'teacher'">course name</th>
       <th pSortableColumn="date">
         <div class="flex justify-content-between align-items-center">
           date
@@ -42,19 +44,21 @@
           </p-columnFilter>
         </div>
       </th>
-      <th>link</th>
-      <th>submit quize results</th>
+      <th *ngIf="stateService.getState().userType != 'parent'">link</th>
+      <th *ngIf="stateService.getState().userType === 'teacher'">submit quize results</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-exam>
     <tr>
       <td>{{exam.name}}</td>
-      <td>{{exam.class.name}}</td>
+      <td *ngIf="stateService.getState().userType === 'teacher'">{{exam.class.name}}</td>
+      <td *ngIf="stateService.getState().userType != 'teacher'">{{exam.teacher.user.name}}</td>
+      <td *ngIf="stateService.getState().userType != 'teacher'">{{exam.course.name}}</td>
       <td>{{exam.date}}</td>
-      <td>
-        <a href="{{exam.link}}">go to meeting</a>
+      <td *ngIf="stateService.getState().userType != 'parent'">
+        <a href="{{exam.link}}">take exam</a>
       </td>
-      <td>
+      <td *ngIf="stateService.getState().userType === 'teacher'" >
         <p-button label="Submit" icon="pi pi-check" (click)="submitExamResults(exam.link)"></p-button>
       </td>
     </tr>

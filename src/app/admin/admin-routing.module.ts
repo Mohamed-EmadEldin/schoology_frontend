@@ -1,3 +1,5 @@
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegistrationComponent } from './registration/registration.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AdminMainComponent} from "./admin-main/admin-main.component";
@@ -14,9 +16,12 @@ const routes: Routes = [
   { path: 'user-crud', component: UsersCrudComponent},
   { path: 'class-crud', component: ClassCrudComponent},
   { path: 'create-meeting', component: CreateMeetingComponent },
+  { path: 'register', component: RegistrationComponent },
+  { path: 'dashboard',component:DashboardComponent },
 ];
 
 @NgModule({
+  declarations: [],
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })

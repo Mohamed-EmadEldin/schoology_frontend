@@ -22,6 +22,8 @@ import {MessagesModule} from "primeng/messages";
 import {MessageService} from 'primeng/api';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {BadgeModule} from "primeng/badge";
 
 
 
@@ -55,9 +57,11 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
         ReactiveFormsModule,
         HttpClientModule,
         MessagesModule,
-      MatButtonModule,
-      MatIconModule,
-      MatMenuModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        BadgeModule
 
     ],
   providers:[MessageService]
