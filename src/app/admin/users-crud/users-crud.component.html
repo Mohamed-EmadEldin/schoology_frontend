@@ -1,35 +1,11 @@
 <p-toast></p-toast>
 <div class="container">
-  <p class="h3">Classes</p>
-
-  <p-dialog header="add class" [(visible)]="displayCreateModel" [modal]="true" [draggable]="false">
-    <div class="col-12 md:col-4">
-      <div class="p-inputgroup">
-        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-        <input #name type="text" pInputText placeholder="name">
-      </div>
-      <div class="p-inputgroup">
-        <span class="p-inputgroup-addon"><i class="pi pi-phone"></i></span>
-        <input #phone type="text" pInputText placeholder="phone">
-      </div>
-      <div class="p-inputgroup">
-        <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
-        <input #email type="text" pInputText placeholder="email">
-      </div>
-      <div class="p-inputgroup">
-        <span class="p-inputgroup-addon"><i class="pi pi-at"></i></span>
-        <input #role type="text" pInputText placeholder="role">
-      </div>
-    </div>
-    <ng-template pTemplate="footer">
-<!--      <p-button icon="pi pi-plus-circle" (click)="createUser()" label="Add" styleClass="p-button-text"></p-button>-->
-    </ng-template>
-  </p-dialog>
+  <p class="h3">Users</p>
 
   <p-toolbar styleClass="mb-4">
     <ng-template pTemplate="left">
       <button pButton pRipple label="add new" icon="pi pi-plus-circle" class="p-button p-button-sm p-badge-secondary"
-              (click)="openCreateDialog()" ></button>
+              routerLink="/admin/create-user" ></button> <!-- TODO: create user route -->
       <button pButton pRipple icon="pi pi-trash" class="p-button-danger p-button-sm mx-2"
               (click)="deactivateSelectedUsers()" [disabled]="!selectedUsers || !selectedUsers.length"></button>
     </ng-template>
@@ -42,7 +18,7 @@
   <!--
       TODO: multi-delete from db
   -->
-  <p-table #dt [value]="_users" dataKey="id" editMode="row" responsiveLayout="scroll" [globalFilterFields]="['name', 'roleId']"
+  <p-table #dt [value]="_nonAdminUsers" dataKey="id" editMode="row" responsiveLayout="scroll" [globalFilterFields]="['name', 'roleId']"
            styleClass="p-datatable-striped"
            [(selection)]="selectedUsers" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,25,50]">
     <ng-template pTemplate="header">
@@ -71,71 +47,71 @@
         <th style="width:5rem"></th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-_user let-editing="editing" let-ri="rowIndex">
-      <tr [pEditableRow]="_user" *ngIf="_user.roleId !== 4">
+    <ng-template pTemplate="body" let-_nonAdminUser let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="_nonAdminUser">
         <td>
-          <p-tableCheckbox [value]="_user"></p-tableCheckbox>
+          <p-tableCheckbox [value]="_nonAdminUser"></p-tableCheckbox>
         </td>
         <td>
           <p-cellEditor>
             <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="_user.name">
+              <input pInputText type="text" [(ngModel)]="_nonAdminUser.name">
             </ng-template>
             <ng-template pTemplate="output">
-              {{_user.name}}
+              {{_nonAdminUser.name}}
             </ng-template>
           </p-cellEditor>
         </td>
         <td>
           <p-cellEditor>
             <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="_user.phone">
+              <input pInputText type="text" [(ngModel)]="_nonAdminUser.phone">
             </ng-template>
             <ng-template pTemplate="output">
-              {{_user.phone}}
+              {{_nonAdminUser.phone}}
             </ng-template>
           </p-cellEditor>
         </td>
         <td>
           <p-cellEditor>
             <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="_user.email">
+              <input pInputText type="text" [(ngModel)]="_nonAdminUser.email">
             </ng-template>
             <ng-template pTemplate="output">
-              {{_user.email}}
+              {{_nonAdminUser.email}}
             </ng-template>
           </p-cellEditor>
         </td>
         <td>
-          <p *ngIf="_user.roleId === 1">id:1 - teacher</p>
-          <p *ngIf="_user.roleId === 2">id:2 - student</p>
-          <p *ngIf="_user.roleId === 3">id:3 - parent</p>
+          <p *ngIf="_nonAdminUser.roleId === 1">id:1 - teacher</p>
+          <p *ngIf="_nonAdminUser.roleId === 2">id:2 - student</p>
+          <p *ngIf="_nonAdminUser.roleId === 3">id:3 - parent</p>
         </td>
         <td>
-          {{_user.createdAt | date: 'medium'}}
+          {{_nonAdminUser.createdAt | date: 'medium'}}
         </td>
         <td>
-          {{_user.updatedAt | date: 'medium'}}
+          {{_nonAdminUser.updatedAt | date: 'medium'}}
         </td>
         <td style="text-align:center">
           <div class="d-flex">
             <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
-                    (click)="onRowEditInit(_user)" class="p-button-rounded p-button-text"></button>
+                    (click)="onRowEditInit(_nonAdminUser)" class="p-button-rounded p-button-text"></button>
 
             <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow label="save"
-                    (click)="onRowEditSave(_user)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
+                    (click)="onRowEditSave(_nonAdminUser)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
             <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow label="cancel"
-                    (click)="onRowEditCancel(_user, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                    (click)="onRowEditCancel(_nonAdminUser, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
 
             <button pButton pRipple type="button" icon="pi pi-times"
-                    (click)="deactivate(_user)" class="p-button-rounded p-button-text p-button-danger"></button>
+                    (click)="deactivate(_nonAdminUser)" class="p-button-rounded p-button-text p-button-danger"></button>
           </div>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="summary">
       <div class="flex align-items-center justify-content-between">
-        In total there are {{_users ? _users.length : 0 }} users.
+        In total there are {{_nonAdminUsers ? _nonAdminUsers.length : 0 }} users.
       </div>
     </ng-template>
   </p-table>

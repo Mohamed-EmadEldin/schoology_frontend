@@ -13,6 +13,7 @@ import {Table} from "primeng/table";
 export class UsersCrudComponent implements OnInit {
 
   _users: User[] = [] //store the users
+  _nonAdminUsers: User[] = []
 
   clonedItems: {[s:string]: any} = {}; //restore row if update is canceled
 
@@ -26,18 +27,16 @@ export class UsersCrudComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersCrudService.getUsers()
-      .subscribe(data => this._users = data)
+      .subscribe(data => {
+        this._users = data;
+        for (let _user of this._users) {
+          if(_user.roleId != 4) {
+            this._nonAdminUsers.push(_user)
+          }
+        }
+      });
   }
 
-  openCreateDialog() {
-    this.displayCreateModel = true;
-  }
-
-  // createUser(user: User) {
-  //   this.usersCrudService.createUser(user)
-  //     .subscribe(data => this._users.push(data))
-  //   this.displayCreateModel = false;
-  // }
 
   onRowEditInit(_user: any) {
     this.clonedItems[_user.id] = {..._user};
