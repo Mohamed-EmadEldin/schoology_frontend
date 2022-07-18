@@ -64,4 +64,17 @@ export class MeetingCrudComponent implements OnInit {
   applyFilterNameGlobal($event: any, stringVal: string) {
     this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
+
+  deleteSelectedMeetings() {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete the selected Meetings?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this._meetings = this._meetings.filter(val => !this.selectedMeetings.includes(val));
+        this.selectedMeetings = [];
+        this.messageService.add({severity:'success', summary: 'Successful', detail: 'users deactivated', life: 3000});
+      }
+    });
+  }
 }

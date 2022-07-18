@@ -6,8 +6,8 @@
     <ng-template pTemplate="left">
       <button pButton pRipple label="add new" icon="pi pi-plus-circle" class="p-button p-button-sm p-badge-secondary"
               routerLink="/admin/create-meeting" ></button>
-      <button pButton pRipple icon="pi pi-trash" class="p-button-danger p-button-sm mx-2" ></button>
-<!--              (click)="deleteSelectedClasses()" [disabled]="!selectedClasses || !selectedClasses.length"></button>-->
+      <button pButton pRipple icon="pi pi-trash" class="p-button-danger p-button-sm mx-2"
+              (click)="deleteSelectedMeetings()" [disabled]="!selectedMeetings || !selectedMeetings.length"></button>
     </ng-template>
     <ng-template pTemplate="right">
       <input pInputText type="text" (input)="applyFilterNameGlobal($event, 'contains')"
