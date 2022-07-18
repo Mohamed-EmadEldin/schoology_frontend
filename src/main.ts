@@ -5,7 +5,7 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 import "../node_modules/bootstrap/dist/js/bootstrap.min"
-import "../node_modules/aos/dist/aos"
+// import "../node_modules/aos/dist/aos"
 
 
 if (environment.production) {
