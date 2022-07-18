@@ -25,7 +25,7 @@
     </ng-template>
     <ng-template pTemplate="right">
       <input pInputText type="text" (input)="applyFilterNameGlobal($event, 'contains')"
-             placeholder="filter class name"/>
+             placeholder="filter exam name"/>
     </ng-template>
   </p-toolbar>
 
@@ -84,66 +84,22 @@
           </p-cellEditor>
         </td>
         <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="_exam.link">
-            </ng-template>
-            <ng-template pTemplate="output">
-              <a href="{{_exam.link}}" target="_blank" rel="noreferrer">link</a>
-            </ng-template>
-          </p-cellEditor>
+          <a href="{{_exam.link}}" target="_blank" rel="noreferrer">link</a>
         </td>
         <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="_exam.date">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{_exam.date}}
-            </ng-template>
-          </p-cellEditor>
+          {{_exam.date}}
         </td>
         <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <p-dropdown [options]="submit" [(ngModel)]="submitVal" optionLabel="val"></p-dropdown>
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{_exam.submitted}}
-            </ng-template>
-          </p-cellEditor>
+          {{_exam.submitted}}
         </td>
         <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="_exam.courseId">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{_exam.courseId}}
-            </ng-template>
-          </p-cellEditor>
+          {{_exam.course.name}}
         </td>
         <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="_exam.teacherId">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{_exam.teacherId}}
-            </ng-template>
-          </p-cellEditor>
+          {{_exam.teacher.user.name}}
         </td>
         <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-<!--              <input pInputText type="text" [(ngModel)]="_exam.classId">-->
-              <p-dropdown [options]="classes" [(ngModel)]="_classId" optionLabel="name" optionValue="code"
-                          placeholder="class" ></p-dropdown>
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{_exam.classId}}
-            </ng-template>
-          </p-cellEditor>
+          {{_exam.class.name}}
         </td>
         <td>
           {{_exam.createdAt | date: 'medium'}}

@@ -1,11 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Exam} from "../../models/exam";
 import {ExamCrudService} from "../../services/admin/exam-crud.service";
 import {ConfirmationService, MessageService} from "primeng/api";
-import {IUiClass, booleanSelect} from "../../Interfaces";
-import {StateService} from "../../services/state.service";
-import {ClassCrudService} from "../../services/admin/class-crud.service";
-import {ClassRoom} from "../../models/classRoom";
+import {Table} from "primeng/table";
 
 @Component({
   selector: 'app-exams-crud',
@@ -24,31 +21,14 @@ export class ExamsCrudComponent implements OnInit {
 
   selectedExams: Exam [] = [] //to store multi-row select
 
-  //select submit status when updating
-  submitVal!: string;
-  submit: booleanSelect [] = [
-    { val: 'false' , code: 0},
-    { val: 'true'  , code: 1}
-  ];
-
-  //select class when updating
-  public classes:IUiClass[] =[]
-  public _classId:number=-1
 
   constructor(private examCrudService: ExamCrudService,
               private messageService: MessageService,
-              private confirmationService: ConfirmationService,
-              private classCrudService: ClassCrudService) { }
+              private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
     this.examCrudService.getExams()
       .subscribe(data => this._exams = data)
-    this.classCrudService.getClasses()
-      .subscribe(data => {
-        data.map(classRoom => {
-          this.classes.push( {name:classRoom.className ,code:classRoom.classId} )
-        })
-      })//TODO: get all classes
   }
 
   openCreateDialog() {
@@ -58,7 +38,7 @@ export class ExamsCrudComponent implements OnInit {
   onRowEditInit(_exam: any) {
     this.clonedItems[_exam.id] = {..._exam};
   }
-  //TODO: edit ...dropdowns
+
   onRowEditSave(_exam: any) {
     let index = _exam.id;
     this.examCrudService.updateExam(index, _exam)
@@ -87,11 +67,21 @@ export class ExamsCrudComponent implements OnInit {
   }
 
   deleteSelectedExams() {
-
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete the selected Exams?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this._exams = this._exams.filter(val => !this.selectedExams.includes(val));
+        this.selectedExams = [];
+        this.messageService.add({severity:'success', summary: 'Successful', detail: 'users deactivated', life: 3000});
+      }
+    });
   }
 
+  @ViewChild('dt') dt: Table | undefined
   applyFilterNameGlobal($event: any, stringVal: string) {
-
+    this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
 
 }

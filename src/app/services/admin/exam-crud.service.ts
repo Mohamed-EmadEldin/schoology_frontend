@@ -20,7 +20,15 @@ export class ExamCrudService {
   }
 
   updateExam(examId: number, exam: Exam){
-    return this.http.put<Exam>(`${this.url}/${examId}`, exam)
+    let body = {
+      name: exam.name,
+      link: exam.link,
+      date: exam.date,
+      courseId: exam.courseId,
+      teacherId: exam.teacherId,
+      classId: exam.classId
+    }
+    return this.http.put<Exam>(`${this.url}/${examId}`, body)
   }
 
   deleteExam(examId: number) {
