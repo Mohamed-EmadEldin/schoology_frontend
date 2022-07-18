@@ -56,15 +56,18 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  login(){
+  login() {
     console.log(this.loginForm.value);
 
     this.authService.login(this.loginForm.value).subscribe(res => {
-
-        this.stateService.setAppState(res,res.token)
-
-        this.router.navigate([`${this.stateService.getState().userType}/cal`])
-
+        this.stateService.setAppState(res, res.token)
+        localStorage.setItem("token", `${res.token}`)
+        let type: string = this.stateService.getState().userType
+        if (type === 'teacher' || type === 'student') {
+          this.router.navigate([`${this.stateService.getState().userType}/cal`])
+        } else if (type === 'admin') {
+          this.router.navigate(['/admin'])
+        }
       },
       error => {
         console.log(error)

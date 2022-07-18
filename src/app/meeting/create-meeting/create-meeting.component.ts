@@ -4,12 +4,7 @@ import {MeetingAuthService} from "../../services/meeting-auth.service";
 import {FormControl, FormGroup, NgForm, NgModel, Validators} from "@angular/forms";
 import {Meeting} from "../../models/meeting";
 import {formatDate} from '@angular/common';
-
-
-export interface IUiClass {
-  name: string,
-  code: number
-}
+import {IUiClass} from "../../Interfaces";
 
 @Component({
   selector: 'app-create-meeting',

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {IUiClass} from "../meeting/create-meeting/create-meeting.component";
+import {IUiClass} from "../Interfaces";
 import {BehaviorSubject} from "rxjs";
 
 export interface IClassRoom {

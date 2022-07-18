@@ -6,17 +6,7 @@
 @import "primeflex/primeflex.css";
 @import "prismjs/themes/prism-coy.min.css";
 @import "bootstrap/dist/css/bootstrap.min.css";
-
-/*body {*/
-
-
-/*    background-color: #17212FFF;*/
-
-
-/*    color: #e8e6e3;*/
-
-
-/*}*/
+/* @import "aos/dist/aos.css"; */
 
 html,
 body {

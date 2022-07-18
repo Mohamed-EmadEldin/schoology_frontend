@@ -21,7 +21,6 @@ import {GradesModule} from "./grades/grades.module";
 import { NotificationComponent } from './notification/notification.component';
 import {TableModule} from "primeng/table";
 import {InputTextModule} from "primeng/inputtext";
-import { AdminComponent } from './admin/admin.component';
 import {MessagesModule} from "./classMessages/messages.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
@@ -37,7 +36,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     AppComponent,
     NotFoundComponent,
     NotificationComponent,
-    AdminComponent,
     DashboardComponent,
 
   ],
