@@ -44,10 +44,16 @@ export class ClassCrudComponent implements OnInit {
   //   this.displayCreateModel = false;
   // }
 
+  invalid: boolean = false;
   createClass(name: string) {
-    this.classCrudService.createClass(name)
+    this.invalid = false;
+    if (name !== ''){
+      this.classCrudService.createClass(name)
         .subscribe(data => this._classes.push(data))
-    this.displayCreateModel = false;
+      this.displayCreateModel = false;
+    }else {
+      this.invalid = true;
+    }
   }
 
   onRowEditInit(_class: any) {

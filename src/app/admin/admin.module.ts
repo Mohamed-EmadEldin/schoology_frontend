@@ -20,6 +20,7 @@ import {ToolbarModule} from "primeng/toolbar";
 import {DialogModule} from "primeng/dialog";
 import {AutoCompleteModule} from "primeng/autocomplete";
 import {CalendarModule} from "primeng/calendar";
+import {MessageModule} from "primeng/message";
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {CalendarModule} from "primeng/calendar";
         ToolbarModule,
         DialogModule,
         AutoCompleteModule,
-        CalendarModule
+        CalendarModule,
+        MessageModule
     ]
 })
 export class AdminModule { }

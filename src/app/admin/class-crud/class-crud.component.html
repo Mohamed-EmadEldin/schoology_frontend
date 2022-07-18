@@ -8,6 +8,7 @@
         <span class="p-inputgroup-addon"><i class="pi pi-desktop"></i></span>
         <input #name type="text" pInputText placeholder="name">
       </div>
+      <p-message severity="error" text="name can't be empty" *ngIf="name.value === '' && invalid"></p-message>
     </div>
     <ng-template pTemplate="footer">
       <p-button icon="pi pi-plus-circle" (click)="createClass(name.value)" label="Add" styleClass="p-button-text"></p-button>
