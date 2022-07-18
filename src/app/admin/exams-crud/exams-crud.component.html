@@ -3,23 +3,45 @@
   <p class="h3">Exams</p>
 
   <p-dialog header="add class" [(visible)]="displayCreateModel" [modal]="true" [draggable]="false">
-    <div class="col-12 md:col-4">
-      <div class="p-inputgroup">
-        <!--TODO: create dialog inputs -->
-        <span class="p-inputgroup-addon"><i class="pi pi-desktop"></i></span>
-        <input #name type="text" pInputText placeholder="name">
-      </div>
+
+    <div class="left-inputs flex-column">
+      <input type="text" pInputText placeholder="Link" name="link"
+             [(ngModel)]="_exam.link" #link="ngModel" required/>
+      <p-message severity="error" text="invalid link" *ngIf="link.invalid && invalid"></p-message>
+      <input type="text" pInputText [(ngModel)]="_exam.name" placeholder="Meeting Title" name="name" #name="ngModel"
+             required/>
+      <p-message severity="error" text="invalid name" *ngIf="name.invalid && invalid"></p-message>
     </div>
+    <div class="right-inputs flex-column">
+      <p-calendar [(ngModel)]="_exam.date" placeholder="date" name="date" #date="ngModel"
+                  appendTo="body" [required]="true"></p-calendar>
+      <p-message severity="error" text="invalid date" *ngIf="date.invalid && invalid"></p-message>
+    </div>
+
+    <p-dropdown [options]="teachers" [(ngModel)]="selectedTeacherId" optionLabel="name" optionValue="id"
+                placeholder="select a teacher" #teacher="ngModel"
+                appendTo="body" (onChange)="activateCourseAndClassDropdown(selectedTeacherId)" optionDisabled="inactive"></p-dropdown>
+    <p-message severity="error" text="please select a teacher" *ngIf="teacher.invalid && invalid"></p-message>
+    <p-dropdown [options]="teacherClasses" [(ngModel)]="selectedClass" placeholder="class"
+                optionLabel="name" optionValue="code" appendTo="body" #teacherClass="ngModel"
+                optionDisabled="inactive" [disabled]="disableClassSelect"></p-dropdown>
+    <p-message severity="error" text="please select a class" *ngIf="teacherClass.invalid && invalid"></p-message>
+    <p-dropdown [options]="teacherCourses" [(ngModel)]="selectedCourse" placeholder="course"
+                optionLabel="name" optionValue="id" appendTo="body" #teacherCourse="ngModel"
+                optionDisabled="inactive" [disabled]="disableCourseSelect"></p-dropdown>
+    <p-message severity="error" text="please select a course" *ngIf="teacherCourse.invalid && invalid"></p-message>
+    <p *ngIf="!isTeacherHasClasses && isTeacherSelected">this teacher has no classes assigned</p>
+
     <ng-template pTemplate="footer">
-      <!-- TODO: create button -->
-<!--      <p-button icon="pi pi-plus-circle" (click)="createExam(name.value)" label="Add" styleClass="p-button-text"></p-button>-->
+      <p-button icon="pi pi-plus-circle" (click)="createExam()" label="Add" styleClass="p-button-text"></p-button>
     </ng-template>
+
   </p-dialog>
 
   <p-toolbar styleClass="mb-4">
     <ng-template pTemplate="left">
       <button pButton pRipple label="add new" icon="pi pi-plus-circle" class="p-button p-button-sm p-badge-secondary"
-              (click)="openCreateDialog()" ></button>
+              (click)="openCreateDialog()"></button>
       <button pButton pRipple icon="pi pi-trash" class="p-button-danger p-button-sm mx-2"
               (click)="deleteSelectedExams()" [disabled]="!selectedExams || !selectedExams.length"></button>
     </ng-template>
@@ -113,9 +135,11 @@
                     (click)="onRowEditInit(_exam)" class="p-button-rounded p-button-text"></button>
 
             <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow label="save"
-                    (click)="onRowEditSave(_exam)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
+                    (click)="onRowEditSave(_exam)"
+                    class="p-button-rounded p-button-text p-button-success mr-2"></button>
             <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow label="cancel"
-                    (click)="onRowEditCancel(_exam, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                    (click)="onRowEditCancel(_exam, ri)"
+                    class="p-button-rounded p-button-text p-button-danger"></button>
 
             <button pButton pRipple type="button" icon="pi pi-times"
                     (click)="delete(_exam)" class="p-button-rounded p-button-text p-button-danger"></button>

@@ -3,6 +3,10 @@ import {Exam} from "../../models/exam";
 import {ExamCrudService} from "../../services/admin/exam-crud.service";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {Table} from "primeng/table";
+import {HelperService} from "../../services/admin/helper.service";
+import {ICourse, ITeacher, IUiClass} from "../../Interfaces";
+import {NgForm} from "@angular/forms";
+import {ExamService} from "../../services/exam.service";
 
 @Component({
   selector: 'app-exams-crud',
@@ -15,16 +19,36 @@ export class ExamsCrudComponent implements OnInit {
 
   _exams: Exam[] = []
 
+  _exam: Exam = new Exam();
+
   clonedItems: { [s: string]: any; } = {}; //to help restore row if update is cancelled
 
   displayCreateModel: boolean = false; //boolean to show create dialog on request
 
   selectedExams: Exam [] = [] //to store multi-row select
 
+  teachers: ITeacher[] = []
+  selectedTeacherId: number = -1
+
+  teacherClasses: IUiClass[] = []
+  selectedClass: number = -1
+
+  teacherCourses: ICourse[] = []
+  selectedCourse: number = -1
+
+  disableClassSelect: boolean = true;
+  disableCourseSelect: boolean = true;
+  isTeacherHasClasses: boolean = false;
+  isTeacherSelected: boolean = false;
+
+  invalid: boolean = false; //check create form status
 
   constructor(private examCrudService: ExamCrudService,
+              private examService: ExamService,
+              private helperService: HelperService,
               private messageService: MessageService,
-              private confirmationService: ConfirmationService) { }
+              private confirmationService: ConfirmationService) {
+  }
 
   ngOnInit(): void {
     this.examCrudService.getExams()
@@ -32,7 +56,66 @@ export class ExamsCrudComponent implements OnInit {
   }
 
   openCreateDialog() {
+    this.helperService.getAllTeachers().subscribe(data => {
+      this.teachers = data.map(value => {
+        return {name: value.name, id: value.id}
+      });
+    })
     this.displayCreateModel = true;
+  }
+
+  getClasses(teacherId: number) {
+    new Promise(() => {
+      this.helperService.getTeacherClasses(teacherId).subscribe(data => {
+        console.log('before cls map')
+        this.teacherClasses = data.map(value => {
+          console.log('in cls map')
+          return {name: value.name, code: value.id}
+        });
+        console.log('after cls map')
+      });
+    }).catch(() => console.error('failed to get classes'))
+  }
+
+  getCourses(teacherId: number) {
+    new Promise(() => {
+      this.helperService.getTeacherCourse(teacherId).subscribe(data => {
+        console.log('before courses')
+        this.teacherCourses = data.map(value => {
+          console.log('in crs map')
+          return {name: value.name, id: value.id}
+        });
+        console.log('after crs map')
+        console.log(this.teacherCourses)
+      });
+    }).catch(() => console.error('failed to get courses'))
+  }
+
+  async activateCourseAndClassDropdown(teacherId: number) {
+    Promise.all([this.getClasses(teacherId), this.getCourses(teacherId)])
+      .then(() => {
+        this.isTeacherHasClasses = true;
+        this.disableClassSelect = false;
+        this.disableCourseSelect = false;
+        this.isTeacherSelected = true;
+      })
+      .catch();
+  }
+
+  createExam() {
+    this.invalid = false;
+    if (this._exam.name !== '' || this._exam.link !== '' || this._exam.date != '') {
+      this.examCrudService.createExam({
+        ...this._exam,
+        teacherId: this.selectedTeacherId,
+        classId: this.selectedClass
+      }).subscribe(() => {
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Exam was created successfully'});
+      });
+      this.displayCreateModel = false;
+    } else {
+      this.invalid = true;
+    }
   }
 
   onRowEditInit(_exam: any) {
@@ -44,7 +127,7 @@ export class ExamsCrudComponent implements OnInit {
     this.examCrudService.updateExam(index, _exam)
       .subscribe(data => this._exams.splice(index, 1, data))
       .unsubscribe();
-    this.messageService.add({severity:'success', summary: 'Success', detail:'Class is updated'});
+    this.messageService.add({severity: 'success', summary: 'Success', detail: 'Exam is updated'});
   }
 
   onRowEditCancel(_exam: any, index: any) {
@@ -60,8 +143,8 @@ export class ExamsCrudComponent implements OnInit {
       accept: () => {
         this._exams = this._exams.filter(val => val.classId !== _exam.id);
         this.examCrudService.deleteExam(_exam.id)
-          .subscribe(() => this._exams.splice(_exam.id,1))
-        this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});
+          .subscribe(() => this._exams.splice(_exam.id, 1))
+        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});
       }
     });
   }
@@ -74,12 +157,13 @@ export class ExamsCrudComponent implements OnInit {
       accept: () => {
         this._exams = this._exams.filter(val => !this.selectedExams.includes(val));
         this.selectedExams = [];
-        this.messageService.add({severity:'success', summary: 'Successful', detail: 'users deactivated', life: 3000});
+        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'users deactivated', life: 3000});
       }
     });
   }
 
   @ViewChild('dt') dt: Table | undefined
+
   applyFilterNameGlobal($event: any, stringVal: string) {
     this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
