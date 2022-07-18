@@ -44,7 +44,6 @@ export class ExamsCrudComponent implements OnInit {
   invalid: boolean = false; //check create form status
 
   constructor(private examCrudService: ExamCrudService,
-              private examService: ExamService,
               private helperService: HelperService,
               private messageService: MessageService,
               private confirmationService: ConfirmationService) {
@@ -65,41 +64,28 @@ export class ExamsCrudComponent implements OnInit {
   }
 
   getClasses(teacherId: number) {
-    new Promise(() => {
-      this.helperService.getTeacherClasses(teacherId).subscribe(data => {
-        console.log('before cls map')
-        this.teacherClasses = data.map(value => {
-          console.log('in cls map')
-          return {name: value.name, code: value.id}
-        });
-        console.log('after cls map')
+    this.helperService.getTeacherClasses(teacherId).subscribe(data => {
+      this.teacherClasses = data.map(value => {
+        return {name: value.name, code: value.id}
       });
-    }).catch(() => console.error('failed to get classes'))
+    });
   }
 
   getCourses(teacherId: number) {
-    new Promise(() => {
-      this.helperService.getTeacherCourse(teacherId).subscribe(data => {
-        console.log('before courses')
-        this.teacherCourses = data.map(value => {
-          console.log('in crs map')
-          return {name: value.name, id: value.id}
-        });
-        console.log('after crs map')
-        console.log(this.teacherCourses)
+    this.helperService.getTeacherCourse(teacherId).subscribe(data => {
+      this.teacherCourses = data.map(value => {
+        return {name: value.name, id: value.id}
       });
-    }).catch(() => console.error('failed to get courses'))
+    });
   }
 
   async activateCourseAndClassDropdown(teacherId: number) {
-    Promise.all([this.getClasses(teacherId), this.getCourses(teacherId)])
-      .then(() => {
-        this.isTeacherHasClasses = true;
-        this.disableClassSelect = false;
-        this.disableCourseSelect = false;
-        this.isTeacherSelected = true;
-      })
-      .catch();
+    await this.getClasses(teacherId)
+    await this.getCourses(teacherId)
+    this.isTeacherHasClasses = true;
+    this.disableClassSelect = false;
+    this.disableCourseSelect = false;
+    this.isTeacherSelected = true;
   }
 
   createExam() {
@@ -108,7 +94,8 @@ export class ExamsCrudComponent implements OnInit {
       this.examCrudService.createExam({
         ...this._exam,
         teacherId: this.selectedTeacherId,
-        classId: this.selectedClass
+        classId: this.selectedClass,
+        courseId: this.selectedCourse
       }).subscribe(() => {
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'Exam was created successfully'});
       });
