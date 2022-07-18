@@ -10,6 +10,7 @@ import {RippleModule} from "primeng/ripple";
 import {RouterModule} from "@angular/router";
 import {TableModule} from "primeng/table";
 import {InputTextModule} from "primeng/inputtext";
+import {ToastModule} from "primeng/toast";
 
 
 
@@ -27,7 +28,8 @@ import {InputTextModule} from "primeng/inputtext";
         RippleModule,
         RouterModule,
         TableModule,
-        InputTextModule
+        InputTextModule,
+        ToastModule
     ]
 })
 export class ClassCalendarModule { }

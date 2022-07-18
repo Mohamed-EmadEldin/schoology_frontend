@@ -6,9 +6,9 @@
         <input type="text" pInputText  placeholder="Link" name="link"
                [(ngModel)]="exam.link" #link="ngModel" required />
         <p-message severity="error" text="Message Content" *ngIf="link.invalid && (form.submitted)"></p-message>
-        <input type="text" pInputText [(ngModel)]="exam.name" placeholder="Meeting Title" name="name" #name = "ngModel" required />
+        <input type="text" pInputText [(ngModel)]="exam.name" placeholder="Quize Title" name="name" #name = "ngModel" required />
         <p-message severity="error" text="Message2 Content" *ngIf="name.invalid && (form.submitted)"></p-message>
-        <button type="submit" pButton label="create meeting" (click)="handelSubmit(form)"></button>
+        <button type="submit" pButton label="create Quiz" (click)="handelSubmit(form)"></button>
 
       </div>
       <div class="right-inputs flex-column">

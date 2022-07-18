@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
 
         this.stateService.setAppState(res,res.token)
 
-        this.router.navigate([`${this.stateService.getState().userType}/cal`])
+        this.router.navigate([`${this.stateService.getState().userType}/`])
 
       },
       error => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import {StateService} from "../../services/state.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -9,10 +10,12 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class DashboardComponent implements OnInit {
   slider: any;
   userName!: any;
-  constructor() { }
+  constructor(
+    public stateService:StateService
+  ) { }
 
   ngOnInit(): void {
-    this.userName = JSON.parse(localStorage.getItem('state') as any)['userName'];
+    this.userName = this.stateService.getState().userName
   }
 
   selected!: Date | null;

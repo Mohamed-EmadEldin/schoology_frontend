@@ -7,9 +7,10 @@ import {HomeworkComponent} from "../homework/homework/homework.component";
 import {StudentGradesComponent} from "../grades/student-grades/student-grades.component";
 import {MessagesComponent} from "../classMessages/messages/messages.component";
 import {SendMessageComponent} from "../classMessages/send-message/send-message.component";
+import {DashboardComponent} from "../dashboard/dashboard/dashboard.component";
 
 const routes: Routes = [
-  { path: '', component: CalendarComponent },
+  { path: '', component: DashboardComponent },
   { path: 'cal', component: CalendarComponent },
   { path: 'list-quizzes', component: ListExamsComponent },
   { path: 'home-work', component: HomeworkComponent },

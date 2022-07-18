@@ -32,14 +32,14 @@ import {StateService} from "../../services/state.service";
 export class SidebarComponent implements OnInit {
 
   model: any[] | undefined
-  newMessagesCount:number =-1
+  newMessagesCount:string ='0'
 
   constructor(public sidebar: SidebarService,public stateService:StateService) {
 
   }
 
   ngOnInit(): void {
-    this.newMessagesCount = this.stateService.getState().newMessagesCount
+    this.newMessagesCount = this.stateService.getState().newMessagesCount.toString()
     console.log(this.newMessagesCount)
     this.model = [
       {
@@ -58,6 +58,12 @@ export class SidebarComponent implements OnInit {
       },
     ];
     // console.log(this.model)
+    this.sidebar.getNewMessagesCount().subscribe({
+      next:(data)=>{
+        this.newMessagesCount =data.count
+        console.log(data)
+      }
+    })
   }
 
 }
