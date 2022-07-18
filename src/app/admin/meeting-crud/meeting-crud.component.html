@@ -1,0 +1,108 @@
+<p-toast></p-toast>
+<div class="container">
+  <p class="h3">Meetings</p>
+
+  <p-toolbar styleClass="mb-4">
+    <ng-template pTemplate="left">
+      <button pButton pRipple label="add new" icon="pi pi-plus-circle" class="p-button p-button-sm p-badge-secondary"
+              routerLink="/admin/create-meeting" ></button>
+      <button pButton pRipple icon="pi pi-trash" class="p-button-danger p-button-sm mx-2"
+              (click)="deleteSelectedMeetings()" [disabled]="!selectedMeetings || !selectedMeetings.length"></button>
+    </ng-template>
+    <ng-template pTemplate="right">
+      <input pInputText type="text" (input)="applyFilterNameGlobal($event, 'contains')"
+             placeholder="filter meeting name"/>
+    </ng-template>
+  </p-toolbar>
+
+  <!--
+      TODO: multi-delete from db
+  -->
+  <p-table #dt [value]="_meetings" dataKey="id" editMode="row" responsiveLayout="scroll" [globalFilterFields]="['name']"
+           styleClass="p-datatable-striped"
+           [(selection)]="selectedMeetings" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,25,50]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="name">
+          <div class="flex justify-content-between align-items-center">
+            Name
+            <p-sortIcon field="name"></p-sortIcon>
+            <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+        <th>Link</th>
+        <th pSortableColumn="date">
+          <div class="flex justify-content-between align-items-center">
+            Date
+            <p-sortIcon field="date"></p-sortIcon>
+          </div>
+        </th>
+        <th pSortableColumn="createdAt">
+          <div class="flex justify-content-between align-items-center">
+            Created At
+            <p-sortIcon field="createdAt"></p-sortIcon>
+          </div>
+        </th>
+        <th pSortableColumn="updatedAt">
+          <div class="flex justify-content-between align-items-center">
+            Updated At
+            <p-sortIcon field="updatedAt"></p-sortIcon>
+          </div>
+        </th>
+        <th style="width:8rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-_meeting let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="_meeting">
+        <td>
+          <p-tableCheckbox [value]="_meeting"></p-tableCheckbox>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="_meeting.name">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{_meeting.name}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <a href="{{_meeting.link}}" target="_blank" rel="noreferrer">link</a>
+        </td>
+        <td>
+          {{_meeting.date | date: 'mediumDate'}}
+        </td>
+        <td>
+          {{_meeting.createdAt | date: 'medium'}}
+        </td>
+        <td>
+          {{_meeting.updatedAt | date: 'medium'}}
+        </td>
+        <td style="text-align:center">
+          <div class="d-flex">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
+                    (click)="onRowEditInit(_meeting)" class="p-button-rounded p-button-text"></button>
+
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow label="save"
+                    (click)="onRowEditSave(_meeting)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow label="cancel"
+                    (click)="onRowEditCancel(_meeting, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+
+            <button pButton pRipple type="button" icon="pi pi-times"
+                    (click)="delete(_meeting)" class="p-button-rounded p-button-text p-button-danger"></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{_meetings ? _meetings.length : 0 }} meetings.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<p-confirmDialog></p-confirmDialog>

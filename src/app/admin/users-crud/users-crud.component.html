@@ -1,0 +1,119 @@
+<p-toast></p-toast>
+<div class="container">
+  <p class="h3">Users</p>
+
+  <p-toolbar styleClass="mb-4">
+    <ng-template pTemplate="left">
+      <button pButton pRipple label="add new" icon="pi pi-plus-circle" class="p-button p-button-sm p-badge-secondary"
+              routerLink="/admin/create-user" ></button> <!-- TODO: create user route -->
+      <button pButton pRipple icon="pi pi-trash" class="p-button-danger p-button-sm mx-2"
+              (click)="deactivateSelectedUsers()" [disabled]="!selectedUsers || !selectedUsers.length"></button>
+    </ng-template>
+    <ng-template pTemplate="right">
+      <input pInputText type="text" (input)="applyFilterNameGlobal($event, 'contains')"
+             placeholder="filter by user name or role id"/>
+    </ng-template>
+  </p-toolbar>
+
+  <!--
+      TODO: multi-delete from db
+  -->
+  <p-table #dt [value]="_nonAdminUsers" dataKey="id" editMode="row" responsiveLayout="scroll" [globalFilterFields]="['name', 'roleId']"
+           styleClass="p-datatable-striped"
+           [(selection)]="selectedUsers" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,25,50]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="name">
+          <div class="flex justify-content-between align-items-center">
+            Name
+            <p-sortIcon field="name"></p-sortIcon>
+            <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+        <th>phone</th>
+        <th>email</th>
+        <th pSortableColumn="roleId">
+          <div class="flex justify-content-between align-items-center">
+            Role
+            <p-sortIcon field="roleId"></p-sortIcon>
+            <p-columnFilter type="numeric" placeholder="role number" field="roleId" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+        <th>Created at</th>
+        <th>updated at</th>
+        <th style="width:5rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-_nonAdminUser let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="_nonAdminUser">
+        <td>
+          <p-tableCheckbox [value]="_nonAdminUser"></p-tableCheckbox>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="_nonAdminUser.name">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{_nonAdminUser.name}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="_nonAdminUser.phone">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{_nonAdminUser.phone}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="_nonAdminUser.email">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{_nonAdminUser.email}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p *ngIf="_nonAdminUser.roleId === 1">id:1 - teacher</p>
+          <p *ngIf="_nonAdminUser.roleId === 2">id:2 - student</p>
+          <p *ngIf="_nonAdminUser.roleId === 3">id:3 - parent</p>
+        </td>
+        <td>
+          {{_nonAdminUser.createdAt | date: 'medium'}}
+        </td>
+        <td>
+          {{_nonAdminUser.updatedAt | date: 'medium'}}
+        </td>
+        <td style="text-align:center">
+          <div class="d-flex">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
+                    (click)="onRowEditInit(_nonAdminUser)" class="p-button-rounded p-button-text"></button>
+
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow label="save"
+                    (click)="onRowEditSave(_nonAdminUser)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow label="cancel"
+                    (click)="onRowEditCancel(_nonAdminUser, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+
+            <button pButton pRipple type="button" icon="pi pi-times"
+                    (click)="deactivate(_nonAdminUser)" class="p-button-rounded p-button-text p-button-danger"></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{_nonAdminUsers ? _nonAdminUsers.length : 0 }} users.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<p-confirmDialog></p-confirmDialog>

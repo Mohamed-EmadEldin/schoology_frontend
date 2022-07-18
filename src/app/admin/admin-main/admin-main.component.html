@@ -1,0 +1,39 @@
+
+<div class="container">
+  <div class="d-flex align-content-center justify-content-between row">
+
+    <!-- meeting card -->
+    <p-card [header]="meetingCard.header" [subheader]="meetingCard.subheader" [routerLink]="meetingCard.route"
+            [style]="{width: '300px'}" styleClass="p-card-shadow" class="col-sm-12 col-lg-4">
+      <ng-template pTemplate="header">
+        <img alt="Card" [src]="meetingCard.image_src" width="250" height="170">
+      </ng-template>
+    </p-card>
+
+    <!-- exams card -->
+    <p-card [header]="examsCard.header" [subheader]="examsCard.subheader" [routerLink]="examsCard.route"
+            [style]="{width: '300px'}" styleClass="p-card-shadow" class="col-sm-12 col-lg-4">
+      <ng-template pTemplate="header">
+        <img alt="Card" [src]="examsCard.image_src" width="250" height="170">
+      </ng-template>
+    </p-card>
+
+    <!-- users card -->
+    <p-card [header]="usersCard.header" [subheader]="usersCard.subheader" [routerLink]="usersCard.route"
+            [style]="{width: '300px'}" styleClass="p-card-shadow" class="col-sm-12 col-lg-4">
+      <ng-template pTemplate="header">
+        <img alt="Card" [src]="usersCard.image_src" width="250" height="170">
+      </ng-template>
+    </p-card>
+
+    <!-- classes card -->
+    <p-card [header]="classesCard.header" [subheader]="classesCard.subheader" [routerLink]="classesCard.route"
+            [style]="{width: '300px'}" styleClass="p-card-shadow" class="col-sm-12 col-lg-4">
+      <ng-template pTemplate="header">
+        <img alt="Card" [src]="classesCard.image_src" width="250" height="170">
+      </ng-template>
+    </p-card>
+
+
+  </div>
+</div>
