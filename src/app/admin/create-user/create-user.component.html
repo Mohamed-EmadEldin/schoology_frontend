@@ -67,7 +67,7 @@
                    *ngIf="userType.key === 2 && studentSelectedClass === -1 && invalid"></p-message>
 
         <p-calendar *ngIf="userType.key === 2" [(ngModel)]="studentBirthDate" [showIcon]="true" inputId="icon"
-                    dateFormat="yy-mm-dd"></p-calendar>
+                    dateFormat="yy-mm-dd" placeholder="student birth date"></p-calendar>
         <p-message severity="error" text="please select date"
                    *ngIf="userType.key === 2 && studentBirthDate && invalid"></p-message>
 
