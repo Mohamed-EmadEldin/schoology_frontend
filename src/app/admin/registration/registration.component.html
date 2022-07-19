@@ -1,4 +1,4 @@
-<form [formGroup]="registrationForm" (ngSubmit)="register()">
+<!--<form [formGroup]="registrationForm" (ngSubmit)="register()">-->
 
     <mat-form-field appearance="fill">
         <mat-label>name</mat-label>
@@ -31,7 +31,7 @@
         <mat-radio-button value="3">parent </mat-radio-button>
     </mat-radio-group>
 
-    <div *ngIf="student">
+    <div *ngIf="userType === 1">
         <mat-form-field appearance="fill">
             <mat-label>studentClass</mat-label>
             <input matInput formControlName="studentClass">
@@ -39,11 +39,11 @@
     </div>
 
 
-    <div *ngIf="teacher">
+    <div *ngIf="userType === 2">
         <mat-form-field appearance="fill">
             <mat-label>Classes</mat-label>
             <!-- must be comma separted -->
-            <input (input)="setClasses()" matInput formControlName="classes">
+<!--            <input (input)="setClasses()" matInput formControlName="classes">-->
         </mat-form-field>
 
 
@@ -54,11 +54,11 @@
         </mat-form-field>
     </div>
 
-    <div *ngIf="parent">
+    <div *ngIf="userType === 3">
         <mat-form-field appearance="fill">
             <mat-label>studentId</mat-label>
             <input matInput formControlName="studentId">
         </mat-form-field>
     </div>
     <button>submit</button>
-</form>
+<!--</form>-->

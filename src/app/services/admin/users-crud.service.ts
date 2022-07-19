@@ -1,19 +1,39 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ClassRoom} from "../../models/classRoom";
 import {User} from "../../models/user";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersCrudService {
 
-  private url = 'http://127.0.0.1:3000/auth'
+  private url = `${environment.baseUrl}/auth`
 
   constructor(private http: HttpClient) { }
 
   getUsers() {
     return this.http.get<User[]>(`${this.url}/allUsers`)
+  }
+
+  getAllTeachers() {
+    return this.http.get<User[]>(`${this.url}/allTeachers`)
+  }
+
+  getAllStudents() {
+    return this.http.get<User[]>(`${this.url}/allStudents`)
+  }
+
+  registerTeacher(formData: any){
+    return this.http.post(`${this.url}/signup/teacher`, formData)
+  }
+
+  registerStudent(formData: any) {
+    return this.http.post(`${this.url}/signup/student`, formData)
+  }
+
+  registerParent(formData: any) {
+    return this.http.post(`${this.url}/signup/parent`, formData)
   }
 
   updateUser(userId: number, user: User) {
