@@ -4,7 +4,7 @@ import {ExamCrudService} from "../../services/admin/exam-crud.service";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {Table} from "primeng/table";
 import {HelperService} from "../../services/admin/helper.service";
-import {ICourse, ITeacher, IUiClass} from "../../Interfaces";
+import {ICourse, ITeacher, IUiClass} from "../../interfaces/Interfaces";
 import {NgForm} from "@angular/forms";
 import {ExamService} from "../../services/exam.service";
 

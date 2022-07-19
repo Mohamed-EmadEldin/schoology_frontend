@@ -4,7 +4,7 @@ import {MeetingAuthService} from "../../services/meeting-auth.service";
 import {FormControl, FormGroup, NgForm, NgModel, Validators} from "@angular/forms";
 import {Meeting} from "../../models/meeting";
 import {formatDate} from '@angular/common';
-import {IUiClass} from "../../Interfaces";
+import {IUiClass} from "../../interfaces/Interfaces";
 import {MessageService} from "primeng/api";
 
 

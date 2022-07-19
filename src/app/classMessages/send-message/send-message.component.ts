@@ -3,7 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {MessagesService} from "../../services/messages.service";
 import {PopUpComponent} from "../pop-up/pop-up.component";
 import {StateService} from "../../services/state.service";
-import {IUiClass} from "../../meeting/create-meeting/create-meeting.component";
+import {IUiClass} from "../../interfaces/Interfaces";
 import {MatTableDataSource} from "@angular/material/table";
 
 let ELEMENT_DATA: any [] = [];

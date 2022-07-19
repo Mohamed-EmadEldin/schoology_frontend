@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Exam} from "../../models/exam";
 import {StateService} from "../../services/state.service";
 import {NgForm} from "@angular/forms";
-import {IUiClass} from "../../Interfaces";
+import {IUiClass} from "../../interfaces/Interfaces";
 import {ExamService} from "../../services/exam.service";
 import {Router} from "@angular/router";
 
