@@ -6,6 +6,7 @@
 @import "primeflex/primeflex.css";
 @import "prismjs/themes/prism-coy.min.css";
 @import "bootstrap/dist/css/bootstrap.min.css";
+
 /* @import "aos/dist/aos.css"; */
 
 html,
@@ -15,5 +16,4 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
 }

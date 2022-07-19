@@ -1,5 +1,10 @@
-nav {
+::ng-deep .nav {
     margin-bottom: 30px;
+    background: #0e2a47;
+}
+
+::ng-deep .navbar {
+    background: #0e2a47;
 }
 
 ::ng-deep .mat-menu-content:not(:empty) {
@@ -13,3 +18,37 @@ nav {
     justify-content: center;
     align-items: center;
 }
+
+.p-button.p-button-text {
+    color: #ffff;
+}
+
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    background-color: #0e2a47;
+}
+
+.p-button.p-button-text :hover {
+    color: #5f7d95;
+}
+
+::ng-deep #profilesMenu {
+    background-color: #0e2a47;
+}
+
+::ng-deep.mat-menu-item {
+    background-color: #0e2a47;
+}
+
+.mat-icon-button .mat-icon {
+    line-height: 24px;
+    color: white;
+}
+
+
+/* ::ng-deep.p-sidebar {
+  background: #0e2a47;
+  color: #ffff;
+} */

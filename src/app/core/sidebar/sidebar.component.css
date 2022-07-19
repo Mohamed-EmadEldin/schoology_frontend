@@ -1,3 +1,18 @@
 ul {
-  list-style: none;
+    list-style: none;
+    color: #ffff;
 }
+
+::ng-deep.p-sidebar {
+    background: #0e2a47;
+    color: #ffff;
+}
+
+.p-button.p-button-text {
+    color: #ffff;
+}
+
+
+/* .p-button.p-button-text :hover {
+    color: #5f7d95;
+} */

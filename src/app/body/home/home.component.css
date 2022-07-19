@@ -23,10 +23,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: larger;
+    margin: auto;
 }
 
 .about img {
-    width: 50%;
+    width: 40%;
+}
+
+.about span {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    color: #0e2a47;
 }
 
 .item {
@@ -39,10 +47,14 @@
     align-items: center;
     cursor: pointer;
     margin: 10px 0;
+    border: solid;
+    border-color: #0e2a47;
+    font-size: large;
+    font-weight: bold;
 }
 
 .item p {
-    color: black;
+    color: #0e2a47;
     margin-top: 20px;
 }
 

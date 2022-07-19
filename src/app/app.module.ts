@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import {NgModule} from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from '@angular/platform-browser';
@@ -64,7 +65,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NgImageSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    CarouselModule
+    CarouselModule,
+    MatIconModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthtokenInterceptor, multi: true},
