@@ -38,7 +38,7 @@ export class AdminMainComponent implements OnInit {
   coursesCard = {
     header: "Courses",
     subheader: "edit Courses",
-    image_src: "assets/images/cards/undraw_handcrafts_house.svg",
+    image_src: "assets/images/cards/undraw_handcrafts_book.svg",
     route: "/admin/course-crud"
   };
 
