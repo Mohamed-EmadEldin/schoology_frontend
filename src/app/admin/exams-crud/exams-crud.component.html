@@ -2,13 +2,13 @@
 <div class="container">
   <p class="h3">Exams</p>
 
-  <p-dialog header="add class" [(visible)]="displayCreateModel" [modal]="true" [draggable]="false">
+  <p-dialog header="add exam" [(visible)]="displayCreateModel" [modal]="true" [draggable]="false">
 
     <div class="left-inputs flex-column">
       <input type="text" pInputText placeholder="Link" name="link"
              [(ngModel)]="_exam.link" #link="ngModel" required/>
       <p-message severity="error" text="invalid link" *ngIf="link.invalid && invalid"></p-message>
-      <input type="text" pInputText [(ngModel)]="_exam.name" placeholder="Meeting Title" name="name" #name="ngModel"
+      <input type="text" pInputText [(ngModel)]="_exam.name" placeholder="Exam Title" name="name" #name="ngModel"
              required/>
       <p-message severity="error" text="invalid name" *ngIf="name.invalid && invalid"></p-message>
     </div>

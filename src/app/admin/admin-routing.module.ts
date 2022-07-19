@@ -7,7 +7,7 @@ import {MeetingCrudComponent} from "./meeting-crud/meeting-crud.component";
 import {ExamsCrudComponent} from "./exams-crud/exams-crud.component";
 import {UsersCrudComponent} from "./users-crud/users-crud.component";
 import {ClassCrudComponent} from "./class-crud/class-crud.component";
-import {CreateMeetingComponent} from "../meeting/create-meeting/create-meeting.component";
+import {CourseCrudComponent} from "./course-crud/course-crud.component";
 
 const routes: Routes = [
   { path: '', component: AdminMainComponent },
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'exam-crud', component: ExamsCrudComponent},
   { path: 'user-crud', component: UsersCrudComponent},
   { path: 'class-crud', component: ClassCrudComponent},
-  { path: 'create-meeting', component: CreateMeetingComponent },
+  { path: 'course-crud', component: CourseCrudComponent},
   { path: 'register', component: RegistrationComponent },
   { path: 'dashboard',component:DashboardComponent },
 ];

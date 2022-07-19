@@ -13,9 +13,23 @@ export class MeetingCrudService {
   private url = "http://127.0.0.1:3000/meeting"
   private state = this.stateService.getState();
   private adminId = this.state.userType === 'admin' ? this.state.userId : -1;
+  private auth2: gapi.auth2.GoogleAuth | undefined;
 
   getMeetings() {
     return this.http.get<Meeting[]>(`${this.url}/all-meetings/${this.adminId}?role=admin`)
+  }
+
+  createMeeting(meet: Meeting) {
+    this.auth2?.grantOfflineAccess({
+      scope:"openid profile email https://www.googleapis.com/auth/calendar"
+    }).then(resp => {
+      let auth_code = resp.code;
+      let body = {
+        code: auth_code,
+        ...meet
+      }
+      this.http.post<any>(`${this.url}/create`, body)
+    })
   }
 
   updateMeeting(meetId: number, meet: Meeting) {
