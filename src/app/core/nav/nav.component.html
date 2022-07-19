@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light ">
     <button *ngIf="canShowNav" class="p-button-rounded p-button-text" pButton icon="pi pi-bars" (click)="menuClick()"></button>
-    <label routerLink="" type="button" class="mx-2 p-button-sm p-button-outlined p-button-text">Scoolix</label>
+    <div class="logo">
+        <img src="../../../assets/images/backgrounds/logo.png" alt="skologie">
+        <span>koologie</span>
+
+    </div>
     <button aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarToggler" data-bs-toggle="collapse" type="button">
     <span class="navbar-toggler-icon"></span>
   </button>

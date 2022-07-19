@@ -3,6 +3,21 @@
     background: #0e2a47;
 }
 
+.logo {
+    display: flex;
+}
+
+.logo img {
+    height: 50px !important;
+    width: 50px !important;
+}
+
+.logo span {
+    color: #ffff;
+    margin-top: 16px;
+    font-size: large;
+}
+
 ::ng-deep .navbar {
     background: #0e2a47;
 }
