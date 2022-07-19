@@ -8,7 +8,18 @@ import {Meeting} from "../../models/meeting";
 })
 export class MeetingCrudService {
 
-  constructor(private http: HttpClient, private stateService: StateService) { }
+  constructor(private http: HttpClient, private stateService: StateService) {
+    gapi.load('auth',()=>{
+      // @ts-ignore
+      this.auth2=gapi.auth2.init(
+        // @ts-ignore
+        {
+          client_id :"43384519615-haoarcj3935ckm6s0t0cfh77ed2gd72k.apps.googleusercontent.com",
+          // @ts-ignore
+          plugin_name: "chat"
+        })
+    })
+  }
 
   private url = "http://127.0.0.1:3000/meeting"
   private state = this.stateService.getState();
@@ -20,15 +31,31 @@ export class MeetingCrudService {
   }
 
   createMeeting(meet: Meeting) {
-    this.auth2?.grantOfflineAccess({
+    console.log(meet)
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    this.auth2.grantOfflineAccess({
       scope:"openid profile email https://www.googleapis.com/auth/calendar"
     }).then(resp => {
       let auth_code = resp.code;
+      // @ts-ignore
+      delete meet.link
       let body = {
         code: auth_code,
+        date_time:meet.date,
         ...meet
       }
-      this.http.post<any>(`${this.url}/create`, body)
+      console.log(meet)
+      console.log(resp)
+      this.http.post<any>(`${this.url}/create`, body).subscribe({
+        next:()=>{
+
+        },
+        error:(error)=>{
+          console.log(error)
+        }
+      })
     })
   }
 

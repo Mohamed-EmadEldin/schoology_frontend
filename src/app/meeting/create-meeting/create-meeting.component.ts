@@ -62,7 +62,7 @@ export class CreateMeetingComponent implements OnInit {
   }
 
   signInWithGoogle(formData: object): void {
-    this.authService.createMeet(formData,this.messageService);
+    this.authService.createMeet(formData);
   }
 
   handelSubmit(form: NgForm) {

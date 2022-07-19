@@ -29,6 +29,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CourseCrudComponent } from './course-crud/course-crud.component';
+import {InputNumberModule} from "primeng/inputnumber";
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { CourseCrudComponent } from './course-crud/course-crud.component';
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatRadioModule
+        MatRadioModule,
+        InputNumberModule
     ]
 })
 export class AdminModule { }

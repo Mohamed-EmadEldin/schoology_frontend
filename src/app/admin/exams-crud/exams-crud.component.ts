@@ -7,6 +7,7 @@ import {HelperService} from "../../services/admin/helper.service";
 import {ICourse, ITeacher, IUiClass} from "../../interfaces/Interfaces";
 import {NgForm} from "@angular/forms";
 import {ExamService} from "../../services/exam.service";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-exams-crud',
@@ -93,6 +94,7 @@ export class ExamsCrudComponent implements OnInit {
     if (this._exam.name !== '' || this._exam.link !== '' || this._exam.date != '') {
       this.examCrudService.createExam({
         ...this._exam,
+        // date: formatDate(this._exam.date, 'YYYY-MM-dd', 'en'),
         teacherId: this.selectedTeacherId,
         classId: this.selectedClass,
         courseId: this.selectedCourse

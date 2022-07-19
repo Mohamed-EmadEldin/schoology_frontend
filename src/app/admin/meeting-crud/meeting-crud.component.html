@@ -5,11 +5,14 @@
   <p-dialog header="add meeting" [(visible)]="displayCreateModel" [modal]="true" [draggable]="false">
 
     <div class="left-inputs flex-column">
-      <input type="text" pInputText placeholder="Link" name="link"
-             [(ngModel)]="_meeting.link" #link="ngModel" required/>
-      <p-message severity="error" text="invalid link" *ngIf="link.invalid && invalid"></p-message>
+<!--      <input type="text" pInputText placeholder="Link" name="link"-->
+<!--             [(ngModel)]="_meeting.link" #link="ngModel" required/>-->
+<!--      <p-message severity="error" text="invalid link" *ngIf="link.invalid && invalid"></p-message>-->
+
       <input type="text" pInputText [(ngModel)]="_meeting.name" placeholder="Meeting Title" name="name" #name="ngModel"
              required/>
+      <p-inputNumber [(ngModel)]="_meeting.period" [min]="1" [max]="8" [showButtons]="true"
+                     placeholder="period" name="period" #period="ngModel" [required]="true"  ></p-inputNumber>
       <p-message severity="error" text="invalid name" *ngIf="name.invalid && invalid"></p-message>
     </div>
     <div class="right-inputs flex-column">

@@ -3,7 +3,7 @@ import {Meeting} from "../../models/meeting";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {MeetingCrudService} from "../../services/admin/meeting-crud.service";
 import {Table} from "primeng/table";
-import {ICourse, ITeacher, IUiClass} from "../../Interfaces";
+import {ICourse, ITeacher, IUiClass} from "../../interfaces/Interfaces";
 import {HelperService} from "../../services/admin/helper.service";
 import {formatDate} from "@angular/common";
 
