@@ -30,6 +30,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CourseCrudComponent } from './course-crud/course-crud.component';
 import {InputNumberModule} from "primeng/inputnumber";
+import {MultiSelectModule} from "primeng/multiselect";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import {InputNumberModule} from "primeng/inputnumber";
         MatFormFieldModule,
         MatInputModule,
         MatRadioModule,
-        InputNumberModule
+        InputNumberModule,
+        MultiSelectModule,
+        MatSelectModule
     ]
 })
 export class AdminModule { }

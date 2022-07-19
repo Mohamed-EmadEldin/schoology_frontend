@@ -53,7 +53,6 @@ export class MeetingAuthService {
 
   this.router.navigate([`${this.stateService.getState().userType}/cal`])
 })
-console.log(auth_code)
 }
   public observable() : Observable<gapi.auth2.GoogleUser>
   {

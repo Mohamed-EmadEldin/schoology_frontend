@@ -21,7 +21,7 @@ export class NotificationService {
   }
 
   getUserNotification() {
-    this.url = `http://127.0.0.1:3000/nots/myNots/`+this.stateService.getState().classId
+    this.url = `http://127.0.0.1:3000/nots/myNots/`+this.stateService.getState().personId
     return this.http.get<any>(this.url)
 
   }
