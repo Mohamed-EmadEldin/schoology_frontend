@@ -35,6 +35,13 @@ export class AdminMainComponent implements OnInit {
     route: "/admin/class-crud"
   };
 
+  coursesCard = {
+    header: "Courses",
+    subheader: "edit Courses",
+    image_src: "assets/images/cards/undraw_handcrafts_house.svg",
+    route: "/admin/course-crud"
+  };
+
 
   constructor() { }
 

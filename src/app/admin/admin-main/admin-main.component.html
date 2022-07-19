@@ -34,6 +34,14 @@
       </ng-template>
     </p-card>
 
+    <!-- courses card -->
+    <p-card [header]="coursesCard.header" [subheader]="coursesCard.subheader" [routerLink]="coursesCard.route"
+            [style]="{width: '300px'}" styleClass="p-card-shadow" class="col-sm-12 col-lg-4">
+      <ng-template pTemplate="header">
+        <img alt="Card" [src]="coursesCard.image_src" width="250" height="170">
+      </ng-template>
+    </p-card>
+
 
   </div>
 </div>
