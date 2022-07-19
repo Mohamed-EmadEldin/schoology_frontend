@@ -8,22 +8,24 @@ import {CardModule} from "primeng/card";
 import {InputTextModule} from "primeng/inputtext";
 import {InputNumberModule} from "primeng/inputnumber";
 import {MessageModule} from "primeng/message";
+import {ToastModule} from "primeng/toast";
 
 @NgModule({
   declarations: [
     CreateMeetingComponent
   ],
-  imports: [
-    CommonModule,
-    DropdownModule,
-    FormsModule,
-    CalendarModule,
-    CardModule,
-    InputTextModule,
-    InputNumberModule,
-    ReactiveFormsModule,
-    MessageModule,
-  ],
+    imports: [
+        CommonModule,
+        DropdownModule,
+        FormsModule,
+        CalendarModule,
+        CardModule,
+        InputTextModule,
+        InputNumberModule,
+        ReactiveFormsModule,
+        MessageModule,
+        ToastModule,
+    ],
   providers:[],
   exports:[
     CreateMeetingComponent

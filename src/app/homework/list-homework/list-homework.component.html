@@ -67,7 +67,7 @@
       </td>
       <ng-template [ngIf]="stateService.getState().userType != 'teacher'">
         <td>{{allFile.teacher.user.name }}</td>
-        <td>{{allFile.teacher.Course.name }}</td>
+        <td>{{allFile.teacher.course.name }}</td>
 
       </ng-template>
       <ng-template [ngIf]="stateService.getState().userType === 'teacher'">

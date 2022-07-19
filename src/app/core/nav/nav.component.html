@@ -34,7 +34,7 @@
 
 
             <li class="nav-item px-3">
-                <button *ngIf="canShowNav" routerLink="/notification" pButton pRipple type="button"
+                <button *ngIf="canShowNav  && stateService.getState().userType === 'student'" routerLink="/notification" pButton pRipple type="button"
                         label="Notifications" class="p-button-sm p-button-outlined p-button-text" icon="pi pi-bell"
                         routerLinkActive="active-link"></button>
             </li>

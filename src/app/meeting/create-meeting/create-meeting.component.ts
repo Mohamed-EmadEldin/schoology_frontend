@@ -4,7 +4,11 @@ import {MeetingAuthService} from "../../services/meeting-auth.service";
 import {FormControl, FormGroup, NgForm, NgModel, Validators} from "@angular/forms";
 import {Meeting} from "../../models/meeting";
 import {formatDate} from '@angular/common';
-import {IUiClass} from "../../Interfaces";
+import {IUiClass} from "../../interfaces/Interfaces";
+import {MessageService} from "primeng/api";
+
+
+
 
 @Component({
   selector: 'app-create-meeting',
@@ -45,7 +49,7 @@ export class CreateMeetingComponent implements OnInit {
   });
 
 
-  constructor(private stateService: StateService, private authService: MeetingAuthService) {
+  constructor(private stateService: StateService, private authService: MeetingAuthService , public messageService:MessageService) {
 
   }
 
@@ -58,8 +62,7 @@ export class CreateMeetingComponent implements OnInit {
   }
 
   signInWithGoogle(formData: object): void {
-    this.authService.createMeet(formData);
-    console.log("sas")
+    this.authService.createMeet(formData,this.messageService);
   }
 
   handelSubmit(form: NgForm) {

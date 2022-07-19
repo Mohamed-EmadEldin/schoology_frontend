@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {BehaviorSubject, filter} from 'rxjs';
 import {StateService} from "./services/state.service";
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
 
   mySubj = new BehaviorSubject<any>({text: 'message'});
 
-  constructor(private router: Router, public stateService: StateService) {
+  constructor(private router: Router, public stateService: StateService,public authService:AuthService) {
   }
 
   ngOnInit() {
@@ -33,6 +34,10 @@ export class AppComponent implements OnInit {
 
     this.stateService.loggedInSubject.subscribe((state)=>{
       this.canShowSide=state
+      if(! this.canShowSide && this.authService.isLoggedIn())
+      {
+        this.canShowSide=true
+      }
     })
 
   }

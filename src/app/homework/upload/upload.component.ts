@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MessageService} from "primeng/api";
 import {HomeworkService} from "../../services/homework.service";
-import {IUiClass} from "../../Interfaces";
+import {IUiClass} from "../../interfaces/Interfaces";
 import {StateService} from "../../services/state.service";
 
 @Component({

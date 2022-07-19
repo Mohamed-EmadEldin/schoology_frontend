@@ -13,12 +13,9 @@ export class NotificationComponent implements OnInit {
 
   constructor(private notificationService: NotificationService) { }
 
-  async ngOnInit() {
-    await this.notificationService.getUserNotification()
-    setTimeout(()=>{
-      this.notifications = Object.values(this.notificationService.getNotifications())
-      console.log(this.notifications)
-    }, 500)
+   ngOnInit() {
+     this.notificationService.getUserNotification().subscribe(data => this.notifications = data)
+
   }
 
   @ViewChild('dt') dt: Table | undefined ;

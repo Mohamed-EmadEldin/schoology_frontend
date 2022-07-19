@@ -1,10 +1,6 @@
 <p-toast></p-toast>
 <div class="container mt-2 border-2 border-round-3xl">
-  <div class="d-flex justify-content-end">
-    <button pButton pRipple type="button" icon="pi pi-plus" label="Add new Quiz"
-            class="align-self-end p-button-sm p-button-rounded my-2" routerLink="/teacher/create-quiz">
-    </button>
-  </div>
+  
   <p-table #dt [value]="grades" [paginator]="true" [rows]="5"
            [filterDelay]="0" [globalFilterFields]="['name', 'date','class name']">
     <ng-template pTemplate="caption">

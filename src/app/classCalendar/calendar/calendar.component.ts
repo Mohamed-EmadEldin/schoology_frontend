@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CalendarService} from "../../services/calendar.service";
 import {StateService} from "../../services/state.service";
 
@@ -9,7 +9,8 @@ import {StateService} from "../../services/state.service";
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(public calendarService : CalendarService,public stateService:StateService) { }
+  constructor(public calendarService: CalendarService, public stateService: StateService) {
+  }
 
   events: any;
   dateEventsArray: any;
@@ -17,16 +18,18 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     try {
-      this.calendarService.apiGetTodayEvents()
-      this.calendarService.apiGetDateEvents()
-      setTimeout(()=> {
-        this.events = this.calendarService.getDateEvents()
-        this.dateEventsArray = Object.values(this.events)
-        this.events = this.calendarService.getTodayEvents()
-        this.todayEventsArray = Object.values(this.events)
-        console.log(this.todayEventsArray)
-      }, 1000)
-    }catch (e) {
+      this.calendarService.apiGetTodayEvents().subscribe(data => {
+        this.todayEventsArray = Object.values(data)
+      });
+      this.calendarService.apiGetDateEvents().subscribe(data => this.dateEventsArray = Object.values(data));
+      // setTimeout(()=> {
+      //   this.events = this.calendarService.getDateEvents()
+      //   this.dateEventsArray = Object.values(this.events)
+      //   this.events = this.calendarService.getTodayEvents()
+      //   this.todayEventsArray = Object.values(this.events)
+      //   console.log(this.todayEventsArray)
+      // }, 1000)
+    } catch (e) {
       console.error(e)
     }
   }

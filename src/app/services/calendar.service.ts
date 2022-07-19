@@ -28,9 +28,9 @@ export class CalendarService {
       "role": this.role,
     }
 
-    this.http.get(url, {
+    return this.http.get(url, {
       params: {...params}
-    }).subscribe(data => this.currentEvents = data);
+    })
   }
 
   public apiGetTodayEvents() {
@@ -43,11 +43,9 @@ export class CalendarService {
       "date": today
     }
 
-    this.http.get(url, {
+   return this.http.get(url, {
       params: {...params}
-    }).subscribe(data => {
-      this.todayEvents = data
-    });
+    })
   }
 
   public getDateEvents() {

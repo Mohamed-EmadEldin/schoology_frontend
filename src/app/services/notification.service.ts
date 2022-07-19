@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {StateService} from "./state.service";
 
@@ -8,21 +8,22 @@ import {StateService} from "./state.service";
 export class NotificationService {
 
   private notifications = {};
-  readonly userId;
-  readonly url;
+  userId;
+  url;
 
   constructor(private http: HttpClient, private stateService: StateService) {
-    if(stateService.getState().userId != -1){
+    if (stateService.getState().userId != -1) {
       this.userId = stateService.getState().userId
     }
     //TODO: [ph]
     this.userId = 2
-    this.url = `http://127.0.0.1:3000/nots/myNots/${this.userId}`;
+    this.url = `http://127.0.0.1:3000/nots/myNots/`;
   }
 
-  async getUserNotification() {
-    this.http.get(this.url)
-      .subscribe(data => this.notifications = data)
+  getUserNotification() {
+    this.url = `http://127.0.0.1:3000/nots/myNots/`+this.stateService.getState().classId
+    return this.http.get<any>(this.url)
+
   }
 
   getNotifications() {

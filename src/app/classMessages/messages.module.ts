@@ -20,6 +20,7 @@ import {RippleModule} from "primeng/ripple";
 import {MatCardModule} from "@angular/material/card";
 import {ToastModule} from "primeng/toast";
 import {SendMessageComponent} from './send-message/send-message.component';
+import {DropdownModule} from "primeng/dropdown";
 
 
 @NgModule({
@@ -29,22 +30,23 @@ import {SendMessageComponent} from './send-message/send-message.component';
     MessagesWindowComponent,
     SendMessageComponent,
   ],
-  imports: [
-    CommonModule,
-    MatPaginatorModule,
-    RouterModule,
-    MatTableModule,
-    MatDialogModule,
-    MatInputModule,
-    FormsModule,
-    FormsModule,
-    MatFormFieldModule,
-    InputTextModule,
-    ButtonModule,
-    RippleModule,
-    MatCardModule,
-    ToastModule,
-  ],
+    imports: [
+        CommonModule,
+        MatPaginatorModule,
+        RouterModule,
+        MatTableModule,
+        MatDialogModule,
+        MatInputModule,
+        FormsModule,
+        FormsModule,
+        MatFormFieldModule,
+        InputTextModule,
+        ButtonModule,
+        RippleModule,
+        MatCardModule,
+        ToastModule,
+        DropdownModule,
+    ],
   exports: [
     MessagesComponent,
     SendMessageComponent

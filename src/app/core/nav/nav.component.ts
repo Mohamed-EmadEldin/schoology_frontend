@@ -2,6 +2,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {SidebarService} from "../../services/sidebar.service";
 import {AuthService} from "../../services/auth.service";
+import {StateService} from "../../services/state.service";
 
 @Component({
   selector: 'app-nav',
@@ -15,6 +16,7 @@ export class NavComponent implements OnInit {
     public sidebar: SidebarService,
     private router: Router,
     private authService:AuthService,
+    public stateService:StateService
 
     ) { }
 

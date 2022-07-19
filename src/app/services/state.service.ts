@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {IUiClass} from "../Interfaces";
+import {IUiClass} from "../interfaces/Interfaces";
 import {BehaviorSubject} from "rxjs";
 
 export interface IClassRoom {

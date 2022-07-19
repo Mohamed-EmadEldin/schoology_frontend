@@ -11,8 +11,10 @@ import {ClassesGradesComponent} from "../grades/classes-grades/classes-grades.co
 import {StudentsGradesComponent} from "../grades/students-grades/students-grades.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {SendMessageComponent} from "../classMessages/send-message/send-message.component";
+import {DashboardComponent} from "../dashboard/dashboard/dashboard.component";
 
 const routes: Routes = [
+  { path: '', component: DashboardComponent },
   { path: 'create-meeting', component: CreateMeetingComponent },
   { path: 'cal', component: CalendarComponent },
   { path: 'create-exam', component: CreateExamComponent },

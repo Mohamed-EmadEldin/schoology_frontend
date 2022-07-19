@@ -55,7 +55,7 @@
                 class="p-button-sm p-button-text ">
           <mat-icon>messages</mat-icon>
         </button>
-        <p-badge [value]="newMessagesCount.toString()" severity="info"></p-badge>
+        <p-badge [value]="newMessagesCount" severity="info"></p-badge>
 
       </div>
     </li>
@@ -95,7 +95,7 @@
                 class="p-button-sm p-button-text ">
           <mat-icon>messages</mat-icon>
         </button>
-        <p-badge [value]="newMessagesCount.toString()" severity="info"></p-badge>
+        <p-badge [value]="newMessagesCount" severity="info"></p-badge>
       </div>
     </li>
   </ul>
@@ -131,10 +131,10 @@
     <br>
     <li>
       <div>
-        <button routerLink=" " pButton type="button " label="Messages " class="p-button-sm p-button-text ">
+        <button routerLink="parent/messages" pButton type="button " label="Messages " class="p-button-sm p-button-text ">
           <mat-icon>messages</mat-icon>
         </button>
-        <p-badge [value]="newMessagesCount.toString()" severity="info"></p-badge>
+        <p-badge [value]="newMessagesCount" severity="info"></p-badge>
       </div>
     </li>
   </ul>
