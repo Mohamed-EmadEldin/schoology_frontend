@@ -50,7 +50,10 @@ export class MeetingCrudComponent implements OnInit {
 
   ngOnInit(): void {
     this.meetingCrudService.getMeetings()
-      .subscribe(data => this._meetings = data)
+      .subscribe(data => {
+        this._meetings = data
+        console.log(this._meetings)
+      })
   }
 
   openCreateDialog() {

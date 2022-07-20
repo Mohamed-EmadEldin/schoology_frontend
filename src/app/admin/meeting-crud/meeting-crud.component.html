@@ -5,11 +5,14 @@
   <p-dialog header="add meeting" [(visible)]="displayCreateModel" [modal]="true" [draggable]="false">
 
     <div class="left-inputs flex-column">
-      <input type="text" pInputText placeholder="Link" name="link"
-             [(ngModel)]="_meeting.link" #link="ngModel" required/>
-      <p-message severity="error" text="invalid link" *ngIf="link.invalid && invalid"></p-message>
+<!--      <input type="text" pInputText placeholder="Link" name="link"-->
+<!--             [(ngModel)]="_meeting.link" #link="ngModel" required/>-->
+<!--      <p-message severity="error" text="invalid link" *ngIf="link.invalid && invalid"></p-message>-->
+
       <input type="text" pInputText [(ngModel)]="_meeting.name" placeholder="Meeting Title" name="name" #name="ngModel"
              required/>
+      <p-inputNumber [(ngModel)]="_meeting.period" [min]="1" [max]="8" [showButtons]="true"
+                     placeholder="period" name="period" #period="ngModel" [required]="true"  ></p-inputNumber>
       <p-message severity="error" text="invalid name" *ngIf="name.invalid && invalid"></p-message>
     </div>
     <div class="right-inputs flex-column">
@@ -82,15 +85,21 @@
         </th>
         <th pSortableColumn="createdAt">
           <div class="flex justify-content-between align-items-center">
-            Created At
+            Period
             <p-sortIcon field="createdAt"></p-sortIcon>
           </div>
         </th>
-        <th pSortableColumn="updatedAt">
-          <div class="flex justify-content-between align-items-center">
-            Updated At
-            <p-sortIcon field="updatedAt"></p-sortIcon>
-          </div>
+<!--        <th pSortableColumn="updatedAt">-->
+<!--          <div class="flex justify-content-between align-items-center">-->
+<!--            Updated At-->
+<!--            <p-sortIcon field="updatedAt"></p-sortIcon>-->
+<!--          </div>-->
+<!--        </th>-->
+        <th>
+          Class
+        </th>
+        <th>
+          Course
         </th>
         <th style="width:8rem"></th>
       </tr>
@@ -101,26 +110,37 @@
           <p-tableCheckbox [value]="_meeting"></p-tableCheckbox>
         </td>
         <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="_meeting.name">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{_meeting.name}}
-            </ng-template>
-          </p-cellEditor>
+          {{_meeting.name}}
         </td>
         <td>
           <a href="{{_meeting.link}}" target="_blank" rel="noreferrer">link</a>
         </td>
         <td>
-          {{_meeting.date | date: 'mediumDate'}}
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="date" [(ngModel)]="_meeting.date">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{_meeting.date | date: 'mediumDate'}}
+            </ng-template>
+          </p-cellEditor>
         </td>
         <td>
-          {{_meeting.createdAt | date: 'medium'}}
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-inputNumber [(ngModel)]="_meeting.period" [min]="1" [max]="8" [showButtons]="true"
+                             placeholder="period" name="period"></p-inputNumber>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{_meeting.period}}
+            </ng-template>
+          </p-cellEditor>
         </td>
         <td>
-          {{_meeting.updatedAt | date: 'medium'}}
+          {{_meeting.class.name }}
+        </td>
+        <td>
+          {{_meeting.course.name }}
         </td>
         <td style="text-align:center">
           <div class="d-flex">

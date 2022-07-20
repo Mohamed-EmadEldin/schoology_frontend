@@ -96,20 +96,20 @@
           <p-tableCheckbox [value]="_exam"></p-tableCheckbox>
         </td>
         <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="_exam.name">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{_exam.name}}
-            </ng-template>
-          </p-cellEditor>
+          {{_exam.name}}
         </td>
         <td>
           <a href="{{_exam.link}}" target="_blank" rel="noreferrer">link</a>
         </td>
         <td>
-          {{_exam.date}}
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="date" [(ngModel)]="_exam.date">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{_exam.date}}
+            </ng-template>
+          </p-cellEditor>
         </td>
         <td>
           {{_exam.submitted}}
