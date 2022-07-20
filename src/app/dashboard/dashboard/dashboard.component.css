@@ -8,6 +8,10 @@
     width: 100%;
 }
 
+#active {
+    display: flex;
+}
+
 .demo-inline-calendar-card {
     width: 300px;
 }
