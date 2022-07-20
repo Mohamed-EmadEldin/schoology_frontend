@@ -18,6 +18,7 @@ import {IsStudentGuard} from "./guards/is-student.guard";
 import {IsParentGuard} from "./guards/is-parent.guard";
 import {NotificationComponent} from "./notification/notification.component";
 import {IsAdminGuard} from "./guards/is-admin.guard";
+import {AboutComponent} from "./core/about/about.component";
 
 
 const routes:Routes = [
@@ -68,6 +69,10 @@ const routes:Routes = [
   {
     path: "notification",
     component: NotificationComponent
+  },
+  {
+    path: "about",
+    component: AboutComponent
   },
   {
     path: "un-auth",
