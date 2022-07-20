@@ -139,7 +139,7 @@
     </li>
   </ul>
   <ul *ngIf="this.stateService.getState().userType==='admin'">
-    <li>
+    <!--<li>
       <button routerLink="cal" pButton type="button" icon="fa-regular fa-house" label="Register-User"
               class="p-button-sm p-button-text ">
         <mat-icon>app_registration</mat-icon>
@@ -155,6 +155,46 @@
     <li>
       <button routerLink=" " pButton type="button " label="add user " class="p-button-sm p-button-text ">
         <mat-icon>group_add</mat-icon>
+      </button>
+    </li>-->
+    <li>
+      <button routerLink="/admin/meet-crud" pButton type="button" icon="fa-regular fa-house" label="Meetings"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+    <li>
+      <button routerLink="/admin/exam-crud" pButton type="button" icon="fa-regular fa-house" label="Quizzes"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+
+    <li>
+      <button routerLink="/admin/user-crud" pButton type="button" icon="fa-regular fa-house" label="Users"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+
+    <li>
+      <button routerLink="/admin/class-crud" pButton type="button" icon="fa-regular fa-house" label="Classes"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+
+    <li>
+      <button routerLink="/admin/course-crud" pButton type="button" icon="fa-regular fa-house" label="Courses"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+
+    <li>
+      <button routerLink="/admin/dashboard" pButton type="button" icon="fa-regular fa-house" label="DashBoard"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
       </button>
     </li>
   </ul>
