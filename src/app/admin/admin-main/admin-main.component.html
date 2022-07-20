@@ -42,6 +42,14 @@
       </ng-template>
     </p-card>
 
+    <!-- dashboard card -->
+    <p-card [header]="dashboardCard.header" [subheader]="dashboardCard.subheader" [routerLink]="dashboardCard.route"
+            [style]="{width: '300px'}" styleClass="p-card-shadow" class="col-sm-12 col-lg-4 my-2">
+      <ng-template pTemplate="header">
+        <img alt="Card" [src]="dashboardCard.image_src" width="250" height="170">
+      </ng-template>
+    </p-card>
+
 
   </div>
 </div>

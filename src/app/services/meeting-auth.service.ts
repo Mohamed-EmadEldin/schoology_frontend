@@ -25,17 +25,17 @@ export class MeetingAuthService {
     })
 
   }
-  public createMeet(formData:any,messageServiceObj:MessageService){
+  public createMeet(formData:any){
 
     // @ts-ignore
     this.auth2.grantOfflineAccess({
       scope:"openid profile email https://www.googleapis.com/auth/calendar"
     }).then((resp)=>{
-      this.ngZone.run(()=>this.cb(formData,resp,messageServiceObj))
+      this.ngZone.run(()=>this.cb(formData,resp))
     })
   }
 
-  private cb (formData:any,resp:any,messageServiceObj:MessageService) {
+  private cb (formData:any,resp:any) {
   let auth_code = resp.code;
   let body ={
     code:auth_code,
@@ -51,10 +51,8 @@ export class MeetingAuthService {
   console.log(body)
   this.httpClient.post<any>("http://localhost:3000/meeting/create",body).subscribe(()=>{
 
-  messageServiceObj.add({severity:'success', summary:'Success', detail:`your meeting has been created`})
   this.router.navigate([`${this.stateService.getState().userType}/cal`])
 })
-console.log(auth_code)
 }
   public observable() : Observable<gapi.auth2.GoogleUser>
   {

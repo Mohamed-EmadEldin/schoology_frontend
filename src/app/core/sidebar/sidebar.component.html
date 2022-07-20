@@ -1,5 +1,5 @@
 <p-sidebar [(visible)]="sidebar.sidebar" [baseZIndex]="10000">
-    <!-- <ul class="layout-menu" role="menu">
+  <!-- <ul class="layout-menu" role="menu">
       <li class="layout-menuitem-category" *ngFor="let item of model; let i = index;" [tabIndex]=i role="none">
           <div class="layout-menuitem-root-text" [attr.aria-label]="item.label">{{item.label}}</div>
           <ul role="menu">
@@ -10,139 +10,194 @@
       </li>
   </ul> -->
 
-    <ul>
-        <li>
-            <button routerLink="dashbord" pButton type="button" icon="fa-regular fa-house" label="Home" class="p-button-sm p-button-text ">
-                <mat-icon>homes</mat-icon>
-            </button>
-        </li>
-    </ul>
-    <!-- <ul *ngIf="user.role === 'admin'"> -->
-    <ul *ngIf="this.stateService.getState().userType==='teacher'">
+  <ul>
 
-        <li>
-            <button routerLink="teacher/cal" pButton type="button" icon="fa-regular fa-house" label="Calendar" class="p-button-sm p-button-text ">
+    <h2>
+      <mat-icon>homes</mat-icon>
+      Dashboard
+
+    </h2>
+  </ul>
+  <!-- <ul *ngIf="user.role === 'admin'"> -->
+  <ul *ngIf="this.stateService.getState().userType==='teacher'">
+
+    <li>
+      <button routerLink="teacher/cal" pButton type="button" icon="fa-regular fa-house" label="Calendar"
+              class="p-button-sm p-button-text ">
         <mat-icon>calendar_month</mat-icon>
       </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink="teacher/list-quizzes" pButton type="button " label="quizzes " class="p-button-sm p-button-text ">
-        <mat-icon>quizzes</mat-icon>
-      </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink="teacher/home-work" pButton type="button " label="Homework " class="p-button-sm p-button-text ">
-        <mat-icon>tasks</mat-icon>
-      </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink="teacher/classes-grades" pButton type="button " label="Grades" class="p-button-sm p-button-text ">
-        <mat-icon>grades</mat-icon>
-      </button>
-        </li>
-        <br>
-        <li>
-            <div>
-                <button routerLink="/teacher/messages" pButton type="button " label="Messages " class="p-button-sm p-button-text ">
-          <mat-icon>messages</mat-icon>
-        </button>
-                <p-badge [value]="newMessagesCount" severity="info"></p-badge>
-
-            </div>
-        </li>
-    </ul>
+    </li>
     <br>
-    <ul *ngIf="this.stateService.getState().userType==='student'">
-        <li>
-            <button routerLink="/student/cal" pButton type="button" icon="fa-regular fa-house" label="Meeting" class="p-button-sm p-button-text ">
-        <mat-icon>calendar_month</mat-icon>
-      </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink="/student/list-quizzes" pButton type="button " label="Solve-quizzes " class="p-button-sm p-button-text ">
+    <li>
+      <button routerLink="teacher/list-quizzes" pButton type="button " label="quizzes "
+              class="p-button-sm p-button-text ">
         <mat-icon>quizzes</mat-icon>
       </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink="student/home-work" pButton type="button " label="Solve-Homework " class="p-button-sm p-button-text ">
+    </li>
+    <br>
+    <li>
+      <button routerLink="teacher/home-work" pButton type="button " label="Homework "
+              class="p-button-sm p-button-text ">
         <mat-icon>tasks</mat-icon>
       </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink="student/grades" pButton type="button " label="My-Grades" class="p-button-sm p-button-text ">
+    </li>
+    <br>
+    <li>
+      <button routerLink="teacher/classes-grades" pButton type="button " label="Grades"
+              class="p-button-sm p-button-text ">
         <mat-icon>grades</mat-icon>
       </button>
-        </li>
-        <br>
-        <li>
-            <div class="d-flex">
-                <button routerLink="student/messages" pButton type="button " label="Messages " class="p-button-sm p-button-text ">
+    </li>
+    <br>
+    <li>
+      <div>
+        <button routerLink="/teacher/messages" pButton type="button " label="Messages "
+                class="p-button-sm p-button-text ">
           <mat-icon>messages</mat-icon>
         </button>
-                <p-badge [value]="newMessagesCount" severity="info"></p-badge>
-            </div>
-        </li>
-    </ul>
+        <p-badge [value]="newMessagesCount" severity="info"></p-badge>
 
-    <ul *ngIf="this.stateService.getState().userType==='parent'">
-        <li>
-            <button routerLink="/parent/cal" pButton type="button" icon="fa-regular fa-house" label="Meeting" class="p-button-sm p-button-text ">
+      </div>
+    </li>
+  </ul>
+  <br>
+  <ul *ngIf="this.stateService.getState().userType==='student'">
+    <li>
+      <button routerLink="/student/cal" pButton type="button" icon="fa-regular fa-house" label="Meeting"
+              class="p-button-sm p-button-text ">
         <mat-icon>calendar_month</mat-icon>
       </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink="/parent/list-quizzes" pButton type="button " label="my-child-quizzes " class="p-button-sm p-button-text ">
+    </li>
+    <br>
+    <li>
+      <button routerLink="/student/list-quizzes" pButton type="button " label="Solve-quizzes "
+              class="p-button-sm p-button-text ">
         <mat-icon>quizzes</mat-icon>
       </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink="parent/home-work" pButton type="button " label="my-child-Homework " class="p-button-sm p-button-text ">
+    </li>
+    <br>
+    <li>
+      <button routerLink="student/home-work" pButton type="button " label="Solve-Homework "
+              class="p-button-sm p-button-text ">
         <mat-icon>tasks</mat-icon>
       </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink="parent/grades" pButton type="button " label="My-child-Grades" class="p-button-sm p-button-text ">
+    </li>
+    <br>
+    <li>
+      <button routerLink="student/grades" pButton type="button " label="My-Grades" class="p-button-sm p-button-text ">
         <mat-icon>grades</mat-icon>
       </button>
-        </li>
-        <br>
-        <li>
-            <div>
-                <button routerLink="parent/messages" pButton type="button " label="Messages " class="p-button-sm p-button-text ">
+    </li>
+    <br>
+    <li>
+      <div class="d-flex">
+        <button routerLink="student/messages" pButton type="button " label="Messages "
+                class="p-button-sm p-button-text ">
           <mat-icon>messages</mat-icon>
         </button>
-                <p-badge [value]="newMessagesCount" severity="info"></p-badge>
-            </div>
-        </li>
-    </ul>
-    <ul *ngIf="this.stateService.getState().userType==='admin'">
-        <li>
-            <button routerLink="cal" pButton type="button" icon="fa-regular fa-house" label="Register-User" class="p-button-sm p-button-text ">
+        <p-badge [value]="newMessagesCount" severity="info"></p-badge>
+      </div>
+    </li>
+  </ul>
+
+  <ul *ngIf="this.stateService.getState().userType==='parent'">
+    <li>
+      <button routerLink="/parent/cal" pButton type="button" icon="fa-regular fa-house" label="Meeting"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+    <br>
+    <li>
+      <button routerLink="/parent/list-quizzes" pButton type="button " label="my-child-quizzes "
+              class="p-button-sm p-button-text ">
+        <mat-icon>quizzes</mat-icon>
+      </button>
+    </li>
+    <br>
+    <li>
+      <button routerLink="parent/home-work" pButton type="button " label="my-child-Homework "
+              class="p-button-sm p-button-text ">
+        <mat-icon>tasks</mat-icon>
+      </button>
+    </li>
+    <br>
+    <li>
+      <button routerLink="parent/grades" pButton type="button " label="My-child-Grades"
+              class="p-button-sm p-button-text ">
+        <mat-icon>grades</mat-icon>
+      </button>
+    </li>
+    <br>
+    <li>
+      <div>
+        <button routerLink="parent/messages" pButton type="button " label="Messages " class="p-button-sm p-button-text ">
+          <mat-icon>messages</mat-icon>
+        </button>
+        <p-badge [value]="newMessagesCount" severity="info"></p-badge>
+      </div>
+    </li>
+  </ul>
+  <ul *ngIf="this.stateService.getState().userType==='admin'">
+    <!--<li>
+      <button routerLink="cal" pButton type="button" icon="fa-regular fa-house" label="Register-User"
+              class="p-button-sm p-button-text ">
         <mat-icon>app_registration</mat-icon>
       </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink=" " pButton type="button " label="add grades" class="p-button-sm p-button-text ">
+    </li>
+    <br>
+    <li>
+      <button routerLink=" " pButton type="button " label="add grades" class="p-button-sm p-button-text ">
         <mat-icon>grades</mat-icon>
       </button>
-        </li>
-        <br>
-        <li>
-            <button routerLink=" " pButton type="button " label="add user " class="p-button-sm p-button-text ">
+    </li>
+    <br>
+    <li>
+      <button routerLink=" " pButton type="button " label="add user " class="p-button-sm p-button-text ">
         <mat-icon>group_add</mat-icon>
       </button>
-        </li>
-    </ul>
+    </li>-->
+    <li>
+      <button routerLink="/admin/meet-crud" pButton type="button" icon="fa-regular fa-house" label="Meetings"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+    <li>
+      <button routerLink="/admin/exam-crud" pButton type="button" icon="fa-regular fa-house" label="Quizzes"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+
+    <li>
+      <button routerLink="/admin/user-crud" pButton type="button" icon="fa-regular fa-house" label="Users"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+
+    <li>
+      <button routerLink="/admin/class-crud" pButton type="button" icon="fa-regular fa-house" label="Classes"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+
+    <li>
+      <button routerLink="/admin/course-crud" pButton type="button" icon="fa-regular fa-house" label="Courses"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+
+    <li>
+      <button routerLink="/admin/dashboard" pButton type="button" icon="fa-regular fa-house" label="DashBoard"
+              class="p-button-sm p-button-text ">
+        <mat-icon>calendar_month</mat-icon>
+      </button>
+    </li>
+  </ul>
 
 
 </p-sidebar>

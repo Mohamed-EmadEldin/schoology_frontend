@@ -18,7 +18,8 @@ export interface IAppState {
   studentId: number,
   token:string,
   personId:number,
-  newMessagesCount:number
+  newMessagesCount:number,
+  newNotificationsCount:number,
 }
 
 @Injectable({
@@ -26,11 +27,12 @@ export interface IAppState {
 })
 
 export class StateService {
-  public state: IAppState = {userId: -1, userName: "", userType: "",classes:[],courseId:-1,classId:-1,studentId:-1,token:"",className:"",personId:1,newMessagesCount:-1};
+  public state: IAppState = {userId: -1, userName: "", userType: "",classes:[],courseId:-1,classId:-1,studentId:-1,token:"",className:"",personId:1,newMessagesCount:-1,newNotificationsCount:-1};
   constructor() {
 
   }
   public loggedInSubject:BehaviorSubject<boolean> = new BehaviorSubject(false)
+  public notificationsCount:BehaviorSubject<number> = new BehaviorSubject(0)
   public setAppState(newState: any,token:string) {
     this.state.userId = newState.userId
     this.state.userName = newState.userName;
@@ -41,6 +43,9 @@ export class StateService {
     this.state.classId = newState?.classId
     this.state.personId = newState.personId // temp
     this.state.newMessagesCount = newState.newMessagesCount // temp
+    this.state.newNotificationsCount = newState.newNotificationsCount// temp
+    this.notificationsCount.next(this.state.newNotificationsCount)
+    console.log(this.notificationsCount.getValue())
     localStorage.setItem("state",JSON.stringify(this.state))
     localStorage.setItem("token",`${token}`)
     this.loggedInSubject.next(true)

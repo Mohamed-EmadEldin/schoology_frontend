@@ -29,6 +29,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CourseCrudComponent } from './course-crud/course-crud.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import {PasswordModule} from "primeng/password";
+import {DividerModule} from "primeng/divider";
+import {InputMaskModule} from "primeng/inputmask";
+import {RadioButtonModule} from "primeng/radiobutton";
+import {MultiSelectModule} from "primeng/multiselect";
+import {PaginatorModule} from "primeng/paginator";
 
 
 @NgModule({
@@ -40,29 +47,36 @@ import { CourseCrudComponent } from './course-crud/course-crud.component';
     ClassCrudComponent,
     RegistrationComponent,
     DashboardComponent,
-    CourseCrudComponent
+    CourseCrudComponent,
+    CreateUserComponent
   ],
-    imports: [
-        CommonModule,
-        AdminRoutingModule,
-        CardModule,
-        TableModule,
-        InputTextModule,
-        FormsModule,
-        DropdownModule,
-        ButtonModule,
-        RippleModule,
-        ToastModule,
-        ConfirmDialogModule,
-        ToolbarModule,
-        DialogModule,
-        AutoCompleteModule,
-        CalendarModule,
-        MessageModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatRadioModule
-    ]
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    CardModule,
+    TableModule,
+    InputTextModule,
+    FormsModule,
+    DropdownModule,
+    ButtonModule,
+    RippleModule,
+    ToastModule,
+    ConfirmDialogModule,
+    ToolbarModule,
+    DialogModule,
+    AutoCompleteModule,
+    CalendarModule,
+    MessageModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    PasswordModule,
+    DividerModule,
+    InputMaskModule,
+    RadioButtonModule,
+    MultiSelectModule,
+    PaginatorModule
+  ]
 })
 export class AdminModule { }

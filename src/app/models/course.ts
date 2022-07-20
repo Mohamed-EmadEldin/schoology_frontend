@@ -1,7 +1,7 @@
 export class Course
 {
-  constructor(public courseId=0,public courseName='') {
-    this.courseId = courseId;
-    this.courseName = courseName;
+  constructor(public id=0,public name='') {
+    this.id = id;
+    this.name = name;
   }
 }

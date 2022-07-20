@@ -72,7 +72,7 @@ export class CourseCrudComponent implements OnInit {
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this._courses = this._courses.filter(val => val.courseId !== _course.id);
+        this._courses = this._courses.filter(val => val.id !== _course.id);
         this.courseCrudService.deleteCourse(_course.id)
           .subscribe(() => {
             this._courses.splice(_course.id, 1)
