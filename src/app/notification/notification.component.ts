@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NotificationService} from "../services/notification.service";
 import {Table} from "primeng/table";
+import {StateService} from "../services/state.service";
 
 @Component({
   selector: 'app-notification',
@@ -11,9 +12,11 @@ export class NotificationComponent implements OnInit {
 
   notifications = [];
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService,public stateService:StateService) { }
 
    ngOnInit() {
+     this.stateService.notificationsCount.next(0)
+
      this.notificationService.getUserNotification().subscribe(data => this.notifications = data)
 
   }
