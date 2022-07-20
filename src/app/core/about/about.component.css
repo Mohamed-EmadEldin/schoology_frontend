@@ -1,0 +1,31 @@
+.main-hero-box {
+  padding-top: 5rem;
+}
+
+.main-hero-box h1 {
+  font-size: 3.4rem;
+  color: black;
+}
+
+.text-xxxl, .hero-block h1 {
+  font-size: 36px;
+  line-height: 1.25;
+}
+
+.text-sig-blue {
+  color: #0e2a47;
+}
+
+.img-box, .text-box {
+  margin-right: 11%;
+  max-width: 70%;
+}
+
+.text-34 {
+  font-size: 3rem;
+  line-height: 1.25;
+}
+
+a {
+  text-decoration: none;
+}
