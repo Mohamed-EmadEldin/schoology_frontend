@@ -28,3 +28,14 @@
   border-radius: 20px;
 
 }
+.item-info-container h3
+{
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.item-info-container h6
+{
+  font-size: 12px;
+
+}

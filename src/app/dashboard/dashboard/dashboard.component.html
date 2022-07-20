@@ -57,33 +57,27 @@
 
     <!-- <div><img src="assests/images/backgrounds/climb.png" alt=""></div> -->
 
-<!--
-  <p-carousel [value]="products" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+  <p-carousel [value]="galaryImages" styleClass="custom-carousel" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
     <ng-template pTemplate="header">
-      <h5>Circular, AutoPlay, 3 Items per Page and Scroll by 1</h5>
     </ng-template>
-    <ng-template let-product pTemplate="item">
+    <ng-template let-gallaryImage pTemplate="item">
       <div class="product-item">
-        <div class="product-item-content">
-          <div class="mb-3">
-            <img src="assets/showcase/images/demo/product/{{product.image}}" [alt]="product.name" class="product-image" />
+        <div class="item-content-container">
+          <div class="item-info-container">
+          <h3>{{gallaryImage.title}}</h3>
+          <hr>
+          <h6 class="mt-0 mb-3">{{gallaryImage.description}}</h6>
+          </div>
+          <div class="image-container">
+            <img src="{{gallaryImage.link}}" [alt]="gallaryImage.description" class="product-image" width="300"/>
           </div>
           <div>
-            <h4 class="mb-1">{{product.name}}</h4>
-            <h6 class="mt-0 mb-3">${{product.price}}</h6>
-            <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
-&lt;!&ndash;            <div class="car-buttons mt-5">&ndash;&gt;
-&lt;!&ndash;              <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>&ndash;&gt;
-&lt;!&ndash;              <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>&ndash;&gt;
-&lt;!&ndash;              <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog"></p-button>&ndash;&gt;
-&lt;!&ndash;            </div>&ndash;&gt;
 
           </div>
         </div>
       </div>
     </ng-template>
   </p-carousel>
--->
 </div>
 
 <!-- <button (click)="prevImageClick()">Prev</button>

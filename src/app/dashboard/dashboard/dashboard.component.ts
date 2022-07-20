@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import {StateService} from "../../services/state.service";
+import {GallaryImage} from "../../models/gallaryImage";
+import {DashboardService} from "../../services/admin/dashboard.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -11,8 +13,10 @@ export class DashboardComponent implements OnInit {
   slider: any;
   userName!: any;
   responsiveOptions:any;
+  galaryImages:GallaryImage[]=[]
   constructor(
-    public stateService:StateService
+    public stateService:StateService,
+    public dashBoardService:DashboardService
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +26,24 @@ export class DashboardComponent implements OnInit {
         breakpoint: '1024px',
         numVisible: 3,
         numScroll: 3
-      },]
+      },
+      {
+        breakpoint: '768px',
+        numVisible: 2,
+        numScroll: 2
+      },
+      {
+        breakpoint: '560px',
+        numVisible: 1,
+        numScroll: 1
+      }
+    ]
+    this.dashBoardService.getGallaryImages().subscribe({
+      next:(images)=>{
+        this.galaryImages = images
+        console.log(images)
+      }
+    })
   }
 
   selected!: Date | null;
