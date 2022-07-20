@@ -1,34 +1,52 @@
-<h1>welcome {{userName}}</h1>
+<div class="container">
+  <p-toast></p-toast>
+
+  <div class="">
+    <h1>welcome {{userName}}</h1>
 
 
-<div class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Announcement</mat-label>
-        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-    </mat-form-field>
+    <!--<div class="example-form">-->
+    <!--    <mat-form-field class="example-full-width" appearance="fill">-->
+    <!--        <mat-label>Announcement</mat-label>-->
+    <!--        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">-->
+    <!--    </mat-form-field>-->
 
-    <button class="btn btn-primary" (click)="sendAnnouncement(message)">add announcement</button>
-</div>
+    <!--    <button class="btn btn-primary" (click)="sendAnnouncement(message)">add announcement</button>-->
+    <!--</div>-->
 
-<section class="schools">
-    <label for="schoolsFile">input heeeeeere</label>
-    <input id="schoolsFile" class="d-none" type="file" (change)="onChangeSchools($event)" multiple>
-    <section *ngIf="schoolsFilesArray">
+    <p-card header="Add Announcement "  [style]="{width: '360px'}" styleClass="p-card-shadow">
+      <ng-template pTemplate="header">
+        <img alt="Card" src="assets/images/cards/News-amico.svg">
+      </ng-template>
+      <textarea rows="5" cols="30" pInputTextarea [autoResize]=true placeholder="Add Announcement here" [(ngModel)]="newAnnouncement.announcment"> </textarea>
+
+      <ng-template pTemplate="footer">
+        <p-button label="Send" icon="pi pi-check" (click)="sendAnnouncement()"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary"
+                  [style]="{'margin-left': '.5em'}" (click)="newAnnouncement.announcment=''"></p-button>
+      </ng-template>
+    </p-card>
+
+    <section class="schools">
+      <label for="schoolsFile">input heeeeeere</label>
+      <input id="schoolsFile" class="d-none" type="file" (change)="onChangeSchools($event)" multiple>
+      <section *ngIf="schoolsFilesArray">
         <div *ngFor="let file of schoolsFilesArray; let i = index">
-            <img [src]="file" alt="">
-            <button (click)="removeSchoolImg(i)">remove</button>
+          <img [src]="file" alt="">
+          <button (click)="removeSchoolImg(i)">remove</button>
         </div>
+      </section>
     </section>
-</section>
 
 
-
-<section class="events">
-    <input type="file" (change)="onChangeEvents($event)" multiple>
-    <section *ngIf="eventsFilesArray">
+    <section class="events">
+      <input type="file" (change)="onChangeEvents($event)" multiple>
+      <section *ngIf="eventsFilesArray">
         <div *ngFor="let file of eventsFilesArray; let i = index">
-            <img [src]="file" alt="">
-            <button (click)="removeEventsImg(i)">remove</button>
+          <img [src]="file" alt="">
+          <button (click)="removeEventsImg(i)">remove</button>
         </div>
+      </section>
     </section>
-</section>
+  </div>
+</div>
