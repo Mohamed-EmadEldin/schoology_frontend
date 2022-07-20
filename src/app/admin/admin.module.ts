@@ -29,9 +29,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CourseCrudComponent } from './course-crud/course-crud.component';
-import {InputNumberModule} from "primeng/inputnumber";
+import { CreateUserComponent } from './create-user/create-user.component';
+import {PasswordModule} from "primeng/password";
+import {DividerModule} from "primeng/divider";
+import {InputMaskModule} from "primeng/inputmask";
+import {RadioButtonModule} from "primeng/radiobutton";
 import {MultiSelectModule} from "primeng/multiselect";
-import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -43,7 +46,8 @@ import {MatSelectModule} from "@angular/material/select";
     ClassCrudComponent,
     RegistrationComponent,
     DashboardComponent,
-    CourseCrudComponent
+    CourseCrudComponent,
+    CreateUserComponent
   ],
     imports: [
         CommonModule,
@@ -66,9 +70,11 @@ import {MatSelectModule} from "@angular/material/select";
         MatFormFieldModule,
         MatInputModule,
         MatRadioModule,
-        InputNumberModule,
-        MultiSelectModule,
-        MatSelectModule
+        PasswordModule,
+        DividerModule,
+        InputMaskModule,
+        RadioButtonModule,
+        MultiSelectModule
     ]
 })
 export class AdminModule { }

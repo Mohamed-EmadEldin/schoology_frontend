@@ -80,7 +80,7 @@ export class ClassCrudComponent implements OnInit {
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this._classes = this._classes.filter(val => val.classId !== _class.id);
+        this._classes = this._classes.filter(val => val.id !== _class.id);
         this.classCrudService.deleteClass(_class.id)
           .subscribe(() => this._classes.splice(_class.id,1))
         this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});

@@ -6,6 +6,7 @@ import {Table} from "primeng/table";
 import {ICourse, ITeacher, IUiClass} from "../../interfaces/Interfaces";
 import {HelperService} from "../../services/admin/helper.service";
 import {formatDate} from "@angular/common";
+import {UsersCrudService} from "../../services/admin/users-crud.service";
 
 @Component({
   selector: 'app-meeting-crud',
@@ -42,6 +43,7 @@ export class MeetingCrudComponent implements OnInit {
   selectedMeetings: Meeting[] = []
 
   constructor(private meetingCrudService: MeetingCrudService,
+              private usersCrudService: UsersCrudService,
               private helperService: HelperService,
               private messageService: MessageService,
               private confirmationService: ConfirmationService) { }
@@ -55,7 +57,7 @@ export class MeetingCrudComponent implements OnInit {
   }
 
   openCreateDialog() {
-    this.helperService.getAllTeachers().subscribe(data => {
+    this.usersCrudService.getAllTeachers().subscribe(data => {
       this.teachers = data.map(value => {
         return {name: value.name, id: value.id}
       });

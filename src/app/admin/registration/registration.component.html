@@ -43,18 +43,13 @@
         <mat-form-field appearance="fill">
             <mat-label>Classes</mat-label>
             <!-- must be comma separted -->
-          <mat-select formControlName="classes" multiple>
-            <mat-option *ngFor="let classRoom of classRooms" [value]="classRoom.id">{{classRoom.name}}</mat-option>
-          </mat-select>
+            <input (input)="setClasses()" matInput formControlName="classes">
         </mat-form-field>
 
 
         <mat-form-field appearance="fill">
-            <mat-label>course</mat-label>
+            <mat-label>courseId</mat-label>
             <!-- must be comma separted -->
-          <mat-select formControlName="courseId" >
-            <mat-option *ngFor="let course of courses" [value]="course.id">{{course.name}}</mat-option>
-          </mat-select>
             <input matInput formControlName="courseId">
         </mat-form-field>
     </div>
