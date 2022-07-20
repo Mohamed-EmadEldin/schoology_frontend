@@ -1,6 +1,14 @@
 <!-- profile section  -->
-
-<h1>welcome {{userName}}</h1>
+<script>
+    AOS.init();
+</script>
+<div class="welcome" data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="3000">
+    <h1 class="mx-3">Welcome {{userName}}</h1>
+    <mat-icon class="hand">waving_hand</mat-icon>
+    <script>
+        AOS.init();
+    </script>
+</div>
 
 <!-- announcement section -->
 <!-- <form class="example-form">
@@ -12,39 +20,41 @@
     </mat-form-field>
 </form> -->
 
-<header>
-    <h1>Announcements</h1>
+<header class="mx-3">
+    <!-- <h1>Announcements</h1> -->
 </header>
 <section class="announcement">
 
     <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur odio facilis, nihil voluptatum atque quaerat? Quas quam et iste dignissimos vel obcaecati magni, esse vero id minus, deserunt sit culpa?</h3>
-    <img src="../../../assets/images/backgrounds/bg1png.png" alt="">
+    <img src="../../../assets/images/backgrounds/Happy announcement.gif" alt="">
+
 
 </section>
 <br>
 <br>
 
-<div class="w-50 m-auto">
+<div class="w-50 m-auto" #active>
     <!--slider section-->
     <h1>our school</h1>
     <!-- <ng-image-slider [images]="imageObject" #nav></ng-image-slider> -->
     <owl-carousel-o [options]="customOptions">
         <ng-template carouselSlide>
-            <img src="assets/images/slider/1.jpg" alt="">
+            <img src="assets/images/slider/1.gif" alt="">
         </ng-template>
 
         <ng-template carouselSlide>
-            <img src="assets/images/slider/2.jpg" alt="">
+            <img src="assets/images/slider/2.gif" alt="">
         </ng-template>
 
         <ng-template carouselSlide>
-            <img src="assets/images/slider/3.jpg" alt="">
+            <img src="assets/images/slider/3.gif" alt="">
         </ng-template>
 
         <ng-template carouselSlide>
-            <img src="assets/images/slider/4.jpg" alt="">
+            <img src="assets/images/slider/4.gif" alt="">
         </ng-template>
     </owl-carousel-o>
+    <!-- <div><img src="assests/images/backgrounds/climb.png" alt=""></div> -->
 </div>
 
 <!-- <button (click)="prevImageClick()">Prev</button>
@@ -53,23 +63,23 @@
 
 <!--gallery events-->
 <div class="w-75 m-auto">
-    <h1>events</h1>
-    <mat-grid-list cols="4" rowHeight="1:1">
+    <h1>Upcomming event</h1>
+    <mat-grid-list cols="4">
 
         <mat-grid-tile>
-            <img src='assets/images/slider/1.jpg' alt="">
+            <img src='assets/images/slider/1.gif' alt="">
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <img src='assets/images/slider/1.jpg' alt="">
+            <img src='assets/images/slider/2.gif' alt="">
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <img src='assets/images/slider/1.jpg' alt="">
+            <img src='assets/images/slider/3.gif' alt="">
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <img src='assets/images/slider/1.jpg' alt="">
+            <img src='assets/images/slider/4.gif' alt="">
         </mat-grid-tile>
 
 
@@ -79,7 +89,9 @@
 
 
 <!--calendar-->
-<mat-card class="demo-inline-calendar-card w-25 m-auto">
-    <mat-calendar [(selected)]="selected"></mat-calendar>
-</mat-card>
-<p>Selected date: {{selected}}</p>
+<div class="cal-container">
+    <mat-card class="demo-inline-calendar-card">
+        <mat-calendar [(selected)]="selected"></mat-calendar>
+    </mat-card>
+    <img src="assets/images/backgrounds/Date picker.gif" alt="">
+</div>

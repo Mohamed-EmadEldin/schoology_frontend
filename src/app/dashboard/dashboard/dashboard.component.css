@@ -8,8 +8,48 @@
     width: 100%;
 }
 
+#active {
+    display: flex;
+}
+
 .demo-inline-calendar-card {
     width: 300px;
+}
+
+.cal-container {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 90px;
+}
+
+.mat-card {
+    background-color: #0e2a47;
+    color: #ffff;
+    height: min-content;
+}
+
+::ng-deep .mat-card[_ngcontent-pwb-c269] {
+    background-color: #0e2a47;
+    color: #ffff;
+    height: min-content;
+}
+
+::ng-deep .mat-calendar-body-cell-content {
+    color: white;
+}
+
+::ng-deep .mat-calendar-body-label {
+    color: #ffff;
+}
+
+::ng-deep .mat-calendar-table-header th {
+    color: #ffff;
+}
+
+::ng-deep .mat-calendar-arrow {
+    fill: #ffff;
 }
 
 section.announcement {
@@ -27,7 +67,8 @@ section.announcement img {
 }
 
 section.announcement h3 {
-    color: green;
+    color: #103453;
+    font-size: x-large;
     margin-bottom: 0;
 }
 
@@ -37,4 +78,49 @@ section.announcement h3 {
 
 ::ng-deep .owl-carousel .owl-item img {
     height: 350px !important;
+}
+
+.hand {
+    color: #ffff;
+}
+
+h1 {
+    font: 500 24px/32px 'Poppins', sans-serif !important;
+    background-color: #0e2a47;
+    color: #ffff;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex !important;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.welcome {
+    background-color: #0e2a47;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    width: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 0 5px 5px 0;
+    color: #ffff;
+}
+
+.welcome h1 {
+    margin: 0;
+}
+
+mat-grid-tile {
+    width: 23% !important;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+::ng-deep .owl-theme .owl-nav [class*=owl-] {
+    background: #0e2a47;
 }
