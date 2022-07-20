@@ -1,5 +1,4 @@
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { RegistrationComponent } from './registration/registration.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AdminMainComponent} from "./admin-main/admin-main.component";
@@ -8,6 +7,7 @@ import {ExamsCrudComponent} from "./exams-crud/exams-crud.component";
 import {UsersCrudComponent} from "./users-crud/users-crud.component";
 import {ClassCrudComponent} from "./class-crud/class-crud.component";
 import {CourseCrudComponent} from "./course-crud/course-crud.component";
+import {CreateUserComponent} from "./create-user/create-user.component";
 
 const routes: Routes = [
   { path: '', component: AdminMainComponent },
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'user-crud', component: UsersCrudComponent},
   { path: 'class-crud', component: ClassCrudComponent},
   { path: 'course-crud', component: CourseCrudComponent},
-  { path: 'register', component: RegistrationComponent },
+  { path: 'create-user', component: CreateUserComponent },
   { path: 'dashboard',component:DashboardComponent },
 ];
 

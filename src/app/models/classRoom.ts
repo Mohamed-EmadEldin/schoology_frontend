@@ -1,6 +1,6 @@
 export class ClassRoom{
-  constructor(public classId=0,public className='') {
-    this.classId = classId;
-    this.className = className;
+  constructor(public id=0,public name='') {
+    this.id = id;
+    this.name = name;
   }
 }

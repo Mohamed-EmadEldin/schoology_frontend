@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {User} from "../../models/user";
 import {ClassRoom} from "../../models/classRoom";
+import {Course} from "../../models/course";
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +12,12 @@ export class HelperService {
 
   constructor(private http: HttpClient) { }
 
-  getAllTeachers() {
-    return this.http.get<User[]>(`${this.url}/auth/allTeachers`)
-  }
-
   getTeacherClasses(teacherId: number) {
-    return this.http.get<any[]>(`${this.url}/class/teacher-classes/${teacherId}`)
+    return this.http.get<ClassRoom[]>(`${this.url}/class/teacher-classes/${teacherId}`)
   }
 
   getTeacherCourse(teacherId: number) {
-    return this.http.get<any[]>(`${this.url}/course/my-course/${teacherId}`)
+    return this.http.get<Course[]>(`${this.url}/course/my-course/${teacherId}`)
   }
 
 }
