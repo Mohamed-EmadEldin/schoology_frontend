@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Announcement} from "../../models/announcement";
+import {DashboardService} from "../../services/admin/dashboard.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-dashboard',
@@ -11,16 +14,30 @@ export class DashboardComponent implements OnInit {
   loading: boolean = false;
   schoolsFilesArray: any[] = [];
   eventsFilesArray: any[] = [];
+  newAnnouncement: Announcement= new Announcement()
 
-  constructor() { }
+  constructor(
+    private dashBoardService:DashboardService,
+    private messageService:MessageService
+  ) { }
 
   ngOnInit(): void {
     this.userName = JSON.parse(localStorage.getItem('state') as any)['userName'];
   }
 
 
-  sendAnnouncement(message: any){
-    console.log(message.value);
+  sendAnnouncement(){
+    this.dashBoardService.sendAnnouncement(this.newAnnouncement).subscribe({
+      next:()=>{
+        this.newAnnouncement.announcment = ''
+        this.messageService.add({severity:'success', summary:'Success', detail:`New announcement has been published `});
+
+      },
+      error:()=>{
+        this.messageService.add({severity:'error', summary:'Error', detail:'Error has happen'})
+
+      }
+    })
   }
 
   onChangeSchools(event: any) {

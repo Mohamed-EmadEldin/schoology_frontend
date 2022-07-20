@@ -36,6 +36,7 @@ import {InputMaskModule} from "primeng/inputmask";
 import {RadioButtonModule} from "primeng/radiobutton";
 import {MultiSelectModule} from "primeng/multiselect";
 import {PaginatorModule} from "primeng/paginator";
+import {InputTextareaModule} from "primeng/inputtextarea";
 
 
 @NgModule({
@@ -50,33 +51,34 @@ import {PaginatorModule} from "primeng/paginator";
     CourseCrudComponent,
     CreateUserComponent
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    CardModule,
-    TableModule,
-    InputTextModule,
-    FormsModule,
-    DropdownModule,
-    ButtonModule,
-    RippleModule,
-    ToastModule,
-    ConfirmDialogModule,
-    ToolbarModule,
-    DialogModule,
-    AutoCompleteModule,
-    CalendarModule,
-    MessageModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatRadioModule,
-    PasswordModule,
-    DividerModule,
-    InputMaskModule,
-    RadioButtonModule,
-    MultiSelectModule,
-    PaginatorModule
-  ]
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        CardModule,
+        TableModule,
+        InputTextModule,
+        FormsModule,
+        DropdownModule,
+        ButtonModule,
+        RippleModule,
+        ToastModule,
+        ConfirmDialogModule,
+        ToolbarModule,
+        DialogModule,
+        AutoCompleteModule,
+        CalendarModule,
+        MessageModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatRadioModule,
+        PasswordModule,
+        DividerModule,
+        InputMaskModule,
+        RadioButtonModule,
+        MultiSelectModule,
+        PaginatorModule,
+        InputTextareaModule
+    ]
 })
 export class AdminModule { }
