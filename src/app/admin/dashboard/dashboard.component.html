@@ -17,7 +17,7 @@
       </ng-template>
     </p-card>
     <div class="gallary-contrroler">
-      <p-card header="Add photo to galary"  [style]="{width: '360px'}" styleClass="p-card-shadow">
+      <p-card header="Add photo to gallery"  [style]="{width: '360px'}" styleClass="p-card-shadow">
         <ng-template pTemplate="header">
           <div class="selected-image-container">
           <img alt="Card" [src]="selectedImageToShow" width="200" >
@@ -36,6 +36,24 @@
       </p-card>
     </div>
 
+    <div class="gallary-contrroler">
+      <p-card header="Delete photo from gallery"  [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+          <div class="selected-image-container">
+            <img alt="Card" [src]="selectedImageToDelete.link" width="200" >
+          </div>
+        </ng-template>
+        <div class="input-container">
+          <p-dropdown [options]="allGalaryImages" [(ngModel)]="selectedImageIdToDelete"
+                      optionLabel="title" optionValue="id" placeholder="select Image"
+                       (onChange)="showSelectedImageToDelete()"></p-dropdown>
+        </div>
+        <ng-template pTemplate="footer">
+          <p-button label="delete" icon="pi pi-trash"  (click)="deleteImage()"></p-button>
+          <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+        </ng-template>
+      </p-card>
+    </div>
 
   </div>
 </div>

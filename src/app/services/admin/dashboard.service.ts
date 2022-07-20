@@ -11,6 +11,8 @@ export class DashboardService {
   private _announcement_url = 'http://127.0.0.1:3000/announcement/create';
   private _addGallaryImage_url = 'http://127.0.0.1:3000/gallary/add'
   private _gallaryImages_url = 'http://127.0.0.1:3000/gallary/'
+  private _deleteGallaryImage_url = 'http://127.0.0.1:3000/gallary/delete'
+  private _url = 'http://127.0.0.1:3000/gallary'
   constructor(private http: HttpClient) { }
 
   sendAnnouncement(announcement:Announcement)
@@ -19,11 +21,19 @@ export class DashboardService {
   }
 
   addNewGallaryImage(newGallaryImage: GallaryImage) {
-    return this.http.post(this._addGallaryImage_url,newGallaryImage)
+    return this.http.post(`${this._url}/add`,newGallaryImage)
   }
 
   getGallaryImages()
   {
-    return this.http.get<GallaryImage[]>(this._gallaryImages_url)
+    return this.http.get<GallaryImage[]>(`${this._url}/`)
+  }
+
+  deleteImage(selectedImageToDelete: GallaryImage) {
+    return this.http.delete(`${this._url}/delete`,{
+      body:{
+        imageId:selectedImageToDelete.id
+      }
+    })
   }
 }
