@@ -10,12 +10,19 @@ import {StateService} from "../../services/state.service";
 export class DashboardComponent implements OnInit {
   slider: any;
   userName!: any;
+  responsiveOptions:any;
   constructor(
     public stateService:StateService
   ) { }
 
   ngOnInit(): void {
     this.userName = this.stateService.getState().userName
+    this.responsiveOptions = [
+      {
+        breakpoint: '1024px',
+        numVisible: 3,
+        numScroll: 3
+      },]
   }
 
   selected!: Date | null;

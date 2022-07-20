@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Announcement} from "../../models/announcement";
 import {DashboardService} from "../../services/admin/dashboard.service";
 import {MessageService} from "primeng/api";
+import {GallaryImage} from "../../models/gallaryImage";
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,9 @@ export class DashboardComponent implements OnInit {
   schoolsFilesArray: any[] = [];
   eventsFilesArray: any[] = [];
   newAnnouncement: Announcement= new Announcement()
+  newGallaryImage:GallaryImage = new GallaryImage()
+  gallaryImageController:string[] = []
+  selectedImageToShow:string = ""
 
   constructor(
     private dashBoardService:DashboardService,
@@ -23,6 +27,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = JSON.parse(localStorage.getItem('state') as any)['userName'];
+    this.gallaryImageController[0] = "assets/images/slider/Image upload-pana.svg"
+    this.selectedImageToShow = this.gallaryImageController[0]
   }
 
 
@@ -78,4 +84,24 @@ export class DashboardComponent implements OnInit {
     removeEventsImg(index: number){
       this.eventsFilesArray.splice(index, 1)
     }
+
+  showSelectedImage() {
+
+    this.selectedImageToShow = (this.newGallaryImage.link != "")? this.newGallaryImage.link:this.gallaryImageController[0]
+  }
+
+  addNewGallaryImage() {
+    this.dashBoardService.addNewGallaryImage(this.newGallaryImage).subscribe({
+      next:()=>{
+        this.selectedImageToShow = this.gallaryImageController[0]
+        this.messageService.add({severity:'success', summary:'Success', detail:`New Image has been published `});
+        this.newGallaryImage = new GallaryImage()
+      },
+      error:()=>{
+        this.messageService.add({severity:'error', summary:'Error', detail:'Error has happen'})
+
+      }
+
+    })
+  }
 }

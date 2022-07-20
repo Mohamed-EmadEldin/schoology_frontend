@@ -30,7 +30,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MatNativeDateModule } from '@angular/material/core';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+// import { CarouselModule } from 'ngx-owl-carousel-o';
+import {CarouselModule} from "primeng/carousel";
 
 @NgModule({
   declarations: [
@@ -40,34 +41,35 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     DashboardComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    CoreModule,
-    RouterModule,
-    AppRoutingModule,
-    BodyModule,
-    MatInputModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ClassCalendarModule,
-    MatButtonModule,
-    MessageModule,
-    GradesModule,
-    TableModule,
-    InputTextModule,
-    MessagesModule,
-    MatFormFieldModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatDatepickerModule,
-    MatCardModule,
-    MatGridListModule,
-    NgImageSliderModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    CarouselModule,
-    MatIconModule
-  ],
+    imports: [
+        BrowserModule,
+        CoreModule,
+        RouterModule,
+        AppRoutingModule,
+        BodyModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ClassCalendarModule,
+        MatButtonModule,
+        MessageModule,
+        GradesModule,
+        TableModule,
+        InputTextModule,
+        MessagesModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatDatepickerModule,
+        MatCardModule,
+        MatGridListModule,
+        NgImageSliderModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        CarouselModule,
+        MatIconModule,
+        CarouselModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthtokenInterceptor, multi: true},
     MatDatepickerModule

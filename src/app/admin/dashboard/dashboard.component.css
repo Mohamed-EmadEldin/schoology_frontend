@@ -1,0 +1,30 @@
+.dashboard-container
+{
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-container
+{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap:10px
+}
+.selected-image-container
+{
+  border: 1px gray solid;
+  border-radius: 20px;
+  padding: 2px;
+  margin:2px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.selected-image-container img
+{
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 20px;
+
+}
