@@ -1,8 +1,6 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegistrationComponent } from './registration/registration.component';
-import { CoreModule } from '../core/core.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import {CardModule} from "primeng/card";
@@ -46,7 +44,6 @@ import {InputTextareaModule} from "primeng/inputtextarea";
     ExamsCrudComponent,
     UsersCrudComponent,
     ClassCrudComponent,
-    RegistrationComponent,
     DashboardComponent,
     CourseCrudComponent,
     CreateUserComponent

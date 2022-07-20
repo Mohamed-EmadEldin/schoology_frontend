@@ -21,7 +21,10 @@ import {IsAdminGuard} from "./guards/is-admin.guard";
 
 
 const routes:Routes = [
-  {path: "", component:HomeComponent},
+  {
+    path: "",
+    component:HomeComponent
+  },
   {
     path: "teacher-account",
     component: LoginComponent
@@ -30,7 +33,6 @@ const routes:Routes = [
     path: "student-account",
     component: LoginComponent
   },
-
   {
     path: "parent-account",
     component: LoginComponent
@@ -40,11 +42,10 @@ const routes:Routes = [
     component: LoginComponent
   },
   {
-    path: "dashbord",
+    path: "" +
+      "",
     component: DashboardComponent
   },
-
-
   {
     path: 'teacher',
     loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule),
@@ -56,17 +57,26 @@ const routes:Routes = [
     canActivate: [AuthGuard, IsStudentGuard]
   },
   {
-    path: 'parent', 
+    path: 'parent',
     loadChildren: () => import('./parent/parent.module').then(m => m.ParentModule),
     canActivate: [AuthGuard, IsParentGuard]},
   {
-    path: 'admin', 
+    path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-   canActivate: [AuthGuard, IsAdminGuard]
+    canActivate: [AuthGuard, IsAdminGuard]
   },
-  { path: "notification", component: NotificationComponent },
-  {path: "un-auth", component: UnauthorizedComponent},
-  {path: '**', component: NotFoundComponent},
+  {
+    path: "notification",
+    component: NotificationComponent
+  },
+  {
+    path: "un-auth",
+    component: UnauthorizedComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  },
 ]
 
 @NgModule({
