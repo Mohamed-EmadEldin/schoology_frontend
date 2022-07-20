@@ -1,24 +1,14 @@
 <div class="container">
   <p-toast></p-toast>
 
-  <div class="">
-    <h1>welcome {{userName}}</h1>
-
-
-    <!--<div class="example-form">-->
-    <!--    <mat-form-field class="example-full-width" appearance="fill">-->
-    <!--        <mat-label>Announcement</mat-label>-->
-    <!--        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">-->
-    <!--    </mat-form-field>-->
-
-    <!--    <button class="btn btn-primary" (click)="sendAnnouncement(message)">add announcement</button>-->
-    <!--</div>-->
-
-    <p-card header="Add Announcement "  [style]="{width: '360px'}" styleClass="p-card-shadow">
+  <div class="dashboard-container">
+    <!--    <h1>welcome {{userName}}</h1>-->
+    <p-card header="Add Announcement " [style]="{width: '360px'}" styleClass="p-card-shadow">
       <ng-template pTemplate="header">
         <img alt="Card" src="assets/images/cards/News-amico.svg">
       </ng-template>
-      <textarea rows="5" cols="30" pInputTextarea [autoResize]=true placeholder="Add Announcement here" [(ngModel)]="newAnnouncement.announcment"> </textarea>
+      <textarea rows="5" cols="30" pInputTextarea [autoResize]=true placeholder="Add Announcement here"
+                [(ngModel)]="newAnnouncement.announcment"> </textarea>
 
       <ng-template pTemplate="footer">
         <p-button label="Send" icon="pi pi-check" (click)="sendAnnouncement()"></p-button>
@@ -26,27 +16,44 @@
                   [style]="{'margin-left': '.5em'}" (click)="newAnnouncement.announcment=''"></p-button>
       </ng-template>
     </p-card>
+    <div class="gallary-contrroler">
+      <p-card header="Add photo to gallery"  [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+          <div class="selected-image-container">
+          <img alt="Card" [src]="selectedImageToShow" width="200" >
+          </div>
+        </ng-template>
+       <div class="input-container">
+         <input type="text" pInputText [(ngModel)]="newGallaryImage.link" placeholder="Link" (change)="showSelectedImage()">
+         <input type="text" pInputText [(ngModel)]="newGallaryImage.title" placeholder="Title">
+         <textarea rows="5" cols="30" pInputTextarea [autoResize]=true placeholder="Description"
+                   [(ngModel)]="newGallaryImage.description"> </textarea>
+       </div>
+        <ng-template pTemplate="footer">
+          <p-button label="Add" icon="pi pi-plus" (click)="addNewGallaryImage()"></p-button>
+          <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+        </ng-template>
+      </p-card>
+    </div>
 
-    <section class="schools">
-      <label for="schoolsFile">input heeeeeere</label>
-      <input id="schoolsFile" class="d-none" type="file" (change)="onChangeSchools($event)" multiple>
-      <section *ngIf="schoolsFilesArray">
-        <div *ngFor="let file of schoolsFilesArray; let i = index">
-          <img [src]="file" alt="">
-          <button (click)="removeSchoolImg(i)">remove</button>
+    <div class="gallary-contrroler">
+      <p-card header="Delete photo from gallery"  [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+          <div class="selected-image-container">
+            <img alt="Card" [src]="selectedImageToDelete.link" width="200" >
+          </div>
+        </ng-template>
+        <div class="input-container">
+          <p-dropdown [options]="allGalaryImages" [(ngModel)]="selectedImageIdToDelete"
+                      optionLabel="title" optionValue="id" placeholder="select Image"
+                       (onChange)="showSelectedImageToDelete()"></p-dropdown>
         </div>
-      </section>
-    </section>
+        <ng-template pTemplate="footer">
+          <p-button label="delete" icon="pi pi-trash"  (click)="deleteImage()"></p-button>
+          <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+        </ng-template>
+      </p-card>
+    </div>
 
-
-    <section class="events">
-      <input type="file" (change)="onChangeEvents($event)" multiple>
-      <section *ngIf="eventsFilesArray">
-        <div *ngFor="let file of eventsFilesArray; let i = index">
-          <img [src]="file" alt="">
-          <button (click)="removeEventsImg(i)">remove</button>
-        </div>
-      </section>
-    </section>
   </div>
 </div>

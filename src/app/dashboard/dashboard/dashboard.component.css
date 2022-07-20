@@ -124,3 +124,9 @@ mat-grid-tile {
 ::ng-deep .owl-theme .owl-nav [class*=owl-] {
     background: #0e2a47;
 }
+
+.item-content-container
+{
+  display: flex;
+  justify-content: space-between;
+}
