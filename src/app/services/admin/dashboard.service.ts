@@ -8,32 +8,35 @@ import {GallaryImage} from "../../models/gallaryImage";
 })
 export class DashboardService {
 
-  private _announcement_url = 'http://127.0.0.1:3000/announcement/create';
-  private _addGallaryImage_url = 'http://127.0.0.1:3000/gallary/add'
-  private _gallaryImages_url = 'http://127.0.0.1:3000/gallary/'
-  private _deleteGallaryImage_url = 'http://127.0.0.1:3000/gallary/delete'
-  private _url = 'http://127.0.0.1:3000/gallary'
+  private _announcement_url = 'http://127.0.0.1:3000/announcement';
+  private _gallary_url = 'http://127.0.0.1:3000/gallary'
   constructor(private http: HttpClient) { }
 
   sendAnnouncement(announcement:Announcement)
   {
-    return this.http.post(this._announcement_url,announcement)
+    return this.http.post(`${this._announcement_url}/create`,announcement)
   }
-
-  addNewGallaryImage(newGallaryImage: GallaryImage) {
-    return this.http.post(`${this._url}/add`,newGallaryImage)
+  getLastAnnouncement() {
+   return this.http.get<Announcement[]>(`${this._announcement_url}/last`)
   }
 
   getGallaryImages()
   {
-    return this.http.get<GallaryImage[]>(`${this._url}/`)
+    return this.http.get<GallaryImage[]>(`${this._gallary_url}/`)
+  }
+  addNewGallaryImage(newGallaryImage: GallaryImage) {
+    return this.http.post(`${this._gallary_url}/add`,newGallaryImage)
   }
 
+
+
   deleteImage(selectedImageToDelete: GallaryImage) {
-    return this.http.delete(`${this._url}/delete`,{
+    return this.http.delete(`${this._gallary_url}/delete`,{
       body:{
         imageId:selectedImageToDelete.id
       }
     })
   }
+
+
 }

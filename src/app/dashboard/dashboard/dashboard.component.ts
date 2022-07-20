@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import {Component, OnInit} from '@angular/core';
+import {OwlOptions} from 'ngx-owl-carousel-o';
 import {StateService} from "../../services/state.service";
 import {GallaryImage} from "../../models/gallaryImage";
 import {DashboardService} from "../../services/admin/dashboard.service";
+import {Announcement} from "../../models/announcement";
 
 @Component({
   selector: 'app-dashboard',
@@ -12,12 +13,15 @@ import {DashboardService} from "../../services/admin/dashboard.service";
 export class DashboardComponent implements OnInit {
   slider: any;
   userName!: any;
-  responsiveOptions:any;
-  galaryImages:GallaryImage[]=[]
+  responsiveOptions: any;
+  galaryImages: GallaryImage[] = []
+  announcement: Announcement = new Announcement()
+
   constructor(
-    public stateService:StateService,
-    public dashBoardService:DashboardService
-  ) { }
+    public stateService: StateService,
+    public dashBoardService: DashboardService
+  ) {
+  }
 
   ngOnInit(): void {
     this.userName = this.stateService.getState().userName
@@ -39,9 +43,15 @@ export class DashboardComponent implements OnInit {
       }
     ]
     this.dashBoardService.getGallaryImages().subscribe({
-      next:(images)=>{
+      next: (images) => {
         this.galaryImages = images
         console.log(images)
+      }
+    })
+    this.dashBoardService.getLastAnnouncement().subscribe({
+      next: (announcement) => {
+        console.log('sasasasasas')
+        this.announcement = announcement[0]
       }
     })
   }
@@ -71,33 +81,6 @@ export class DashboardComponent implements OnInit {
     },
     nav: true
   }
-//   imageObject: Array<object> = [
-//    {
-//     image: '/assets/images/slider/1.jpg', // Support base64 image
-//     thumbImage: '/assets/images/slider/1.jpg', // Support base64 image
-// },
-// {
-//   image: '/assets/images/slider/2.jpg', // Support base64 image
-//   thumbImage: '/assets/images/slider/2.jpg', // Support base64 image
-// },
 
-// {
-//   image: '/assets/images/slider/3.jpg', // Support base64 image
-//   thumbImage: '/assets/images/slider/3.jpg', // Support base64 image
-// },
-
-// {
-//   image: '/assets/images/slider/4.jpg', // Support base64 image
-//   thumbImage: '/assets/images/slider/4.jpg', // Support base64 image
-// },
-
-// ];
-prevImageClick() {
-  this.slider.prev();
-}
-
-nextImageClick() {
-  this.slider.next();
-}
 
 }
