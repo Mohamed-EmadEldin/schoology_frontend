@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, Input, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewChecked, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {StateService} from "../../services/state.service";
 import {MessagesService} from "../../services/messages.service";
 import {Message} from "../../models/Message";
@@ -17,16 +17,22 @@ class UiMessage {
   styleUrls: ['./messages-window.component.css']
 })
 
-export class MessagesWindowComponent implements OnInit, AfterContentInit {
+export class MessagesWindowComponent implements OnInit, AfterContentInit, AfterViewChecked {
 
   @Input() otherId: number = -1
   @Input() senderName: string = ""
+  @ViewChild("message_container") message_container : ElementRef | undefined
   public myId: number = -1
   public messages: any = []
   public newMessage: any = ""
 
   constructor(public stateService: StateService, public appMessageService: MessagesService, private messageService: MessageService) {
   }
+
+  ngAfterViewChecked(): void {
+        if(this.message_container)
+        this.message_container.nativeElement.scrollTop = this.message_container.nativeElement.scrollHeight
+    }
 
   ngAfterContentInit(): void {
     let message_container = document.getElementById('messages_container')
@@ -43,12 +49,6 @@ export class MessagesWindowComponent implements OnInit, AfterContentInit {
       next: (messages) => {
         this.messages = messages
         console.log(messages)
-        let message_container = document.getElementById('messages_container')
-        if (message_container) {
-          console.log(message_container)
-          message_container.scrollTop = message_container.scrollHeight
-        }
-
       }
     })
   }
@@ -62,11 +62,6 @@ export class MessagesWindowComponent implements OnInit, AfterContentInit {
         this.messages.push(message)
         console.log(message)
         this.messageService.add({severity: 'success', summary: 'Success', detail: `your message has been sent`});
-        // let message_container = document.getElementById('messages_container')
-        // if (message_container) {
-        //   console.log(message_container)
-        //   message_container.scrollTop = message_container.scrollHeight
-        // }
       },
       error: () => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Your message has not been sent !!'})

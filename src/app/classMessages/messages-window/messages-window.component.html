@@ -1,7 +1,7 @@
 <div class="container">
   <p-toast></p-toast>
-  <div class="messages-container"  >
-    <div class="message-card" *ngFor="let message of messages" id ='messages_container'>
+  <div class="messages-container" #message_container >
+    <div class="message-card" *ngFor="let message of messages" >
       <div class="card-container">
         <div class="my-message" *ngIf="message.senderId === myId">
           <div *ngIf="message.senderId === myId">
