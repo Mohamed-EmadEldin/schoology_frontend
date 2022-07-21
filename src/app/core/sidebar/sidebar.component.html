@@ -11,17 +11,13 @@
   </ul> -->
 
     <ul>
-        <!--
-    <h2>
-      <mat-icon>homes</mat-icon>
-      Dashboard
 
-    </h2> -->
-        <li>
-            <button routerLink="dashbord" pButton type="button" icon="fa-regular fa-house" label="Home" class="p-button-sm p-button-text ">
-              <mat-icon>homes</mat-icon>
-      </button>
-        </li>
+        <h2>
+            <mat-icon>homes</mat-icon>
+            Dashboard
+
+        </h2>
+
     </ul>
     <!-- <ul *ngIf="user.role === 'admin'"> -->
     <ul *ngIf="this.stateService.getState().userType==='teacher'">
