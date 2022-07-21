@@ -30,16 +30,11 @@ export class MessagesWindowComponent implements OnInit {
 
   ngOnInit(): void {
     this.myId = this.stateService.getState().personId
-    // this.messages = [
-    //   {senderId: this.myId, receiverId: this.senderId, message: "bla bla bla"},
-    //   {senderId: this.senderId, receiverId: this.myId, message: "bla bla bla"},
-    //   {senderId: this.senderId, receiverId: 2, message: "bla bla bla"},
-    //   {senderId: this.myId, receiverId: this.senderId, message: "bla bla bla"},
-    // ]
     console.log(this.otherId)
     this.appMessageService.getMessages(this.otherId).subscribe({
       next: (messages) => {
         this.messages =messages
+        console.log(messages)
       }
     })
   }

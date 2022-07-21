@@ -8,7 +8,7 @@
             <mat-card>
               <mat-card-title-group>
                 <mat-card-title>{{message.sender.name}}</mat-card-title>
-                <mat-card-subtitle> time</mat-card-subtitle>
+                <mat-card-subtitle> {{message.createdAt | date:"short" }}</mat-card-subtitle>
               </mat-card-title-group>
               <mat-card-content>
                 <p class="my-message">
@@ -28,7 +28,7 @@
             <mat-card>
               <mat-card-title-group>
                 <mat-card-title>{{message.sender.name}}</mat-card-title>
-                <mat-card-subtitle> time</mat-card-subtitle>
+                <mat-card-subtitle> {{message.createdAt | date:"short" }}</mat-card-subtitle>
               </mat-card-title-group>
               <mat-card-content>
                 <p class="other-message">
