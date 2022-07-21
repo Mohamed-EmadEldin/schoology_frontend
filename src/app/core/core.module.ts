@@ -25,6 +25,8 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {BadgeModule} from "primeng/badge";
 import {MatBadgeModule} from "@angular/material/badge";
+import { AboutComponent } from './about/about.component';
+import {CardModule} from "primeng/card";
 
 
 
@@ -35,6 +37,7 @@ import {MatBadgeModule} from "@angular/material/badge";
     LoginComponent,
 
     UnauthorizedComponent,
+     AboutComponent,
 
   ],
   exports: [
@@ -42,30 +45,31 @@ import {MatBadgeModule} from "@angular/material/badge";
     SidebarComponent,
 
   ],
-    imports: [
-        CommonModule,
-        ButtonModule,
-        RippleModule,
-        SidebarModule,
-        BrowserAnimationsModule,
-        RouterModule,
-        InputTextModule,
-        CheckboxModule,
-        ButtonModule,
-        RadioButtonModule,
-        RippleModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MessagesModule,
-        MatButtonModule,
-        MatIconModule,
-        MatMenuModule,
-        MatFormFieldModule,
-        BadgeModule,
-        MatBadgeModule
+  imports: [
+    CommonModule,
+    ButtonModule,
+    RippleModule,
+    SidebarModule,
+    BrowserAnimationsModule,
+    RouterModule,
+    InputTextModule,
+    CheckboxModule,
+    ButtonModule,
+    RadioButtonModule,
+    RippleModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MessagesModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    BadgeModule,
+    MatBadgeModule,
+    CardModule
 
-    ],
+  ],
   providers:[MessageService]
 })
 export class CoreModule { }

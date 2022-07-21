@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Announcement} from "../../models/announcement";
 import {DashboardService} from "../../services/admin/dashboard.service";
 import {MessageService} from "primeng/api";
+import {GallaryImage} from "../../models/gallaryImage";
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,12 @@ export class DashboardComponent implements OnInit {
   schoolsFilesArray: any[] = [];
   eventsFilesArray: any[] = [];
   newAnnouncement: Announcement= new Announcement()
+  newGallaryImage:GallaryImage = new GallaryImage()
+  allGalaryImages:GallaryImage[]=[]
+  gallaryImageController:string[] = []
+  selectedImageToShow:string = ""
+  selectedImageIdToDelete: number = -1
+  selectedImageToDelete: GallaryImage = new GallaryImage();
 
   constructor(
     private dashBoardService:DashboardService,
@@ -23,6 +30,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = JSON.parse(localStorage.getItem('state') as any)['userName'];
+    this.gallaryImageController[0] = "assets/images/slider/Image upload-pana.svg"
+    this.selectedImageToShow = this.gallaryImageController[0]
+    this.selectedImageToDelete.link = this.gallaryImageController[0]
+    this.updateImages()
   }
 
 
@@ -40,42 +51,53 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  onChangeSchools(event: any) {
-        const files = event.target.files;
 
-        for(let file of files){
+  showSelectedImage() {
 
-          const reader = new FileReader();
-          reader.readAsDataURL(file);
-
-          reader.addEventListener('load', (e) => {
-            const data = e.target?.result;
-            this.schoolsFilesArray.push(data)
-          })
-        }
-    }
-
-
-    onChangeEvents(event: any) {
-      const files = event.target.files;
-
-      for(let file of files){
-
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-
-        reader.addEventListener('load', (e) => {
-          const data = e.target?.result;
-          this.eventsFilesArray.push(data)
-        })
-      }
+    this.selectedImageToShow = (this.newGallaryImage.link != "")? this.newGallaryImage.link:this.gallaryImageController[0]
   }
 
-    removeSchoolImg(index: number){
-      this.schoolsFilesArray.splice(index, 1)
-    }
+  addNewGallaryImage() {
+    this.dashBoardService.addNewGallaryImage(this.newGallaryImage).subscribe({
+      next:()=>{
+        this.selectedImageToShow = this.gallaryImageController[0]
+        this.messageService.add({severity:'success', summary:'Success', detail:`New Image has been published `});
+        this.newGallaryImage = new GallaryImage()
+      },
+      error:()=>{
+        this.messageService.add({severity:'error', summary:'Error', detail:'Error has happen'})
 
-    removeEventsImg(index: number){
-      this.eventsFilesArray.splice(index, 1)
-    }
+      }
+
+    })
+  }
+
+  deleteImage() {
+    this.dashBoardService.deleteImage(this.selectedImageToDelete) .subscribe({
+      next:()=>{
+        this.messageService.add({severity:'success', summary:'Success', detail:` Image has been deleted `});
+        this.selectedImageToDelete.link = this.gallaryImageController[0]
+        this.updateImages()
+      },
+      error:()=>{
+        this.messageService.add({severity:'error', summary:'Error', detail:'Error has happen'})
+
+      }
+    })
+  }
+
+  updateImages(){
+    this.dashBoardService.getGallaryImages().subscribe({
+      next:(images)=>{
+        this.allGalaryImages = images
+      }
+    })
+  }
+  showSelectedImageToDelete() {
+    console.log(this.selectedImageIdToDelete)
+    // @ts-ignore
+    this.selectedImageToDelete = this.allGalaryImages.find((image)=>{
+      return image.id === this.selectedImageIdToDelete
+    })
+  }
 }
