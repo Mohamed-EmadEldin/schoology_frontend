@@ -17,7 +17,7 @@ class UiMessage {
   styleUrls: ['./messages-window.component.css']
 })
 
-export class MessagesWindowComponent implements OnInit, AfterContentInit, AfterViewChecked {
+export class MessagesWindowComponent implements OnInit, AfterViewChecked {
 
   @Input() otherId: number = -1
   @Input() senderName: string = ""
@@ -34,13 +34,6 @@ export class MessagesWindowComponent implements OnInit, AfterContentInit, AfterV
         this.message_container.nativeElement.scrollTop = this.message_container.nativeElement.scrollHeight
     }
 
-  ngAfterContentInit(): void {
-    let message_container = document.getElementById('messages_container')
-    if (message_container) {
-      console.log(message_container)
-      message_container.scrollTop = message_container.scrollHeight
-    }
-  }
 
   ngOnInit(): void {
     this.myId = this.stateService.getState().personId
