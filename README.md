@@ -10,17 +10,17 @@ Frontend Repo for Schoology project, find Backend at [schoology_backend](https:/
 
 
 ## 📝 Table of Contents
-- [About](#🧐-about)
-- [Getting Started](#🏁-getting-started)
+- [About](#-about)
+- [Getting Started](#-getting-started)
 - [hardware Requirements](#hardware-requirements)
-- [Usage](#🎈-usage)
-- [Code scaffolding](./Angular_README.md#Code-scaffolding)
-- [Build](./Angular_README.md#Build)
-- [Running unit tests](./Angular_README.md#Running-unit-tests)
+- [Usage](#-usage)
+- [Code scaffolding](./Angular_README.md#code-scaffolding)
+- [Build](./Angular_README.md#build)
+- [Running unit tests](./Angular_README.md#running-unit-tests)
 - [Running end-to-end tests](./Angular_README.md#running-end-to-end-tests)
 - [Further help](./Angular_README.md#further-help)
-- [Built Using](#⛏️-built-using)
-- [Authors](#✍️-authors)
+- [Built Using](#%EF%B8%8F-built-using)
+- [Authors](#%EF%B8%8F-authors)
 
 ## 🧐 About
 Due to the global trend of digitizing education and in the midst of emerging pandemics, a need has arisen for online education and schooling. <br/><br/>
@@ -47,6 +47,9 @@ Due to the global trend of digitizing education and in the midst of emerging pan
 
 4) open ``` localhost:4200 ``` in preferred browser - check [hardware requirements](#hardware-requirements) -
  
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
 
 ### Prerequisites
 
@@ -62,6 +65,9 @@ Due to the global trend of digitizing education and in the midst of emerging pan
  - Opera 12+
  - Safari 5+
 
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
 
 ## 🎈 Usage
 
@@ -97,6 +103,10 @@ Due to the global trend of digitizing education and in the midst of emerging pan
  - Get notified with new available grades of his/her child grades
  - send/receive messages with his/her child’s teacher teachers 
 
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+
 
 ## ⛏️ Built Using
  - [aos](https://michalsnik.github.io/aos/)
@@ -104,8 +114,16 @@ Due to the global trend of digitizing education and in the midst of emerging pan
  - [angular material](https://material.angular.io/)
  - [primeflex](https://www.primefaces.org/primeflex/)
 
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+
 ## ✍️ Authors
 
  - [@Mohamed-EmadEldin](https://github.com/Mohamed-EmadEldin)
  - [@Muhammed-Ahmed-Ismail](https://github.com/Muhammed-Ahmed-Ismail)
  - [@AmSaleh21](https://github.com/AmSaleh21)
+
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
