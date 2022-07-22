@@ -39,7 +39,8 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd)
-        event.url === '/' || event.url === '/teacher-account' || event.url === '/student-account' || event.url === '/parent-account' || event.url === '/admin-account' || event.url === '/about' ? this.canShowNav = false : this.canShowNav = true;
+      this.canShowNav = this.authService.isLoggedIn()
+      console.log(this.authService.isLoggedIn())
     })
 
     this.stateService.userType.subscribe({
