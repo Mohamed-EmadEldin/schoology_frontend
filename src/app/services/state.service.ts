@@ -33,6 +33,7 @@ export class StateService {
   }
   public loggedInSubject:BehaviorSubject<boolean> = new BehaviorSubject(false)
   public notificationsCount:BehaviorSubject<number> = new BehaviorSubject(0)
+  public userType:BehaviorSubject<string> = new BehaviorSubject<string>('')
   public setAppState(newState: any,token:string) {
     this.state.userId = newState.userId
     this.state.userName = newState.userName;
@@ -45,10 +46,10 @@ export class StateService {
     this.state.newMessagesCount = newState.newMessagesCount // temp
     this.state.newNotificationsCount = newState.newNotificationsCount// temp
     this.notificationsCount.next(this.state.newNotificationsCount)
-    console.log(this.notificationsCount.getValue())
+    this.userType.next(this.state.userType)
+    this.loggedInSubject.next(true)
     localStorage.setItem("state",JSON.stringify(this.state))
     localStorage.setItem("token",`${token}`)
-    this.loggedInSubject.next(true)
 
   }
   public getState(): IAppState {

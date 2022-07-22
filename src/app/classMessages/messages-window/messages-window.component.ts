@@ -41,7 +41,6 @@ export class MessagesWindowComponent implements OnInit, AfterViewChecked {
     this.appMessageService.getMessages(this.otherId).subscribe({
       next: (messages) => {
         this.messages = messages
-        console.log(messages)
       }
     })
   }
@@ -49,11 +48,10 @@ export class MessagesWindowComponent implements OnInit, AfterViewChecked {
   sendMessage() {
     let message = new Message(this.newMessage, this.otherId)
     this.newMessage = ''
-    console.log(message)
+
     this.appMessageService.sendMessages(message).subscribe({
       next: (message) => {
         this.messages.push(message)
-        console.log(message)
         this.messageService.add({severity: 'success', summary: 'Success', detail: `your message has been sent`});
       },
       error: () => {

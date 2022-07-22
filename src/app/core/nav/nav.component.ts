@@ -12,11 +12,13 @@ import {StateService} from "../../services/state.service";
 export class NavComponent implements OnInit {
 
   canShowNav = true;
+  public userType:string = '';
   constructor(
     public sidebar: SidebarService,
     private router: Router,
     private authService:AuthService,
     public stateService:StateService
+
 
     ) { }
 
@@ -29,6 +31,12 @@ export class NavComponent implements OnInit {
       if(event instanceof NavigationEnd)
         event.url === '/' || event.url === '/teacher-account' ||event.url === '/student-account' ||event.url === '/parent-account' ||event.url === '/admin-account' || event.url==='/about'? this.canShowNav = false : this.canShowNav = true;
     })
+
+   this.stateService.userType.subscribe({
+     next:(value)=> {
+       this.userType  = value
+     }
+   })
 
   }
 

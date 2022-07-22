@@ -56,7 +56,7 @@
       <td *ngIf="stateService.getState().userType != 'teacher'">{{exam.course.name}}</td>
       <td>{{exam.date}}</td>
       <td *ngIf="stateService.getState().userType != 'parent'">
-        <a href="{{exam.link}}">take exam</a>
+        <a href="{{exam.link}}">Exam link</a>
       </td>
       <td *ngIf="stateService.getState().userType === 'teacher'" >
         <p-button label="Submit" icon="pi pi-check" (click)="submitExamResults(exam.link)"></p-button>
