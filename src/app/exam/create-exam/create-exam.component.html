@@ -6,7 +6,7 @@
         <input type="text" pInputText  placeholder="Link" name="link"
                [(ngModel)]="exam.link" #link="ngModel" required />
         <p-message severity="error" text="Message Content" *ngIf="link.invalid && (form.submitted)"></p-message>
-        <input type="text" pInputText [(ngModel)]="exam.name" placeholder="Quize Title" name="name" #name = "ngModel" required />
+        <input type="text" pInputText [(ngModel)]="exam.name" placeholder="Quiz Title" name="name" #name = "ngModel" required />
         <p-message severity="error" text="Message2 Content" *ngIf="name.invalid && (form.submitted)"></p-message>
         <button type="submit" pButton label="create Quiz" (click)="handelSubmit(form)"></button>
 
@@ -16,7 +16,7 @@
                     placeholder="class" name="classId"  #classId="ngModel" [required]="true" ></p-dropdown>
         <p-message severity="error" text="Message Content" *ngIf="classId.value==0 && (form.submitted)"></p-message>
 
-        <p-calendar [(ngModel)]="exam.date" placeholder="date" name="date"  #date="ngModel" [required]="true"></p-calendar>
+        <p-calendar [(ngModel)]="exam.date" placeholder="date" name="date"  #date="ngModel" [required]="true" [minDate]="minDate"></p-calendar>
         <p-message severity="error" text="Message Content" *ngIf="date.invalid && (form.submitted)"></p-message>
 
 

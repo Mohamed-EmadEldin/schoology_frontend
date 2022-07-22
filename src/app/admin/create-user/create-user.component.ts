@@ -42,6 +42,7 @@ export class CreateUserComponent {
 
   userTypes: any[] = [{name: 'Teacher', key: 1}, {name: 'Student', key: 2}, {name: 'Parent', key: 3}];
   userType: {name: string, key: number} = { name: '', key: 0 }
+  maxDate: Date = new Date();
 
 
   constructor(private usersCrudService: UsersCrudService,

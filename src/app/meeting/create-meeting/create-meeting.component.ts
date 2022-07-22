@@ -27,6 +27,8 @@ export class CreateMeetingComponent implements OnInit {
   // selectedClass:IClass;
   classes: IUiClass[] = []
 
+  minDate: Date = new Date();
+
   // @ts-ignore
   // date_time: Date;
   // description: any;

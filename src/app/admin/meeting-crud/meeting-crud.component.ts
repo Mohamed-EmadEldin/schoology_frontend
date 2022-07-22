@@ -42,6 +42,8 @@ export class MeetingCrudComponent implements OnInit {
 
   selectedMeetings: Meeting[] = []
 
+  minDate: Date = new Date();
+
   constructor(private meetingCrudService: MeetingCrudService,
               private usersCrudService: UsersCrudService,
               private helperService: HelperService,

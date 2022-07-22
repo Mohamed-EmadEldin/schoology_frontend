@@ -42,6 +42,8 @@ export class ExamsCrudComponent implements OnInit {
   isTeacherHasClasses: boolean = false;
   isTeacherSelected: boolean = false;
 
+  minDate: Date = new Date();
+
   invalid: boolean = false; //check create form status
 
   constructor(private examCrudService: ExamCrudService,
