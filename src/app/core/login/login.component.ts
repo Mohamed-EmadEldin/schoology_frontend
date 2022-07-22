@@ -29,8 +29,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.router.url);
-
+    if (this.authService.isLoggedIn())
+    {
+      this.router.navigate([`/${this.stateService.getState().userType}`])
+    }
     switch (this.router.url) {
       case "/teacher-account":
         this.image = "../../../assets/images/backgrounds/teacher.gif ";
