@@ -14,7 +14,7 @@
     </div>
     <div class="right-inputs flex-column">
       <p-calendar [(ngModel)]="_exam.date" placeholder="date" name="date" #date="ngModel"
-                  appendTo="body" [required]="true"></p-calendar>
+                  appendTo="body" [required]="true" [minDate]="minDate"></p-calendar>
       <p-message severity="error" text="invalid date" *ngIf="date.invalid && invalid"></p-message>
     </div>
 

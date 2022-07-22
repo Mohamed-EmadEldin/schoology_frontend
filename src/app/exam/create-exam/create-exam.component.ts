@@ -15,6 +15,7 @@ export class CreateExamComponent implements OnInit {
 
   public exam:Exam
   public classes:IUiClass[] =[]
+  minDate: Date = new Date();
   constructor(public stateService:StateService , public examService:ExamService,public router:Router) {
     this.exam = new Exam()
     this.exam.courseId = this.stateService.getState().courseId

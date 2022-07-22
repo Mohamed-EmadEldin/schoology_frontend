@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.authService.isLoggedIn())
-    {
+    if (this.authService.isLoggedIn()) {
       this.router.navigate([`/${this.stateService.getState().userType}`])
     }
     switch (this.router.url) {
@@ -58,15 +57,10 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  login(){
-    console.log(this.loginForm.value);
-
+  login() {
     this.authService.login(this.loginForm.value).subscribe(res => {
-
-        this.stateService.setAppState(res,res.token)
-
+        this.stateService.setAppState(res, res.token)
         this.router.navigate([`${this.stateService.getState().userType}/`])
-
       },
       error => {
         console.log(error)

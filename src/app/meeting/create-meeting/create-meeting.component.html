@@ -21,7 +21,8 @@
                          placeholder="period" name="period" #period="ngModel" [required]="true"  ></p-inputNumber>
           <p-message severity="error" text="Message Content" *ngIf="period.value==0  && (form.submitted  )"></p-message>
 
-          <p-calendar [(ngModel)]="meeting.date" placeholder="date" name="date"  #date="ngModel" [required]="true"></p-calendar>
+          <p-calendar [(ngModel)]="meeting.date" placeholder="date" name="date"  #date="ngModel"
+                      [required]="true" [minDate]="minDate"></p-calendar>
           <p-message severity="error" text="Message Content" *ngIf="date.invalid && (form.submitted)"></p-message>
 
 
