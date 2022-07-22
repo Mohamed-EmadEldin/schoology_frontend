@@ -1,20 +1,19 @@
 <div class="container">
   <p-toast></p-toast>
-  <div class="messages-container">
-    <div class="message-card" *ngFor="let message of messages">
+  <div class="messages-container" #message_container >
+    <div class="message-card" *ngFor="let message of messages" >
       <div class="card-container">
         <div class="my-message" *ngIf="message.senderId === myId">
           <div *ngIf="message.senderId === myId">
             <mat-card>
               <mat-card-title-group>
                 <mat-card-title>{{message.sender.name}}</mat-card-title>
-                <mat-card-subtitle> time</mat-card-subtitle>
+                <mat-card-subtitle> {{message.createdAt | date:"short" }}</mat-card-subtitle>
               </mat-card-title-group>
               <mat-card-content>
                 <p class="my-message">
                   {{message.message}}
                 </p>
-
               </mat-card-content>
             </mat-card>
 
@@ -28,7 +27,7 @@
             <mat-card>
               <mat-card-title-group>
                 <mat-card-title>{{message.sender.name}}</mat-card-title>
-                <mat-card-subtitle> time</mat-card-subtitle>
+                <mat-card-subtitle> {{message.createdAt | date:"short" }}</mat-card-subtitle>
               </mat-card-title-group>
               <mat-card-content>
                 <p class="other-message">
@@ -48,8 +47,9 @@
   <div class="messages-sender">
     <div class="col-12 md:col-4">
       <div class="p-inputgroup">
-        <input type="text" pInputText placeholder="Keyword" [(ngModel)]="newMessage">
-        <button type="button" pButton pRipple icon="pi pi-send" styleClass="p-button-primary" (click)="sendMessage()"></button>
+        <input type="text" pInputText placeholder="Send a message" [(ngModel)]="newMessage">
+        <button type="button" pButton pRipple icon="pi pi-send" styleClass="p-button-primary"
+                (click)="sendMessage()"></button>
       </div>
     </div>
   </div>

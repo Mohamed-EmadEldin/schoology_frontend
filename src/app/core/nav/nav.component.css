@@ -62,6 +62,11 @@
     color: white;
 }
 
+.white-icon
+{
+  color: white;
+
+}
 
 /* ::ng-deep.p-sidebar {
   background: #0e2a47;

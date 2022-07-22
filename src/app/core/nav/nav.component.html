@@ -1,78 +1,61 @@
 <nav class="navbar navbar-expand-lg navbar-light ">
-    <button *ngIf="canShowNav" class="p-button-rounded p-button-text" pButton icon="pi pi-bars" (click)="menuClick()"></button>
-    <div class="logo">
-        <img src="assets/images/logo.png" alt="Schoology">
-        <span>choology</span>
+  <button *ngIf="canShowNav" class="p-button-rounded p-button-text" pButton icon="pi pi-bars"
+          (click)="menuClick()"></button>
+  <div class="logo">
+    <img src="assets/images/logo.png" alt="Schoology">
+    <span>choology</span>
 
-    </div>
-    <button aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarToggler" data-bs-toggle="collapse" type="button">
+  </div>
+  <button aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+          data-bs-target="#navbarToggler" data-bs-toggle="collapse" type="button">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarToggler">
-        <ul class="navbar-nav">
-            <li class="nav-item px-3">
-                <!-- <button *ngIf="canShowNav" mat-icon-button [matMenuTriggerFor]="settingsMenu">
-
-        </button> -->
-
-                <!-- <mat-menu #settingsMenu>
-                    <menu mat-menu-item>
-                        <button routerLink="" pButton pRipple type="button" label="event 1" class="p-button-sm p-button-outlined p-button-text"></button>
-                    </menu>
-                    <menu mat-menu-item>
-                        <button routerLink="" pButton pRipple type="button" label="event 2" class="p-button-sm p-button-outlined p-button-text"></button>
-                    </menu>
-                    <menu mat-menu-item>
-                        <button routerLink="" pButton pRipple type="button" label="event 3" class="p-button-sm p-button-outlined p-button-text"></button>
-                    </menu>
-                    <menu mat-menu-item>
-                        <button routerLink="" pButton pRipple type="button" label="event 4" class="p-button-sm p-button-outlined p-button-text"></button>
-                    </menu>
-
-                </mat-menu>
-            </li>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarToggler">
+    <ul class="navbar-nav">
+      <li class="nav-item px-3">
 
 
-            <li class="nav-item px-3">
-                <button *ngIf="canShowNav" mat-icon-button [matMenuTriggerFor]="settingsMenu"><mat-icon> Messages </mat-icon> </button>
-
-            </li> -->
-
-
-                <li class="nav-item px-3">
-                    <button *ngIf="canShowNav  && stateService.getState().userType === 'student'" routerLink="/notification" pButton pRipple type="button" class="p-button-sm p-button-outlined p-button-text" routerLinkActive="active-link">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="yellow-icon"
+      <li class="nav-item px-3">
+        <button
+          *ngIf="canShowNav   &&( userType === 'student' || userType === 'parent')"
+          routerLink="/notification" pButton pRipple type="button" class="p-button-sm p-button-outlined p-button-text"
+          routerLinkActive="active-link">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="white-icon"
                     [matBadge]="stateService.notificationsCount.getValue()"
-                    *ngIf="stateService.notificationsCount.getValue() != 0">notifications
+                    *ngIf="stateService.notificationsCount.getValue() !== 0">notifications
           </mat-icon>
-          <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" class="yellow-icon"
+           <mat-icon aria-hidden="false" aria-label="Example home icon" class="yellow-icon"
                     *ngIf="stateService.notificationsCount.getValue() === 0">notifications
-          </mat-icon> -->
+          </mat-icon>
 
         </button>
-                </li>
+      </li>
 
 
-                <li class="nav-item px-3">
-                    <button routerLink="/about" pButton pRipple type="button" label="about" class="p-button-sm p-button-outlined p-button-text"></button>
-                </li>
+      <li class="nav-item px-3">
+        <button routerLink="/about" pButton pRipple type="button" label="about"
+                class="p-button-sm p-button-outlined p-button-text"></button>
+      </li>
 
 
-                <li>
-                    <button *ngIf="canShowNav" pButton pRipple type="button" label="Profile" class="p-button-sm p-button-outlined p-button-text" [matMenuTriggerFor]="profilesMenu">
+      <li>
+        <button *ngIf="canShowNav" pButton pRipple type="button" label="Profile"
+                class="p-button-sm p-button-outlined p-button-text" [matMenuTriggerFor]="profilesMenu">
           <mat-icon>arrow_drop_down</mat-icon>
         </button>
 
-                    <mat-menu #profilesMenu>
-                        <menu mat-menu-item>
-                            <button pButton pRipple type="button" label="log out" class="p-button-sm p-button-outlined p-button-text" (click)="logout()"></button>
-                        </menu>
-                        <menu mat-menu-item>
-                            <button routerLink="/cal" pButton pRipple type="button" label="account" class="p-button-sm p-button-outlined p-button-text"></button>
-                        </menu>
-                    </mat-menu>
-                </li>
+        <mat-menu #profilesMenu>
+          <menu mat-menu-item>
+            <button pButton pRipple type="button" label="log out" class="p-button-sm p-button-outlined p-button-text"
+                    (click)="logout()"></button>
+          </menu>
+          <menu mat-menu-item>
+            <button routerLink="/cal" pButton pRipple type="button" label="account"
+                    class="p-button-sm p-button-outlined p-button-text"></button>
+          </menu>
+        </mat-menu>
+      </li>
 
-        </ul>
-    </div>
+    </ul>
+  </div>
 </nav>
