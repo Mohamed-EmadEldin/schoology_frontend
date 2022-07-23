@@ -78,7 +78,7 @@
                    *ngIf="userType.key === 2 && invalid"></p-message>
 
         <p-dropdown *ngIf="userType.key === 3" [options]="students" [(ngModel)]="selectedStudent"
-                    optionLabel="name" optionValue="id" placeholder="select student" name="studentId"
+                    optionLabel="name" optionValue="id" placeholder="select student" name="studentId" [filter]="true" filterBy="name" [showClear]="true"
                     [required]="true"></p-dropdown>
         <p-message severity="error" text="please select student"
                    *ngIf="userType.key === 3 && selectedCourse === -1 && invalid"></p-message>
