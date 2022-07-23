@@ -1,4 +1,4 @@
-<app-nav></app-nav>
+<app-nav *ngIf="canShowNav"></app-nav>
 
 <router-outlet></router-outlet>
 <app-sidebar *ngIf="canShowSide"></app-sidebar>
