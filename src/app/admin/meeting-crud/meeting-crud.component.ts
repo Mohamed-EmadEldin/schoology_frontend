@@ -7,6 +7,7 @@ import {ICourse, ITeacher, IUiClass} from "../../interfaces/Interfaces";
 import {HelperService} from "../../services/admin/helper.service";
 import {formatDate} from "@angular/common";
 import {UsersCrudService} from "../../services/admin/users-crud.service";
+import {MeetingAuthService} from "../../services/meeting-auth.service";
 
 @Component({
   selector: 'app-meeting-crud',
@@ -48,7 +49,9 @@ export class MeetingCrudComponent implements OnInit {
               private usersCrudService: UsersCrudService,
               private helperService: HelperService,
               private messageService: MessageService,
-              private confirmationService: ConfirmationService) { }
+              private confirmationService: ConfirmationService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.meetingCrudService.getMeetings()
@@ -60,8 +63,9 @@ export class MeetingCrudComponent implements OnInit {
 
   openCreateDialog() {
     this.usersCrudService.getAllTeachers().subscribe(data => {
+      console.log(data)
       this.teachers = data.map(value => {
-        return {name: value.name, id: value.id}
+        return {name: value.user.name, id: value.id}
       });
     })
     this.displayCreateModel = true;
@@ -95,14 +99,24 @@ export class MeetingCrudComponent implements OnInit {
   createMeeting() { //TODO: check admin create meeting
     this.invalid = false
     this._meeting.date = formatDate(this._meeting.date, 'YYYY-MM-dd', 'en')
-    this.meetingCrudService.createMeeting({
+    const body = {
       ...this._meeting,
       teacherId: this.selectedTeacherId,
       classId: this.selectedClass,
       courseId: this.selectedCourse,
+    }
+    this.meetingCrudService.checkIsValidTime(body).subscribe({
+      next: (res) => {
+        if (res.error) {
+          this.messageService.add({severity: 'error', summary: 'Error', detail: res.error});
+        } else
+        {
+          this.meetingCrudService.createMeeting(body)
+          this.displayCreateModel = false;
+        }
+      }
     })
-    this.displayCreateModel = false;
-    this.messageService.add({severity: 'success', summary: 'Success', detail: 'Exam was created successfully'});
+
   }
 
   onRowEditInit(_meeting: any) {
@@ -114,7 +128,7 @@ export class MeetingCrudComponent implements OnInit {
     this.meetingCrudService.updateMeeting(index, _meeting)
       .subscribe(data => this._meetings.splice(index, 1, data))
       .unsubscribe();
-    this.messageService.add({severity:'success', summary: 'Success', detail:'Class is updated'});
+    this.messageService.add({severity: 'success', summary: 'Success', detail: 'Class is updated'});
   }
 
   onRowEditCancel(_meeting: Meeting, index: any) {
@@ -132,13 +146,19 @@ export class MeetingCrudComponent implements OnInit {
         this.meetingCrudService.deleteMeet(_meeting.id)
           .subscribe(() => {
             this._meetings.splice(_meeting.id, 1);
-            this.messageService.add({severity:'success', summary: 'Successful', detail: 'Meeting Deleted', life: 3000});
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Successful',
+              detail: 'Meeting Deleted',
+              life: 3000
+            });
           })
       }
     });
   }
 
   @ViewChild('dt') dt: Table | undefined
+
   applyFilterNameGlobal($event: any, stringVal: string) {
     this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
@@ -151,7 +171,7 @@ export class MeetingCrudComponent implements OnInit {
       accept: () => {
         this._meetings = this._meetings.filter(val => !this.selectedMeetings.includes(val));
         this.selectedMeetings = [];
-        this.messageService.add({severity:'success', summary: 'Successful', detail: 'users deactivated', life: 3000});
+        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'users deactivated', life: 3000});
       }
     });
   }

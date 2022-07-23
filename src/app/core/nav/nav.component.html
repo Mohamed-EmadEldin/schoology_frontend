@@ -21,14 +21,15 @@
           routerLink="/notification" pButton pRipple type="button" class="p-button-sm p-button-outlined p-button-text"
           routerLinkActive="active-link">
           <mat-icon aria-hidden="false" aria-label="Example home icon" class="white-icon"
-                    [matBadge]="stateService.notificationsCount.getValue()"
-                    *ngIf="stateService.notificationsCount.getValue() !== 0">notifications
+                    [matBadge]="notificationsCount"
+                    *ngIf="notificationsCount != 0">notifications
           </mat-icon>
            <mat-icon aria-hidden="false" aria-label="Example home icon" class="yellow-icon"
-                    *ngIf="stateService.notificationsCount.getValue() === 0">notifications
+                    *ngIf="notificationsCount === 0">notifications
           </mat-icon>
 
         </button>
+
       </li>
 
 
