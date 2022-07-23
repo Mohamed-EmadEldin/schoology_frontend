@@ -36,7 +36,7 @@ export class CreateUserComponent {
   selectedGender = ''
 
   confirmPassword :string = ''
-  passwordMatch: boolean = false
+  passwordMatch: boolean = true
 
   invalid: boolean = false; //to check inputs
 
@@ -145,6 +145,17 @@ export class CreateUserComponent {
   }
 
   handelSubmit() {
+    if(this.user.password !== this.confirmPassword )
+    {
+      this.invalid = true
+      this.passwordMatch = false
+      return
+    }
+    if(this.confirmPassword === '')
+    {
+      this.invalid = true
+      return;
+    }
     if (this.user !== new User()) {
       this.invalid = false;
       if (this.userType.key === 1) {
@@ -157,7 +168,8 @@ export class CreateUserComponent {
         this.registerParent()
         this.routeBack()
       }
-    }else {
+    }
+    else {
       this.invalid = true;
     }
   }

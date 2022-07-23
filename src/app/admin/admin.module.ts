@@ -35,6 +35,7 @@ import {RadioButtonModule} from "primeng/radiobutton";
 import {MultiSelectModule} from "primeng/multiselect";
 import {PaginatorModule} from "primeng/paginator";
 import {InputTextareaModule} from "primeng/inputtextarea";
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {InputTextareaModule} from "primeng/inputtextarea";
     ClassCrudComponent,
     DashboardComponent,
     CourseCrudComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ResetPasswordComponent
   ],
     imports: [
         CommonModule,

@@ -42,7 +42,7 @@
             <p-columnFilter type="numeric" placeholder="role number" field="roleId" display="menu" class="ml-auto"></p-columnFilter>
           </div>
         </th>
-        <th>reset/deactivate</th>
+        <th>reset password</th>
 <!--        <th>updated at</th>-->
         <th style="width:5rem"></th>
       </tr>
@@ -88,7 +88,8 @@
           <p *ngIf="_nonAdminUser.roleId === 3">id:3 - parent</p>
         </td>
         <td>
-          {{_nonAdminUser.createdAt | date: 'medium'}}
+          <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-key"
+                  [routerLink]="'/admin/reset-password/'+_nonAdminUser.id" class="p-button-rounded p-button-text"></button>
         </td>
 <!--        <td>-->
 <!--          {{_nonAdminUser.updatedAt | date: 'medium'}}-->

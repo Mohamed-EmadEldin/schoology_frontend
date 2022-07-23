@@ -8,6 +8,7 @@ import {UsersCrudComponent} from "./users-crud/users-crud.component";
 import {ClassCrudComponent} from "./class-crud/class-crud.component";
 import {CourseCrudComponent} from "./course-crud/course-crud.component";
 import {CreateUserComponent} from "./create-user/create-user.component";
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 
 const routes: Routes = [
   { path: '', component: AdminMainComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'course-crud', component: CourseCrudComponent},
   { path: 'create-user', component: CreateUserComponent },
   { path: 'dashboard',component:DashboardComponent },
+  { path: 'reset-password/:id',component:ResetPasswordComponent },
 ];
 
 @NgModule({
