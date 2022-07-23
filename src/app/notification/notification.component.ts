@@ -15,7 +15,7 @@ export class NotificationComponent implements OnInit {
   constructor(private notificationService: NotificationService,public stateService:StateService) { }
 
    ngOnInit() {
-     this.stateService.notificationsCount.next(0)
+     // this.stateService.notificationsCount.next(0)
 
      this.notificationService.getUserNotification().subscribe(data => this.notifications = data)
 

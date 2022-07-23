@@ -8,8 +8,6 @@ import {IUiClass} from "../../interfaces/Interfaces";
 import {MessageService} from "primeng/api";
 
 
-
-
 @Component({
   selector: 'app-create-meeting',
   templateUrl: './create-meeting.component.html',
@@ -51,12 +49,12 @@ export class CreateMeetingComponent implements OnInit {
   });
 
 
-  constructor(private stateService: StateService, private authService: MeetingAuthService , public messageService:MessageService) {
+  constructor(private stateService: StateService, private meetingAuthService: MeetingAuthService, public messageService: MessageService) {
 
   }
 
   ngOnInit(): void {
-    this.classes=this.stateService.mapClassesToUiRep()
+    this.classes = this.stateService.mapClassesToUiRep()
   }
 
   printClass() {
@@ -64,13 +62,25 @@ export class CreateMeetingComponent implements OnInit {
   }
 
   signInWithGoogle(formData: object): void {
-    this.authService.createMeet(formData);
+    this.meetingAuthService.createMeet(formData);
   }
 
   handelSubmit(form: NgForm) {
     if (form.valid) {
       form.value.date = formatDate(form.value.date, 'YYYY-MM-dd', 'en')
-      this.signInWithGoogle(form.value)
+      console.log(form)
+      this.meetingAuthService.checkIsValidTime(form.value).subscribe({
+        next: (res) => {
+          if (res.error) {
+            this.messageService.add({severity: 'error', summary: 'Error', detail: res.error});
+          } else {
+
+            this.signInWithGoogle(form.value)
+
+          }
+        }
+      })
+
     }
   }
 }

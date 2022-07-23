@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../models/user";
 import {environment} from "../../../environments/environment";
+import {Teacher} from "../../models/teacher";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class UsersCrudService {
   }
 
   getAllTeachers() {
-    return this.http.get<User[]>(`${this.url}/allTeachers`)
+    return this.http.get<Teacher[]>(`${this.url}/allTeachers`)
   }
 
   getAllStudents() {

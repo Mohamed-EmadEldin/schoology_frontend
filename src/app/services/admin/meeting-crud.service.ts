@@ -59,6 +59,16 @@ export class MeetingCrudService {
     })
   }
 
+  public checkIsValidTime(data: any) {
+    return this.http.get<any>(`${this.url}/is-valid-time`, {
+      params: {
+        teacherId: data.teacherId,
+        period: data.period,
+        date_time: data.date,
+        classId: data.classId,
+      }
+    })
+  }
   updateMeeting(meetId: number, meet: Meeting) {
     return this.http.put<Meeting>(`${this.url}/update/${meetId}`, meet);
   }

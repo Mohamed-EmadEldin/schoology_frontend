@@ -17,17 +17,18 @@ export class NotificationService {
     }
     //TODO: [ph]
     this.userId = 2
-    this.url = `http://127.0.0.1:3000/nots/myNots/`;
+    this.url = `http://127.0.0.1:3000/nots/`;
   }
 
   getUserNotification() {
-    this.url = `http://127.0.0.1:3000/nots/myNots/`+this.stateService.getState().personId
-    return this.http.get<any>(this.url)
+    let url = this.url+`myNots/` + this.stateService.getState().personId
+    return this.http.get<any>(url)
 
   }
 
-  getNotifications() {
-    return this.notifications
+  getNewNotificationsCount() {
+    let url = this.url+`/myNotsCount`
+    return this.http.get<any>(url)
   }
 
 }

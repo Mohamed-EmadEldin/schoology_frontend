@@ -61,7 +61,7 @@ export class ExamsCrudComponent implements OnInit {
   openCreateDialog() {
     this.userCrudService.getAllTeachers().subscribe(data => {
       this.teachers = data.map(value => {
-        return {name: value.name, id: value.id}
+        return {name: value.user.name, id: value.id}
       });
     })
     this.displayCreateModel = true;
