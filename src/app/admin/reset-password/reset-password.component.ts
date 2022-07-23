@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {UsersCrudService} from "../../services/admin/users-crud.service";
 
 @Component({
   selector: 'app-reset-password',
@@ -14,7 +15,7 @@ export class ResetPasswordComponent implements OnInit {
   passwordMatch: boolean = true
 
   invalid: boolean = false; //to check inputs
-  constructor(private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute,private userCrudService:UsersCrudService,private router:Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')
@@ -22,14 +23,26 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   handelSubmit() {
-    if(this.password !== this.confirmPassword)
+    if(this.password !== this.confirmPassword )
     {
       this.invalid = true
       this.passwordMatch = false
       return
+    }
+    if(this.confirmPassword === '')
+    {
+      this.invalid = true
+      return;
     } else
     {
-      console.log('ook')
+      this.userCrudService.resetPassword(this.id,this.password).subscribe({
+        next:(res)=>{
+          if (res.success)
+          {
+            this.router.navigate(['/admin/user-crud'])
+          }
+        }
+      })
     }
   }
 }
