@@ -42,7 +42,10 @@ export class UsersCrudService {
   }
 
   deactivateUser(userId: number) {
-    return this.http.patch(`${this.url}/${userId}`, {})
+    return this.http.patch(`${this.url}/deactivate/${userId}`, {})
   }
 
+  activate(id:number) {
+    return this.http.patch(`${this.url}/activate/${id}`, {})
+  }
 }

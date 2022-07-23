@@ -42,8 +42,8 @@
             <p-columnFilter type="numeric" placeholder="role number" field="roleId" display="menu" class="ml-auto"></p-columnFilter>
           </div>
         </th>
-        <th>Created at</th>
-        <th>updated at</th>
+        <th>reset/deactivate</th>
+<!--        <th>updated at</th>-->
         <th style="width:5rem"></th>
       </tr>
     </ng-template>
@@ -90,9 +90,9 @@
         <td>
           {{_nonAdminUser.createdAt | date: 'medium'}}
         </td>
-        <td>
-          {{_nonAdminUser.updatedAt | date: 'medium'}}
-        </td>
+<!--        <td>-->
+<!--          {{_nonAdminUser.updatedAt | date: 'medium'}}-->
+<!--        </td>-->
         <td style="text-align:center">
           <div class="d-flex">
             <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
@@ -104,7 +104,9 @@
                     (click)="onRowEditCancel(_nonAdminUser, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
 
             <button pButton pRipple type="button" icon="pi pi-times"
-                    (click)="deactivate(_nonAdminUser)" class="p-button-rounded p-button-text p-button-danger"></button>
+                    (click)="deactivate(_nonAdminUser)" class="p-button-rounded p-button-text p-button-danger" *ngIf="_nonAdminUser.active"></button>
+         <button pButton pRipple type="button" icon="pi pi-check"
+                    (click)="activate(_nonAdminUser)" class="p-button-rounded p-button-text p-button-success" *ngIf="!_nonAdminUser.active"></button>
           </div>
         </td>
       </tr>
