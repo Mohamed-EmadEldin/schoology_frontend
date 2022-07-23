@@ -12,8 +12,10 @@ export class NotificationService {
   url;
 
   constructor(private http: HttpClient, private stateService: StateService) {
-    if (stateService.getState().userId != -1) {
-      this.userId = stateService.getState().userId
+    if (this.stateService.getState() !== null){
+      if (stateService.getState().userId != -1) {
+        this.userId = stateService.getState().userId
+      }
     }
     //TODO: [ph]
     this.userId = 2
