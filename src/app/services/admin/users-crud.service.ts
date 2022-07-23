@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../models/user";
 import {environment} from "../../../environments/environment";
@@ -11,7 +11,8 @@ export class UsersCrudService {
 
   private url = `${environment.baseUrl}/auth`
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getUsers() {
     return this.http.get<User[]>(`${this.url}/allUsers`)
@@ -25,7 +26,7 @@ export class UsersCrudService {
     return this.http.get<User[]>(`${this.url}/allStudents`)
   }
 
-  registerTeacher(formData: any){
+  registerTeacher(formData: any) {
     return this.http.post(`${this.url}/signup/teacher`, formData)
   }
 
@@ -45,7 +46,13 @@ export class UsersCrudService {
     return this.http.patch(`${this.url}/deactivate/${userId}`, {})
   }
 
-  activate(id:number) {
+  activate(id: number) {
     return this.http.patch(`${this.url}/activate/${id}`, {})
+  }
+
+  resetPassword(id: string | null, password: string) {
+    return this.http.post<any>(`${this.url}/reset-password`, {
+      id, password
+    })
   }
 }
