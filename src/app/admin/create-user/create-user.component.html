@@ -33,7 +33,7 @@
       </p-password>
       <p-password class="mt-2" [(ngModel)]="confirmPassword" placeholder="confirm password" [showClear]="true"
                   [feedback]="false" [toggleMask]="true" required></p-password>
-      <p-message severity="error" text="passwords don't match" *ngIf="passwordMatch && invalid"></p-message>
+      <p-message severity="error" text="passwords don't match" *ngIf="! passwordMatch && invalid"></p-message>
       <p-message severity="error" text="password can't be empty"
                  *ngIf="confirmPassword === '' && invalid"></p-message>
 
