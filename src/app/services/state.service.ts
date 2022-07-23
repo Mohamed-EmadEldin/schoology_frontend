@@ -33,6 +33,7 @@ export class StateService {
   }
   public loggedInSubject:BehaviorSubject<boolean> = new BehaviorSubject(false)
   public notificationsCount:BehaviorSubject<number> = new BehaviorSubject(0)
+  public messagesCount:BehaviorSubject<number> = new BehaviorSubject(0)
   public userType:BehaviorSubject<string> = new BehaviorSubject<string>('')
   public setAppState(newState: any,token:string) {
     this.state.userId = newState.userId
@@ -46,6 +47,7 @@ export class StateService {
     this.state.newMessagesCount = newState.newMessagesCount // temp
     this.state.newNotificationsCount = newState.newNotificationsCount// temp
     this.notificationsCount.next(this.state.newNotificationsCount)
+    this.messagesCount.next(this.state.newMessagesCount)
     this.userType.next(this.state.userType)
     this.loggedInSubject.next(true)
     localStorage.setItem("state",JSON.stringify(this.state))

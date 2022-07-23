@@ -58,6 +58,11 @@ export class SidebarComponent implements OnInit {
       },
     ];
     // console.log(this.model)
+    this.stateService.messagesCount.subscribe({
+      next:(value)=>{
+        this.newMessagesCount = value.toString()
+      }
+    })
     this.sidebar.getNewMessagesCount().subscribe({
       next:(data)=>{
         this.newMessagesCount =data.count
