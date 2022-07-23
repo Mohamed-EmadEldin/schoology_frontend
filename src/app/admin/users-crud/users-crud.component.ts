@@ -93,4 +93,23 @@ export class UsersCrudComponent implements OnInit {
     this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
 
+  activate(_user: any) {
+    this.confirmationService.confirm({
+      message: `Are you sure you want to activate user '${_user.name}' ?`,
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.usersCrudService.activate(_user.id)
+          .subscribe(() => {
+            let user = this._users.find(val => val.id == _user.id)
+            // user!.active = false
+            // // @ts-ignore
+            // this._users.splice(_user.id, 1, user)
+            this.messageService.add({severity:'success', summary: 'Successful',
+              detail: 'user activated', life: 3000});
+          })
+
+      }
+    });
+  }
 }

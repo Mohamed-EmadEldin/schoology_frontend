@@ -42,7 +42,6 @@ export class NavComponent implements OnInit {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd)
       this.canShowNav = this.authService.isLoggedIn()
-      console.log(this.authService.isLoggedIn())
     })
     this.stateService.notificationsCount.subscribe({
       next:(value)=>{
