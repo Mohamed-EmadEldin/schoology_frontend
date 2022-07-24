@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# spec test files
+**/*.spec.ts
+
+/.vscode/
+package-lock.json

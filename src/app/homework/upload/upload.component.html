@@ -1,0 +1,13 @@
+<p-toast></p-toast>
+<div class="d-flex">
+<!--  <form class="form-container d-flex" #form="ngForm">-->
+    <input class="form-control" pInputText type="file" (change)="onChange($event)">
+    <div>
+      <p-dropdown [options]="classes" [(ngModel)]="_classId" optionLabel="name" optionValue="code"
+                  placeholder="class" ></p-dropdown>
+<!--      <p-message severity="error" text="choose a class"></p-message>-->
+    </div>
+    <button type="submit" (click)="onUpload()" pButton class="btn-sm"> Upload</button>
+<!--  </form>-->
+
+</div>

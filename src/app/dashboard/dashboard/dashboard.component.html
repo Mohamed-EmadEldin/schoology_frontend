@@ -1,0 +1,78 @@
+<!-- profile section  -->
+
+<div class="welcome" data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="3000">
+    <h1 class="mx-3">Welcome {{userName}}</h1>
+    <mat-icon class="hand">waving_hand</mat-icon>
+    <script>
+        AOS.init();
+    </script>
+</div>
+
+<!-- announcement section -->
+<!-- <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Announcement</mat-label>
+        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
+        <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+</form> -->
+
+<header class="mx-3">
+  <!-- <h1>Announcements</h1> -->
+</header>
+<section class="announcement">
+
+  <h3>{{announcement.announcment}}</h3>
+  <img src="../../../assets/images/backgrounds/Happy announcement.gif" alt="">
+
+
+</section>
+<br>
+<br>
+
+<div class="w-50 m-auto" #active>
+  <!--slider section-->
+  <h1>our school</h1>
+  <p-carousel [value]="galaryImages" styleClass="custom-carousel" [numVisible]="1" [numScroll]="1" [circular]="true"
+              [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+    <ng-template pTemplate="header">
+    </ng-template>
+    <ng-template let-gallaryImage pTemplate="item">
+      <div class="product-item">
+        <div class="item-content-container">
+          <div class="item-info-container">
+            <p class="h3">{{gallaryImage.title}}</p>
+            <hr>
+            <p class="mt-0 mb-3 h5">{{gallaryImage.description}}</p>
+          </div>
+          <div class="image-container">
+            <img src="{{gallaryImage.link}}" [alt]="gallaryImage.description" class="product-image" width="300"/>
+          </div>
+          <div>
+
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+
+<!-- <button (click)="prevImageClick()">Prev</button>
+<button (click)="nextImageClick()">Next</button>  -->
+
+
+<!--gallery events-->
+
+
+<div>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+
+<div class="cal-container">
+  <mat-card class="demo-inline-calendar-card">
+    <mat-calendar [(selected)]="selected"></mat-calendar>
+  </mat-card>
+  <img src="assets/images/backgrounds/Date picker.gif" alt="">
+</div>

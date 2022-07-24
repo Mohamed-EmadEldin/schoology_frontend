@@ -1,0 +1,157 @@
+<p-toast></p-toast>
+<div class="container">
+  <p class="h3">Exams</p>
+
+  <p-dialog header="add exam" [(visible)]="displayCreateModel" [modal]="true" [draggable]="false">
+
+    <div class="left-inputs flex-column">
+      <input type="text" pInputText placeholder="Link" name="link"
+             [(ngModel)]="_exam.link" #link="ngModel" required/>
+      <p-message severity="error" text="invalid link" *ngIf="link.invalid && invalid"></p-message>
+      <input type="text" pInputText [(ngModel)]="_exam.name" placeholder="Exam Title" name="name" #name="ngModel"
+             required/>
+      <p-message severity="error" text="invalid name" *ngIf="name.invalid && invalid"></p-message>
+    </div>
+    <div class="right-inputs flex-column">
+      <p-calendar [(ngModel)]="_exam.date" placeholder="date" name="date" #date="ngModel"
+                  appendTo="body" [required]="true" [minDate]="minDate"></p-calendar>
+      <p-message severity="error" text="invalid date" *ngIf="date.invalid && invalid"></p-message>
+    </div>
+
+    <p-dropdown [options]="teachers" [(ngModel)]="selectedTeacherId" optionLabel="name" optionValue="id"
+                placeholder="select a teacher" #teacher="ngModel"
+                appendTo="body" (onChange)="activateCourseAndClassDropdown(selectedTeacherId)" optionDisabled="inactive"></p-dropdown>
+    <p-message severity="error" text="please select a teacher" *ngIf="teacher.invalid && invalid"></p-message>
+    <p-dropdown [options]="teacherClasses" [(ngModel)]="selectedClass" placeholder="class"
+                optionLabel="name" optionValue="code" appendTo="body" #teacherClass="ngModel"
+                optionDisabled="inactive" [disabled]="disableClassSelect"></p-dropdown>
+    <p-message severity="error" text="please select a class" *ngIf="teacherClass.invalid && invalid"></p-message>
+    <p-dropdown [options]="teacherCourses" [(ngModel)]="selectedCourse" placeholder="course"
+                optionLabel="name" optionValue="id" appendTo="body" #teacherCourse="ngModel"
+                optionDisabled="inactive" [disabled]="disableCourseSelect"></p-dropdown>
+    <p-message severity="error" text="please select a course" *ngIf="teacherCourse.invalid && invalid"></p-message>
+    <p *ngIf="!isTeacherHasClasses && isTeacherSelected">this teacher has no classes assigned</p>
+
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-plus-circle" (click)="createExam()" label="Add" styleClass="p-button-text"></p-button>
+    </ng-template>
+
+  </p-dialog>
+
+  <p-toolbar styleClass="mb-4">
+    <ng-template pTemplate="left">
+      <button pButton pRipple label="add new" icon="pi pi-plus-circle" class="p-button p-button-sm p-badge-secondary"
+              (click)="openCreateDialog()"></button>
+      <button pButton pRipple icon="pi pi-trash" class="p-button-danger p-button-sm mx-2"
+              (click)="deleteSelectedExams()" [disabled]="!selectedExams || !selectedExams.length"></button>
+    </ng-template>
+    <ng-template pTemplate="right">
+      <input pInputText type="text" (input)="applyFilterNameGlobal($event, 'contains')"
+             placeholder="filter exam name"/>
+    </ng-template>
+  </p-toolbar>
+
+  <!--
+      TODO: multi-delete from db
+  -->
+  <p-table #dt [value]="_exams" dataKey="id" editMode="row" responsiveLayout="scroll" [globalFilterFields]="['name']"
+           styleClass="p-datatable-striped"
+           [(selection)]="selectedExams" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,25,50]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="name">
+          <div class="flex justify-content-between align-items-center">
+            Name
+            <p-sortIcon field="name"></p-sortIcon>
+            <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+        <th>link</th>
+        <th>exam date</th>
+        <th>submitted</th>
+        <th>course</th>
+        <th>teacher</th>
+        <th>class</th>
+        <th pSortableColumn="createdAt">
+          <div class="flex justify-content-between align-items-center">
+            Created At
+            <p-sortIcon field="createdAt"></p-sortIcon>
+          </div>
+        </th>
+        <th pSortableColumn="updatedAt">
+          <div class="flex justify-content-between align-items-center">
+            Updated At
+            <p-sortIcon field="updatedAt"></p-sortIcon>
+          </div>
+        </th>
+        <th style="width:5rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-_exam let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="_exam">
+        <td>
+          <p-tableCheckbox [value]="_exam"></p-tableCheckbox>
+        </td>
+        <td>
+          {{_exam.name}}
+        </td>
+        <td>
+          <a href="{{_exam.link}}" target="_blank" rel="noreferrer">link</a>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="date" [(ngModel)]="_exam.date">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{_exam.date}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          {{_exam.submitted}}
+        </td>
+        <td>
+          {{_exam.course.name}}
+        </td>
+        <td>
+          {{_exam.teacher.user.name}}
+        </td>
+        <td>
+          {{_exam.class.name}}
+        </td>
+        <td>
+          {{_exam.createdAt | date: 'medium'}}
+        </td>
+        <td>
+          {{_exam.updatedAt | date: 'medium'}}
+        </td>
+        <td style="text-align:center">
+          <div class="d-flex">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
+                    (click)="onRowEditInit(_exam)" class="p-button-rounded p-button-text"></button>
+
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow label="save"
+                    (click)="onRowEditSave(_exam)"
+                    class="p-button-rounded p-button-text p-button-success mr-2"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow label="cancel"
+                    (click)="onRowEditCancel(_exam, ri)"
+                    class="p-button-rounded p-button-text p-button-danger"></button>
+
+            <button pButton pRipple type="button" icon="pi pi-times"
+                    (click)="delete(_exam)" class="p-button-rounded p-button-text p-button-danger"></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{_exams ? _exams.length : 0 }} exams.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<p-confirmDialog></p-confirmDialog>

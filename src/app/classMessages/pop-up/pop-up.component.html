@@ -1,0 +1,13 @@
+<div *ngIf="data.app == 'send' then send; else recieve">
+</div>
+
+
+<ng-template #send>
+
+
+  <app-messages-window [otherId]="otherId" [senderName]="senderName"></app-messages-window>
+
+</ng-template>
+<ng-template #recieve>
+    hello ya recieve
+</ng-template>

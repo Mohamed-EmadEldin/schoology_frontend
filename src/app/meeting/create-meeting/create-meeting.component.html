@@ -1,0 +1,35 @@
+<div class="container">
+  <p-toast></p-toast>
+
+  <p-card>
+    <form class="form-container" #form="ngForm"  >
+      <!--      <form class="form-container">-->
+      <div class="left-inputs flex-column">
+        <input type="text" pInputText  placeholder="Description" name="description"
+                [(ngModel)]="meeting.description" #description="ngModel" required />
+        <p-message severity="error" text="invalid description" *ngIf="description.invalid && (form.submitted)"></p-message>
+          <input type="text" pInputText [(ngModel)]="meeting.name" placeholder="Meeting Title" name="name" #name = "ngModel" required />
+        <p-message severity="error" text="invalid name" *ngIf="name.invalid && (form.submitted)"></p-message>
+        <button type="submit" pButton label="create meeting" (click)="handelSubmit(form)"></button>
+
+        </div>
+        <div class="right-inputs flex-column">
+          <p-dropdown [options]="classes" [(ngModel)]="meeting.classId" optionLabel="name" optionValue="code"
+                      placeholder="class" name="classId"  #classId="ngModel" [required]="true" ></p-dropdown>
+          <p-message severity="error" text="please select class" *ngIf="classId.value==0 && (form.submitted)"></p-message>
+
+          <p-inputNumber [(ngModel)]="meeting.period" [min]="1" [max]="8" [showButtons]="true"
+                         placeholder="period" name="period" #period="ngModel" [required]="true"  ></p-inputNumber>
+          <p-message severity="error" text="period can not be 0" *ngIf="period.value==0  && (form.submitted  )"></p-message>
+
+          <p-calendar [(ngModel)]="meeting.date" placeholder="date" name="date"  #date="ngModel"
+                      [required]="true" [minDate]="minDate"></p-calendar>
+          <p-message severity="error" text="please select valid date" *ngIf="date.invalid && (form.submitted)"></p-message>
+
+
+        </div>
+
+    </form>
+  </p-card>
+
+</div>

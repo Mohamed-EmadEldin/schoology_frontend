@@ -1,0 +1,12 @@
+/*::ng-deep .cv {*/
+/*  width: 33rem !important;*/
+/*}*/
+/*::ng-deep .uv {*/
+/*  width: 10rem;*/
+/*}*/
+
+/*:host  ::ng-deep .p-card {*/
+/*  .uv {*/
+/*    width: 33rem !important;*/
+/*  }*/
+/*}*/

@@ -1,0 +1,17 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.wrapper .left {
+    width: 40%;
+}
+
+.wrapper .right img {
+    max-width: 100%;
+}

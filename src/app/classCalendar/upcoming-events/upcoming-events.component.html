@@ -1,0 +1,62 @@
+<p-table #dt [value]="events" [paginator]="true" [rows]="5"
+         [filterDelay]="0" [globalFilterFields]="['name', 'date']">
+  <ng-template pTemplate="caption">
+    <div class="table-header d-flex">
+      <p class="flex-grow-1 align-self-center"> List of Meetings </p>
+      <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text" (input)="applyFilterNameGlobal($event, 'contains')"
+                 placeholder="filter meeting name"/>
+            <p-calendar [(ngModel)]="filterDate" dateFormat="yy-mm-dd" [showButtonBar]="true"
+                        (onSelect)="applyFilterDateGlobal('equals')"
+                        (onClearClick)="clearDateFilter()"
+                        [showIcon]="true" inputId="icon"></p-calendar>
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="name">
+        <div class="flex justify-content-between align-items-center">
+          name
+          <p-sortIcon field="name"></p-sortIcon>
+          <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+        </div>
+      </th>
+      <th *ngIf="stateService.getState().userType === 'teacher'">class name</th>
+      <th pSortableColumn="date">
+        <div class="flex justify-content-between align-items-center">
+          date
+          <p-sortIcon field="date"></p-sortIcon>
+          <p-columnFilter type="date" field="date" display="menu">
+            <ng-template pTemplate="filter" let-filter="filterCallback">
+              <p-calendar dateFormat="yy-mm-dd" (onSelect)="filter($event)"></p-calendar>
+            </ng-template>
+          </p-columnFilter>
+        </div>
+      </th>
+      <th>period</th>
+      <th *ngIf="stateService.getState().userType != 'teacher'">teacher</th>
+      <th *ngIf="stateService.getState().userType != 'teacher'">course</th>
+      <th *ngIf="stateService.getState().userType != 'parent'">link</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-event>
+    <tr>
+      <td >{{event.name}}</td>
+      <td *ngIf="stateService.getState().userType === 'teacher'">{{event.class.name}}</td>
+      <td>{{event.date}}</td>
+      <td>{{event.period}}</td>
+      <td *ngIf="stateService.getState().userType != 'teacher'">{{event.teacher.user.name}}</td>
+      <td *ngIf="stateService.getState().userType != 'teacher'">{{event.course.name}}</td>
+      <td *ngIf="stateService.getState().userType != 'parent'">
+        <a href="{{event.link}}">go to meeting</a>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="8">No meetings found.</td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,91 @@
+<div class="container">
+
+  <p-card>
+    <div class="d-flex flex-column justify-content-evenly align-items-center">
+      <input class="p-inputtext-lg" type="text" pInputText placeholder="Name" name="name"
+             [(ngModel)]="user.name" #name="ngModel" required/>
+      <p-message severity="error" text="invalid name" *ngIf="name.invalid && invalid"></p-message>
+
+      <input class="mt-2 p-inputtext-lg" type="email" pInputText [(ngModel)]="user.email" placeholder="user email" name="email"
+             #email="ngModel"
+             required/>
+      <p-message severity="error" text="invalid email" *ngIf="email.invalid && invalid"></p-message>
+
+      <p-inputMask class="mt-2 p-inputtext-lg" [(ngModel)]="user.phone" mask="999-9999-9999" placeholder="user phone" [maxlength]=11
+                   slotChar="-" [required]="true"></p-inputMask>
+      <p-message severity="error" text="invalid phone number" *ngIf="email.invalid && invalid"></p-message>
+
+      <p-password class="mt-2" [(ngModel)]="user.password" [toggleMask]="true" [showClear]="true"
+                  placeholder="password" required>
+        <ng-template pTemplate="header">
+          <h6>Pick a password</h6>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <p-divider></p-divider>
+          <p class="mt-2">Suggestions</p>
+          <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+            <li>At least one lowercase</li>
+            <li>At least one uppercase</li>
+            <li>At least one numeric</li>
+            <li>Minimum 8 characters</li>
+          </ul>
+        </ng-template>
+      </p-password>
+      <p-password class="mt-2" [(ngModel)]="confirmPassword" placeholder="confirm password" [showClear]="true"
+                  [feedback]="false" [toggleMask]="true" required></p-password>
+      <p-message severity="error" text="passwords don't match" *ngIf="! passwordMatch && invalid"></p-message>
+      <p-message severity="error" text="password can't be empty"
+                 *ngIf="confirmPassword === '' && invalid"></p-message>
+
+      <div class="d-flex flex-row align-content-center my-2">
+        <div *ngFor="let role of userTypes" class="field-checkbox">
+          <p-radioButton [inputId]="role.key" name="role" [value]="role" [(ngModel)]="userType"
+          (onClick)="getData()"></p-radioButton>
+          <label [for]="role.key">{{role.name}}</label>
+        </div>
+      </div>
+      <p-message severity="error" text="please select role" *ngIf="userType.key === 0 && invalid"></p-message>
+
+      <div class="d-flex flex-row">
+
+        <p-dropdown *ngIf="userType.key === 1" [options]="courses" [(ngModel)]="selectedCourse"
+                    optionLabel="name" optionValue="id" placeholder="select course" name="courseId"
+                    [required]="true"></p-dropdown>
+        <p-message severity="error" text="please select course"
+                   *ngIf="userType.key === 1 && selectedCourse === -1 && invalid"></p-message>
+
+        <p-multiSelect *ngIf="userType.key === 1" [options]="classes" [(ngModel)]="teacherSelectedClasses"
+                       optionLabel="name" optionValue="code" display="chip" [virtualScroll]="true"
+                       [virtualScrollItemSize]="43" defaultLabel="select classes"></p-multiSelect>
+        <p-message severity="error" text="please select at least one class"
+                   *ngIf="userType.key === 1 && teacherSelectedClasses.length === 0 && invalid"></p-message>
+
+        <p-dropdown *ngIf="userType.key === 2" [options]="classes" [(ngModel)]="studentSelectedClass"
+                    optionLabel="name" optionValue="code" placeholder="select class" name="classId"
+                    [required]="true"></p-dropdown>
+        <p-message severity="error" text="please select class"
+                   *ngIf="userType.key === 2 && studentSelectedClass === -1 && invalid"></p-message>
+
+        <p-calendar *ngIf="userType.key === 2" [(ngModel)]="studentBirthDate" [showIcon]="true" inputId="icon"
+                    dateFormat="yy-mm-dd" placeholder="student birth date" [maxDate]="maxDate" ></p-calendar>
+        <p-message severity="error" text="please select date"
+                   *ngIf="userType.key === 2 && studentBirthDate && invalid"></p-message>
+
+        <p-dropdown *ngIf="userType.key === 2" [options]="studentGender" [(ngModel)]="selectedGender"
+                    optionLabel="name" optionValue="name" placeholder="select gender" name="student gender"
+                    [required]="true"></p-dropdown>
+        <p-message severity="error" text="please select course"
+                   *ngIf="userType.key === 2 && invalid"></p-message>
+
+        <p-dropdown *ngIf="userType.key === 3" [options]="students" [(ngModel)]="selectedStudent"
+                    optionLabel="name" optionValue="id" placeholder="select student" name="studentId" [filter]="true" filterBy="name" [showClear]="true"
+                    [required]="true"></p-dropdown>
+        <p-message severity="error" text="please select student"
+                   *ngIf="userType.key === 3 && selectedCourse === -1 && invalid"></p-message>
+
+      </div>
+      <button type="submit" pButton label="create user" (click)="handelSubmit()"></button>
+    </div>
+  </p-card>
+
+</div>

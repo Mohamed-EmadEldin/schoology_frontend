@@ -1,0 +1,59 @@
+<div class="container">
+  <p-toast></p-toast>
+
+  <div class="dashboard-container">
+    <!--    <h1>welcome {{userName}}</h1>-->
+    <p-card header="Add Announcement " [style]="{width: '360px'}" styleClass="p-card-shadow">
+      <ng-template pTemplate="header">
+        <img alt="Card" src="assets/images/cards/News-amico.svg">
+      </ng-template>
+      <textarea rows="5" cols="30" pInputTextarea [autoResize]=true placeholder="Add Announcement here"
+                [(ngModel)]="newAnnouncement.announcment"> </textarea>
+
+      <ng-template pTemplate="footer">
+        <p-button label="Send" icon="pi pi-check" (click)="sendAnnouncement()"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary"
+                  [style]="{'margin-left': '.5em'}" (click)="newAnnouncement.announcment=''"></p-button>
+      </ng-template>
+    </p-card>
+    <div class="gallary-contrroler">
+      <p-card header="Add photo to gallery"  [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+          <div class="selected-image-container">
+          <img alt="Card" [src]="selectedImageToShow" width="200" >
+          </div>
+        </ng-template>
+       <div class="input-container">
+         <input type="text" pInputText [(ngModel)]="newGallaryImage.link" placeholder="Link" (change)="showSelectedImage()">
+         <input type="text" pInputText [(ngModel)]="newGallaryImage.title" placeholder="Title">
+         <textarea rows="5" cols="30" pInputTextarea [autoResize]=true placeholder="Description"
+                   [(ngModel)]="newGallaryImage.description"> </textarea>
+       </div>
+        <ng-template pTemplate="footer">
+          <p-button label="Add" icon="pi pi-plus" (click)="addNewGallaryImage()"></p-button>
+          <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+        </ng-template>
+      </p-card>
+    </div>
+
+    <div class="gallary-contrroler">
+      <p-card header="Delete photo from gallery"  [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+          <div class="selected-image-container">
+            <img alt="Card" [src]="selectedImageToDelete.link" width="200" >
+          </div>
+        </ng-template>
+        <div class="input-container">
+          <p-dropdown [options]="allGalaryImages" [(ngModel)]="selectedImageIdToDelete"
+                      optionLabel="title" optionValue="id" placeholder="select Image"
+                       (onChange)="showSelectedImageToDelete()"></p-dropdown>
+        </div>
+        <ng-template pTemplate="footer">
+          <p-button label="delete" icon="pi pi-trash"  (click)="deleteImage()"></p-button>
+          <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+        </ng-template>
+      </p-card>
+    </div>
+
+  </div>
+</div>

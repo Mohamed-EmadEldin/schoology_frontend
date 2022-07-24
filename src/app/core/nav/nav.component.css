@@ -1,0 +1,74 @@
+::ng-deep .nav {
+    margin-bottom: 30px;
+    background: #0e2a47;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo img {
+    height: 50px !important;
+    width: 50px !important;
+}
+
+.logo span {
+    color: #ffff;
+    margin-top: 16px;
+    font-size: large;
+}
+
+::ng-deep .navbar {
+    background: #0e2a47;
+}
+
+::ng-deep .mat-menu-content:not(:empty) {
+    /*background-color:#17212FFF;*/
+    padding: 10px;
+}
+
+.mat-menu-item {
+    /*background-color:#17212FFF;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-button.p-button-text {
+    color: #ffff;
+}
+
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    background-color: #0e2a47;
+}
+
+.p-button.p-button-text :hover {
+    color: #5f7d95;
+}
+
+::ng-deep #profilesMenu {
+    background-color: #0e2a47;
+}
+
+::ng-deep.mat-menu-item {
+    background-color: #0e2a47;
+}
+
+.mat-icon-button .mat-icon {
+    line-height: 24px;
+    color: white;
+}
+
+.white-icon
+{
+  color: white;
+
+}
+
+/* ::ng-deep.p-sidebar {
+  background: #0e2a47;
+  color: #ffff;
+} */
